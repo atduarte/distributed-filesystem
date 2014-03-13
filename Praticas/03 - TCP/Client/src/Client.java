@@ -1,32 +1,42 @@
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
 
 public class Client {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException 
+	{		    
+		// Accept Socket
+		Socket connectionSocket = new Socket("localhost", 7584);		
+		System.out.println("Accepted");
 		
-		DatagramSocket s = new DatagramSocket();
-		byte[] message = new byte[1024];
+		// Open Stream		
+		DataOutputStream outToServer = new DataOutputStream(connectionSocket.getOutputStream());
+		BufferedReader inFromServer = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
 		
-		while(true)
-		{
-			message = "X".getBytes();
-			InetAddress address = InetAddress.getByName(args[0]);
-			DatagramPacket mp = new DatagramPacket(message, message.length, address, Integer.parseInt(args[1]));
+		// Each Line
+		while (true) {
+
+			// Send
+			String capitalizedSentence = "mensagem" + '\n';
+			outToServer.writeBytes(capitalizedSentence);
+			System.out.println("Sent: " + capitalizedSentence);
 			
-			//s.connect(address, Integer.parseInt(args[1]));
-			s.send(mp);
-			
-			s.receive(mp);			
-			System.out.println("message" + new String(mp.getData()));			
+			// Receive Line
+			String clientSentence = inFromServer.readLine();
+			System.out.println("Received: " + clientSentence);
 			
 		}
-
+		
+		//connectionSocket.close();
 
 	}
 

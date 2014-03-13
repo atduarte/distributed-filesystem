@@ -1,32 +1,38 @@
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-
+import java.io.InputStreamReader;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class Server {
 
 	public static void main(String[] args) throws IOException {
 			
-		DatagramSocket s = new DatagramSocket(Integer.parseInt(args[0]));
-		byte[] message = new byte[1024];
+		// Open Socket
+		ServerSocket srvSocket = new ServerSocket(7584);
+		           
+		// Accept Socket
+		Socket connectionSocket = srvSocket.accept();		
+		System.out.println("Accepted");
 		
-		while(true)
-		{
-			DatagramPacket mp = new DatagramPacket(message, message.length);
-			s.receive(mp);
-			System.out.println("message: " + new String(mp.getData()));
+		// Open Stream
+		BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
+		DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
+		
+		// Each Line
+		while (!inFromClient.ready()) {
+			// Receive Line
+			String clientSentence = inFromClient.readLine();
+			System.out.println("Received: " + clientSentence);
 			
-			int port = mp.getPort();
-			InetAddress address = mp.getAddress();
-			
-			DatagramPacket op = new DatagramPacket("Y".getBytes(), 1, address, port);
-			//s.connect(address, port);
-			s.send(op);
-			
-			
+			// Send
+			String capitalizedSentence = clientSentence.toUpperCase() + '\n';
+			outToClient.writeBytes(capitalizedSentence);
+			System.out.println("Sent: " + capitalizedSentence);
 		}
-
+		
+		connectionSocket.close();
 	}
 
 }
