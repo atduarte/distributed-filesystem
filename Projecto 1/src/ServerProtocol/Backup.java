@@ -1,5 +1,6 @@
-package Controllers;
+package ServerProtocol;
 
+import Controllers.BackupInfo;
 import Utils.FilesManager;
 
 import java.io.File;
@@ -12,8 +13,16 @@ import java.util.ArrayList;
 public class Backup
 {
     FilesManager filesManager = new FilesManager();
+    BackupInfo backupInfo = null;
 
-    public void sendFolder(String path) throws IOException {
+    public Backup(BackupInfo _backupInfo)
+    {
+        filesManager = new FilesManager();
+        backupInfo = _backupInfo;
+    }
+
+    public void sendFolder(String path) throws IOException
+    {
         ArrayList<File> listOfFiles = filesManager.getFilesList(path);
 
         for (int i = 0; i < listOfFiles.size(); i++) {
@@ -23,8 +32,9 @@ public class Backup
         // TODO: Save Hashes
     }
 
-    public void sendFile(File file, String path) throws IOException {
-        filesManager.generateHash(path, file);
+    public void sendFile(File file, String path) throws IOException
+    {
+        String hash = filesManager.generateHash(path, file);
         String chunksFolder = filesManager.saveChunks(file);
 
         // TODO: Envias a tua cena

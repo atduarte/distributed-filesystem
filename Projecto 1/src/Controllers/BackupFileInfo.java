@@ -5,7 +5,7 @@ public class BackupFileInfo
     private String name;
     private String hash;
 
-    BackupFileInfo(String _name, String _hash) {
+    public BackupFileInfo(String _name, String _hash) {
         setName(_name);
         setHash(_hash);
     }

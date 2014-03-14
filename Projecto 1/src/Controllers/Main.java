@@ -1,5 +1,8 @@
 package Controllers;
 
+import PeerProtocol.RequestInterpreter;
+import ServerProtocol.Backup;
+import ServerProtocol.Restore;
 import Utils.FilesManager;
 
 import java.io.File;
@@ -11,22 +14,27 @@ import java.util.ArrayList;
  */
 public class Main
 {
-    public static void main(String [] args) throws IOException {
-        System.out.println(args[0]);
+    public static void main(String [] args) throws IOException
+    {
+        // Base Data; TODO: From ARGS
+        String address = "228.5.6.7";
+        Integer port = 6789;
+        String backupPath = null;
 
-        FilesManager mainFolder = new FilesManager();
-        ArrayList<File> listOfFiles = mainFolder.getFilesList(args[0]);
+        BackupInfo backupInfo = new BackupInfo(backupPath);
 
-        System.out.println(listOfFiles.toString());
+        // Run Receiver
+        RequestInterpreter receiver = new RequestInterpreter(address, port);
+        receiver.run();
 
-        for (int i = 0; i < listOfFiles.size(); i++) {
-            mainFolder.generateHash(args[0], listOfFiles.get(i));
-            String chunksFolder = mainFolder.saveChunks(listOfFiles.get(i));
+        // TODO
 
-            // Envias a tua cena
+        // Backup Example
+        Backup backup = new Backup(backupInfo);
+        backup.sendFolder("...");
 
-            // Eliminas a pasta
-        }
-
+        // Restore Examples
+        Restore restore = new Restore(backupInfo);
+        // ...
     }
 }

@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class FilesManager
 {
-    final int CHUNK_SIZE = 64*1024;
+    final int CHUNK_SIZE = 64*1000; // No enunciado diz para considerar K = 1000
 
     public ArrayList<File> getFilesList(String path)
     {

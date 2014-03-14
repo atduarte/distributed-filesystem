@@ -7,9 +7,11 @@ import java.util.ArrayList;
  */
 public class BackupInfo
 {
-    static ArrayList<BackupFileInfo> files;
+    String path;
+    ArrayList<BackupFileInfo> files;
 
-    BackupInfo() {
+    public BackupInfo(String path) {
+        this.path = path;
         files = new ArrayList<BackupFileInfo>();
     }
 
