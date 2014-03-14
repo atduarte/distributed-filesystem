@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ded3c10e-75ca-4e3a-bcdf-d22a5dcef3d4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ServerProtocol/Restore.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controllers/BackupFileInfo.java" afterPath="$PROJECT_DIR$/src/Controllers/BackupFileInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controllers/BackupInfo.java" afterPath="$PROJECT_DIR$/src/Controllers/BackupInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PeerProtocol/Delete.java" afterPath="$PROJECT_DIR$/src/PeerProtocol/Delete.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utils/FilesManager.java" afterPath="$PROJECT_DIR$/src/Utils/FilesManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PeerProtocol/GetChunk.java" afterPath="$PROJECT_DIR$/src/PeerProtocol/GetChunk.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controllers/Main.java" afterPath="$PROJECT_DIR$/src/Controllers/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PeerProtocol/PutChunk.java" afterPath="$PROJECT_DIR$/src/PeerProtocol/PutChunk.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PeerProtocol/Removed.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ServerProtocol/Removed.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PeerProtocol/RequestInterpreter.java" afterPath="$PROJECT_DIR$/src/PeerProtocol/RequestInterpreter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Projects\Universidade\SDIS\Projecto 1\src\Controllers\Backup.java" afterPath="$PROJECT_DIR$/src/ServerProtocol/Backup.java" />
     </list>
     <ignored path="SDIS_Proj1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,22 +69,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Controllers/Main.java">
+      <file leaf-file-name="Removed.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PeerProtocol/Removed.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="5" selection-start="363" selection-end="363" vertical-scroll-proportion="0.23349437" vertical-offset="25" max-vertical-offset="663">
+            <state line="14" column="35" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestInterpreter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PeerProtocol/RequestInterpreter.java">
+      <file leaf-file-name="Removed.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ServerProtocol/Removed.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" vertical-offset="70" max-vertical-offset="1309">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="7" column="0" selection-start="96" selection-end="96" vertical-scroll-proportion="0.12754555" vertical-offset="0" max-vertical-offset="933">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -104,6 +95,15 @@
                 <element signature="e#0#79676#0" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Delete.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ServerProtocol/Delete.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="13" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -156,7 +156,7 @@
       <file leaf-file-name="Delete.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PeerProtocol/Delete.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="20" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+            <state line="15" column="5" selection-start="0" selection-end="317" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
               <folding />
             </state>
           </provider>
@@ -196,19 +196,20 @@
         <option value="$PROJECT_DIR$/src/PeerProtocol/GetChunk.java" />
         <option value="$PROJECT_DIR$/src/PeerProtocol/PutChunk.java" />
         <option value="$PROJECT_DIR$/src/PeerProtocol/Delete.java" />
-        <option value="$PROJECT_DIR$/src/PeerProtocol/RequestInterpreter.java" />
         <option value="$PROJECT_DIR$/src/Utils/FilesManager.java" />
         <option value="$PROJECT_DIR$/src/ServerProtocol/Backup.java" />
         <option value="$PROJECT_DIR$/src/Controllers/BackupInfo.java" />
         <option value="$PROJECT_DIR$/src/Controllers/Main.java" />
+        <option value="$PROJECT_DIR$/src/PeerProtocol/Removed.java" />
+        <option value="$PROJECT_DIR$/src/PeerProtocol/RequestInterpreter.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -465,7 +466,7 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32846716" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -481,7 +482,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.193265" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32846716" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="265" width="1366" height="237" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -504,8 +505,10 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
     <MESSAGE value="Project - Init&#10;Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project - Init&#10;Test" />
+    <MESSAGE value="RequestInterpreter + Main + BackupInfo" />
+    <option name="LAST_COMMIT_MESSAGE" value="RequestInterpreter + Main + BackupInfo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -602,13 +605,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ServerProtocol/Delete.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/BackupFileInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="11" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
@@ -626,13 +622,6 @@
     <entry file="file://$PROJECT_DIR$/src/PeerProtocol/PutChunk.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="37" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PeerProtocol/Delete.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="20" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
           <folding />
         </state>
       </provider>
@@ -655,15 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="0" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PeerProtocol/RequestInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" vertical-offset="70" max-vertical-offset="1309">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -691,6 +671,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="50" selection-start="895" selection-end="895" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PeerProtocol/Delete.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="5" selection-start="0" selection-end="317" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PeerProtocol/RequestInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="145" selection-end="145" vertical-scroll-proportion="0.10932476" vertical-offset="0" max-vertical-offset="1292">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PeerProtocol/Removed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="35" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ServerProtocol/Backup.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="11" selection-start="328" selection-end="328" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
@@ -698,9 +708,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/ServerProtocol/Delete.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="5" selection-start="363" selection-end="363" vertical-scroll-proportion="0.23349437" vertical-offset="25" max-vertical-offset="663">
+        <state line="5" column="13" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ServerProtocol/Removed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="96" selection-end="96" vertical-scroll-proportion="0.12754555" vertical-offset="0" max-vertical-offset="933">
           <folding />
         </state>
       </provider>

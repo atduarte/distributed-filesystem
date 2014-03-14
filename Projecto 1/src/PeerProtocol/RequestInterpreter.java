@@ -4,11 +4,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.net.UnknownHostException;
 
-/**
- * Created by atduarte on 13-03-2014.
- */
 public class RequestInterpreter extends Thread
 {
     String address;
@@ -62,6 +58,9 @@ public class RequestInterpreter extends Thread
                 thread.run();
             } else if(PutChunk.pattern.matcher(message).find()) {
                 PutChunk thread = new PutChunk();
+                thread.run();
+            } else if(Removed.pattern.matcher(message).find()) {
+                Removed thread = new Removed();
                 thread.run();
             } else {
                 System.out.println("Error: " + message);
