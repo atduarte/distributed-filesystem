@@ -1,17 +1,22 @@
-package PeerProtocol;
+package Peer;
+
+import PeerProtocol.PutChunk;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 
-public class RequestInterpreter extends Thread
+/**
+ * Created by atduarte on 15-03-2014.
+ */
+public class MCReactor
 {
     String address;
     Integer port;
     InetAddress group;
 
-    public RequestInterpreter(String address, Integer port) throws IOException {
+    public MCReactor(String address, Integer port) throws IOException {
         this.address = address;
         this.port = port;
 
@@ -50,21 +55,12 @@ public class RequestInterpreter extends Thread
 
             String message = new String(packet.getData()); // Received
 
-            if(Delete.pattern.matcher(message).find()) {
-                Delete thread = new Delete();
-                thread.run();
-            } else if(GetChunk.pattern.matcher(message).find()) {
-                GetChunk thread = new GetChunk();
-                thread.run();
-            } else if(PutChunk.pattern.matcher(message).find()) {
+            if(PutChunk.pattern.matcher(message).find()) {
                 PutChunk thread = new PutChunk();
                 thread.run();
-            } else if(Removed.pattern.matcher(message).find()) {
-                Removed thread = new Removed();
-                thread.run();
             } else {
-                System.out.println("Error: " + message);
+                System.out.println("Error on MCReactor: " + message);
             }
-       }
+        }
     }
 }

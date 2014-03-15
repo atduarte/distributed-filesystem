@@ -1,13 +1,11 @@
 package Controllers;
 
-import PeerProtocol.RequestInterpreter;
-import ServerProtocol.Backup;
-import ServerProtocol.Restore;
-import Utils.FilesManager;
+import Peer.Reactor;
+import Server.Backup;
+import Server.BackupInfo;
+import Server.Restore;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by atduarte on 13-03-2014.
@@ -17,14 +15,20 @@ public class Main
     public static void main(String [] args) throws IOException
     {
         // Base Data; TODO: From ARGS
-        String address = "228.5.6.7";
-        Integer port = 6789;
+        String MCaddress = "228.5.6.7";
+        Integer MCport = 6789;
+        String MDBaddress = "228.5.6.7";
+        Integer MDBport = 6790;
+        String MDRaddress = "228.5.6.7";
+        Integer MDRport = 6791;
         String backupPath = null;
 
         BackupInfo backupInfo = new BackupInfo(backupPath);
 
         // Run Receiver
-        RequestInterpreter receiver = new RequestInterpreter(address, port);
+        Reactor receiver = new Reactor();
+        receiver.setMC(MCaddress, MCport);
+        receiver.setMDB(MDBaddress, MDBport);
         receiver.run();
 
         // TODO

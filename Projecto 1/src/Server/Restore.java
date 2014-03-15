@@ -1,7 +1,4 @@
-package ServerProtocol;
-
-import Controllers.BackupInfo;
-import Utils.FilesManager;
+package Server;
 
 /**
  * Created by atduarte on 14-03-2014.

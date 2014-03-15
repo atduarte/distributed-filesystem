@@ -1,9 +1,10 @@
-package Controllers;
+package Server;
 
 public class BackupFileInfo
 {
     private String name;
     private String hash;
+    private Integer replicationDegree;
 
     public BackupFileInfo(String _name, String _hash) {
         setName(_name);
@@ -24,5 +25,13 @@ public class BackupFileInfo
 
     public void setHash(String hash) {
         this.hash = hash;
+    }
+
+    public Integer getReplicationDegree() {
+        return replicationDegree;
+    }
+
+    public void setReplicationDegree(Integer replicationDegree) {
+        this.replicationDegree = replicationDegree;
     }
 }

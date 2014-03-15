@@ -1,6 +1,5 @@
-package ServerProtocol;
+package Server;
 
-import Controllers.BackupInfo;
 import Utils.FilesManager;
 
 import java.io.File;
