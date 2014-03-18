@@ -21,7 +21,7 @@ public class Reactor
         }
 
         if (channels.getMDB() != null) {
-            MDBReactor MDBReactor = new MDBReactor(channels.getMDB());
+            MDBReactor MDBReactor = new MDBReactor(channels);
             MDBReactor.start();
         }
 

@@ -8,6 +8,12 @@ import java.util.regex.Pattern;
 public class Removed extends Thread
 {
     final public static Pattern pattern = Pattern.compile("^REMOVED");
+    private byte[] data;
+
+    public Removed(byte[] data)
+    {
+        this.data = data;
+    }
 
     public void run()
     {

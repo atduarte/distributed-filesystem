@@ -5,6 +5,7 @@ import PeerProtocol.GetChunk;
 import PeerProtocol.PutChunk;
 import PeerProtocol.Removed;
 import Utils.Channel;
+import Utils.Channels;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -16,13 +17,16 @@ import java.net.MulticastSocket;
  */
 public class MDBReactor extends Thread
 {
-    String address;
-    Integer port;
-    InetAddress group;
+    private Channels channels;
+    private String address;
+    private Integer port;
+    private InetAddress group;
 
-    public MDBReactor(Channel channel) throws IOException {
-        this.address = channel.getAddress();
-        this.port = channel.getPort();
+    public MDBReactor(Channels channels) throws IOException
+    {
+        this.channels = channels;
+        this.address = channels.getMDB().getAddress();
+        this.port = channels.getMDB().getPort();
 
         group = InetAddress.getByName(address);
     }
@@ -57,19 +61,18 @@ public class MDBReactor extends Thread
 
             // Process Packet
 
-            String message = new String(packet.getData()); // Received
-
-            System.out.println(message);
+            byte[] data = packet.getData();
+            String message = new String(data); // Received
 
             if(Delete.pattern.matcher(message).find()) {
-                Delete thread = new Delete();
-                thread.run();
+                Delete thread = new Delete(data);
+                thread.start();
             } else if(PutChunk.pattern.matcher(message).find()) {
-                PutChunk thread = new PutChunk();
-                thread.run();
+                PutChunk thread = new PutChunk(channels, data);
+                thread.start();
             } else if(Removed.pattern.matcher(message).find()) {
-                Removed thread = new Removed();
-                thread.run();
+                Removed thread = new Removed(data);
+                thread.start();
             } else {
                 System.out.println("Error on MDBReactor: " + message);
             }

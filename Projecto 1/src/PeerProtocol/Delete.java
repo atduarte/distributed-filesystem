@@ -1,5 +1,7 @@
 package PeerProtocol;
 
+import Utils.Constants;
+
 import java.util.regex.Pattern;
 
 /**
@@ -7,7 +9,26 @@ import java.util.regex.Pattern;
  */
 public class Delete extends Thread
 {
-    final public static Pattern pattern = Pattern.compile("^DELETE");
+    private byte[] data;
+
+    private String version;
+    private String fileId;
+    private Integer chunkNo;
+    private Integer replicationDegree;
+    private byte[] body;
+
+    final public static Pattern pattern = Pattern.compile(
+            "^DELETE " +
+            Constants.patternVersion +
+            Constants.patternFileId +
+            Constants.patternChunkNo +
+            Constants.patternReplicationDeg
+    );
+
+    public Delete(byte[] data)
+    {
+        this.data = data;
+    }
 
     public void run()
     {

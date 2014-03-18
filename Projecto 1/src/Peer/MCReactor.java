@@ -55,13 +55,12 @@ public class MCReactor extends Thread
 
             // Process Packet
 
-            String message = new String(packet.getData()); // Received
-
-            System.out.println(message);
+            byte[] data = packet.getData();
+            String message = new String(data); // Received
 
             if(GetChunk.pattern.matcher(message).find()) {
-                GetChunk thread = new GetChunk();
-                thread.run();
+                GetChunk thread = new GetChunk(data);
+                thread.start();
             } else {
                 System.out.println("Error on MCReactor: " + message);
             }

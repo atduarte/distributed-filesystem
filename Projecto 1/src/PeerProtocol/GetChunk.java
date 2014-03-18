@@ -8,6 +8,12 @@ import java.util.regex.Pattern;
 public class GetChunk extends Thread
 {
     final public static Pattern pattern = Pattern.compile("^GETCHUNK");
+    private byte[] data;
+
+    public GetChunk(byte[] data)
+    {
+        this.data = data;
+    }
 
     public void run()
     {

@@ -5,6 +5,8 @@ public class BackupFileInfo
     private String name;
     private String hash;
     private Integer replicationDegree;
+    private Integer effectiveReplicationDegree = 0;
+    private boolean receiving = false;
 
     public BackupFileInfo(String _name, String _hash) {
         setName(_name);

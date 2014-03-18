@@ -38,6 +38,7 @@ public class PutChunk
         String sMessage = "PUTCHUNK ";
         sMessage += Constants.version + " ";
         sMessage += fileId + " ";
+        sMessage += chunkNo + " ";
         sMessage += replicationDegree + " ";
         sMessage += "\r\n \r\n ";
 
@@ -64,7 +65,9 @@ public class PutChunk
         DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
         socket.send(packet);
 
-        System.out.println("Enviado");
+        socket.receive(packet);
+
+        System.out.println(new String(packet.getData()));
 
         return true;
     }
