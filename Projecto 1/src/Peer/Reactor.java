@@ -1,48 +1,29 @@
 package Peer;
 
+import Utils.Channels;
+
 import java.io.IOException;
 
 public class Reactor
 {
-    String MCaddress = null;
-    Integer MCport = null;
-    String MDBaddress = null;
-    Integer MDBport = null;
-    String MDRaddress = null;
-    Integer MDRport = null;
+    Channels channels;
 
-    public Reactor()
+    public Reactor(Channels channels)
     {
-    }
-
-    public void setMC(String address, Integer port)
-    {
-        MCaddress = address;
-        MCport = port;
-    }
-
-    public void setMDB(String address, Integer port)
-    {
-        MDBaddress = address;
-        MDBport = port;
-    }
-
-    public void setMDR(String address, Integer port)
-    {
-        MDRaddress = address;
-        MDRport = port;
+        this.channels = channels;
     }
 
     public void run() throws IOException
     {
-        if (MCaddress != null && MCport != null) {
-            MCReactor MCReactor = new MCReactor(MCaddress, MCport);
-            MCReactor.run();
+        if (channels.getMC() != null) {
+            MCReactor MCReactor = new MCReactor(channels.getMC());
+            MCReactor.start();
         }
 
-        if (MDBaddress != null && MDBport != null) {
-            MDBReactor MDBReactor = new MDBReactor(MDBaddress, MDBport);
-            MDBReactor.run();
+        if (channels.getMDB() != null) {
+            MDBReactor MDBReactor = new MDBReactor(channels.getMDB());
+            MDBReactor.start();
         }
+
     }
 }

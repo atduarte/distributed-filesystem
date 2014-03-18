@@ -10,8 +10,6 @@ import java.util.Random;
  */
 public class FilesManager
 {
-    final int CHUNK_SIZE = 64*1000; // No enunciado diz para considerar K = 1000
-
     public ArrayList<File> getFilesList(String path)
     {
         File folder = new File(path);
@@ -100,7 +98,7 @@ public class FilesManager
         // Save Each Chunk
 
         FileInputStream is = new FileInputStream(file);
-        byte[] chunk = new byte[CHUNK_SIZE];
+        byte[] chunk = new byte[Constants.chunkSize];
         int chunkNo = 0;
         int chunkLen = 0;
 
@@ -110,7 +108,7 @@ public class FilesManager
         }
 
         // Save last Chunk
-        if (chunkLen == CHUNK_SIZE) {
+        if (chunkLen == Constants.chunkSize) {
            saveChunk(chunkPath, chunkNo, chunk);
         }
 

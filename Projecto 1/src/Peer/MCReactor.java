@@ -1,6 +1,8 @@
 package Peer;
 
+import PeerProtocol.GetChunk;
 import PeerProtocol.PutChunk;
+import Utils.Channel;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -10,15 +12,15 @@ import java.net.MulticastSocket;
 /**
  * Created by atduarte on 15-03-2014.
  */
-public class MCReactor
+public class MCReactor extends Thread
 {
     String address;
     Integer port;
     InetAddress group;
 
-    public MCReactor(String address, Integer port) throws IOException {
-        this.address = address;
-        this.port = port;
+    public MCReactor(Channel channel) throws IOException {
+        this.address = channel.getAddress();
+        this.port = channel.getPort();
 
         group = InetAddress.getByName(address);
     }
@@ -55,8 +57,10 @@ public class MCReactor
 
             String message = new String(packet.getData()); // Received
 
-            if(PutChunk.pattern.matcher(message).find()) {
-                PutChunk thread = new PutChunk();
+            System.out.println(message);
+
+            if(GetChunk.pattern.matcher(message).find()) {
+                GetChunk thread = new GetChunk();
                 thread.run();
             } else {
                 System.out.println("Error on MCReactor: " + message);

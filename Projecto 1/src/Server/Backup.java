@@ -1,5 +1,6 @@
 package Server;
 
+import Utils.Channels;
 import Utils.FilesManager;
 
 import java.io.File;
@@ -13,11 +14,13 @@ public class Backup
 {
     FilesManager filesManager = new FilesManager();
     BackupInfo backupInfo = null;
+    Channels channels;
 
-    public Backup(BackupInfo _backupInfo)
+    public Backup(Channels channels, BackupInfo backupInfo)
     {
+        this.channels = channels;
         filesManager = new FilesManager();
-        backupInfo = _backupInfo;
+        this.backupInfo = backupInfo;
     }
 
     public void sendFolder(String path) throws IOException

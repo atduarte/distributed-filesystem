@@ -4,6 +4,7 @@ import PeerProtocol.Delete;
 import PeerProtocol.GetChunk;
 import PeerProtocol.PutChunk;
 import PeerProtocol.Removed;
+import Utils.Channel;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -19,9 +20,9 @@ public class MDBReactor extends Thread
     Integer port;
     InetAddress group;
 
-    public MDBReactor(String address, Integer port) throws IOException {
-        this.address = address;
-        this.port = port;
+    public MDBReactor(Channel channel) throws IOException {
+        this.address = channel.getAddress();
+        this.port = channel.getPort();
 
         group = InetAddress.getByName(address);
     }
@@ -58,10 +59,12 @@ public class MDBReactor extends Thread
 
             String message = new String(packet.getData()); // Received
 
+            System.out.println(message);
+
             if(Delete.pattern.matcher(message).find()) {
                 Delete thread = new Delete();
                 thread.run();
-            } else if(GetChunk.pattern.matcher(message).find()) {
+            } else if(PutChunk.pattern.matcher(message).find()) {
                 PutChunk thread = new PutChunk();
                 thread.run();
             } else if(Removed.pattern.matcher(message).find()) {
