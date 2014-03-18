@@ -7,9 +7,9 @@ import java.util.ArrayList;
  */
 public class BackupInfo
 {
-    String path;
-    ArrayList<BackupFileInfo> files;
-    Integer usedDiskSpace;
+    public String path;
+    public ArrayList<BackupFileInfo> files;
+    public Integer usedDiskSpace;
 
     public BackupInfo(String path) {
         this.path = path;
