@@ -1,5 +1,6 @@
 package PeerProtocol;
 
+import Server.BackupInfo;
 import Utils.Channel;
 import Utils.Channels;
 import Utils.Constants;
@@ -15,16 +16,11 @@ import java.util.regex.Pattern;
 /**
  * Created by atduarte on 13-03-2014.
  */
-public class PutChunk  extends Thread
+public class PutChunk extends Base
 {
-    Channel channel;
-    private byte[] data;
-
-    private String version;
+	private String version;
     private String fileId;
     private Integer chunkNo;
-    private Integer replicationDegree;
-    private byte[] body;
 
     final public static Pattern pattern = Pattern.compile(
             "^PUTCHUNK " +
@@ -33,25 +29,30 @@ public class PutChunk  extends Thread
             Constants.patternChunkNo
 
     );
-
-    public PutChunk(Channel channel,byte[] data)
+    
+	public PutChunk(Channels channels, BackupInfo backupInfo, byte[] data) {
+		super(channels, backupInfo, data);
+	}
+    
+    public void decodeData()
     {
-
-        this.data = data;
-        this.channel = channel;
-        Matcher matches = pattern.matcher(new String(data));
+        Matcher matches = pattern.matcher(new String(this.data));
 
         if (matches.find()) {
             this.version = matches.group(1);
             this.fileId = matches.group(2);
             this.chunkNo = Integer.parseInt(matches.group(3));
-
         }
     }
 
     public void run()
     {
-
+    	// Check if mine
+    	
+    	if (backupInfo.isMine(this.fileId)) {
+    		return;
+    	}
+    	
         // TODO: Store
 
         String sMessage = "STORED " + this.version + " " + this.fileId + " " + this.chunkNo;
@@ -59,8 +60,8 @@ public class PutChunk  extends Thread
 
         byte[] message = sMessage.getBytes();
 
-        String address = channel.getAddress();
-        Integer port = channel.getPort();
+        String address = channels.getMC().getAddress();
+        Integer port = channels.getMC().getPort();
 
         InetAddress group = null;
         try {

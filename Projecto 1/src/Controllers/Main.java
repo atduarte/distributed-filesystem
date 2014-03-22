@@ -3,6 +3,7 @@ package Controllers;
 import Peer.ChunkManager;
 import Peer.Reactor;
 import Server.Backup;
+import Server.BackupFileInfo;
 import Server.BackupInfo;
 import Server.Restore;
 import ServerProtocol.PutChunk;
@@ -21,11 +22,11 @@ public class Main
     public static void main(String [] args) throws IOException
     {
         // Base Data; TODO: From ARGS
-        String MCaddress = "228.5.6.7";
+        String MCaddress = "228.60.60.8";
         Integer MCport = 6789;
-        String MDBaddress = "228.15.16.17";
+        String MDBaddress = "228.60.60.18";
         Integer MDBport = 6790;
-        String MDRaddress = "228.25.26.27";
+        String MDRaddress = "228.60.60.28";
         Integer MDRport = 6791;
         String chunksPath = "D:\\backupChunks";
         String backupInfoPath = "D:\\backupInfo";
@@ -44,9 +45,12 @@ public class Main
         receiver.run();
 
         // TODO
-
+        
+        BackupFileInfo file = new BackupFileInfo();
+        file.setHash("akjhdsasd");        
+        backupInfo.addFile(file);
         byte[] body = "sáfoda".getBytes();
-        PutChunk cenas = new PutChunk(channels, "akjhdsasd", 5, 8, body);
+        PutChunk cenas = new PutChunk(channels, file.getHash(), 5, 8, body);
         cenas.send();
 
         // Backup Example

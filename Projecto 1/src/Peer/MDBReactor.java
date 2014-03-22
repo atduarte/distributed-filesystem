@@ -7,6 +7,7 @@ import PeerProtocol.Removed;
 import Server.BackupInfo;
 import Utils.Channel;
 import Utils.Channels;
+import Utils.Constants;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -54,7 +55,7 @@ public class MDBReactor extends Thread
 
             // Receive Packet
 
-            byte[] buf = new byte[1024];
+            byte[] buf = new byte[Constants.chunkSize + 2048];
             DatagramPacket packet = new DatagramPacket(buf, buf.length);
 
             try {
@@ -68,16 +69,14 @@ public class MDBReactor extends Thread
 
             byte[] data = packet.getData();
             String message = new String(data); // Received
-            
-            System.out.print("MDBReceived: ");
 
             if(Delete.pattern.matcher(message).find()) {
-            	System.out.println("Delete");
+            	System.out.println("MDBReceived: Delete");
                 Delete thread = new Delete(data);
                 thread.start();
             } else if(PutChunk.pattern.matcher(message).find()) {
-            	System.out.println("PutChunk");
-                PutChunk thread = new PutChunk(channels.getMC(), data);
+            	System.out.println("MDBReceived: PutChunk");
+                PutChunk thread = new PutChunk(channels, backupInfo, data);
                 thread.start();
             } else {
                 System.out.println("Error on MDBReactor: " + message);
