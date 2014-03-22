@@ -56,7 +56,7 @@ public class PutChunk extends Base
         // TODO: Store
 
         String sMessage = "STORED " + this.version + " " + this.fileId + " " + this.chunkNo;
-        sMessage += "\r\n \r\n ";
+        sMessage += " \r\n \r\n ";
 
         byte[] message = sMessage.getBytes();
 
