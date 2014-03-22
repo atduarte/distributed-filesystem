@@ -18,11 +18,11 @@ public class Main
     public static void main(String [] args) throws IOException
     {
         // Base Data; TODO: From ARGS
-        String MCaddress = "228.60.60.8";
+        String MCaddress = "229.60.60.8";
         Integer MCport = 6789;
-        String MDBaddress = "228.60.60.18";
+        String MDBaddress = "229.60.60.18";
         Integer MDBport = 6790;
-        String MDRaddress = "228.60.60.28";
+        String MDRaddress = "229.60.60.28";
         Integer MDRport = 6791;
         String chunksPath = "D:\\backupChunks";
         String backupInfoPath = "D:\\backupInfo";

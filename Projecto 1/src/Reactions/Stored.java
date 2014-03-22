@@ -33,6 +33,6 @@ public class Stored extends Reaction
 
     public void run()
     {
-        System.out.println("Stored, Bitch!");
+        System.out.println("Someone Stored our Chunk");
     }
 }

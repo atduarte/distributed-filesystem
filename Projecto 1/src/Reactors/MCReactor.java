@@ -23,15 +23,15 @@ public class MCReactor extends ChannelReactor
 	protected void processMessage(byte[] data, String message) {
 		if(GetChunk.pattern.matcher(message).find()) {
 			System.out.println("MCReceived: GetChunk");
-		    GetChunk thread = new GetChunk(data);
+		    GetChunk thread = new GetChunk(channels, backupInfo, data);
 		    thread.start();
 		} else if(Stored.pattern.matcher(message).find()) {
 			System.out.println("MCReceived: Stored");
-		    Stored thread = new Stored(data, backupInfo);
+		    Stored thread = new Stored(channels, backupInfo, data);
 		    thread.start();
 		} else if(Removed.pattern.matcher(message).find()) {
 			System.out.println("MCReceived: Removed");
-		    Removed thread = new Removed(data);
+		    Removed thread = new Removed(channels, backupInfo, data);
 		    thread.start();
 		} else {
 		    System.out.println("Error on MCReactor: " + message);

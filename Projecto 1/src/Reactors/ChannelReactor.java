@@ -20,8 +20,6 @@ public abstract class ChannelReactor extends Thread
     public ChannelReactor(Channels channels, BackupInfo backupInfo) throws IOException {
         this.channels = channels;
         this.backupInfo = backupInfo;
-
-        group = InetAddress.getByName(address);
     }
 
     public void run()
@@ -32,8 +30,9 @@ public abstract class ChannelReactor extends Thread
 
         try {
             socket = new MulticastSocket(port);
+            group = InetAddress.getByName(address);
             socket.joinGroup(group);
-            socket.setLoopbackMode(true);
+            //socket.setLoopbackMode(true);
         } catch (IOException e) {
             e.printStackTrace();
             return;
