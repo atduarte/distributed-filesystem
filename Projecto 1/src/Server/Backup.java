@@ -1,5 +1,6 @@
 package Server;
 
+import Peer.BackupInfo;
 import Utils.Channels;
 import Utils.FilesManager;
 

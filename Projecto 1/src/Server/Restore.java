@@ -1,5 +1,7 @@
 package Server;
 
+import Peer.BackupInfo;
+
 /**
  * Created by atduarte on 14-03-2014.
  */

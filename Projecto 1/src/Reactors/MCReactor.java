@@ -1,18 +1,12 @@
-package Peer;
+package Reactors;
 
-import PeerProtocol.GetChunk;
-import PeerProtocol.PutChunk;
-import PeerProtocol.Removed;
-import Server.BackupInfo;
-import ServerProtocol.Stored;
-import Utils.Channel;
+import Reactions.GetChunk;
+import Reactions.Removed;
+import Peer.BackupInfo;
+import Reactions.Stored;
 import Utils.Channels;
 
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.UnknownHostException;
 
 /**
  * Created by atduarte on 15-03-2014.
@@ -42,5 +36,5 @@ public class MCReactor extends ChannelReactor
 		} else {
 		    System.out.println("Error on MCReactor: " + message);
 		}
-	}   
+	}
 }

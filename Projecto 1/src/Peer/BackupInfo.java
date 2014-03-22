@@ -1,4 +1,4 @@
-package Server;
+package Peer;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ public class BackupInfo
     public void addFile(BackupFileInfo file) {
         files.add(file);
     }
-    
+
     public boolean isMine(String fileId)
     {
     	for (int i = 0; i < files.size(); i++) {

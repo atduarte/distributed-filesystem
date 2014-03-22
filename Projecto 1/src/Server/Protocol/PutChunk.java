@@ -1,4 +1,4 @@
-package ServerProtocol;
+package Server.Protocol;
 
 import Utils.Channels;
 import Utils.Constants;
@@ -7,25 +7,18 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.net.UnknownHostException;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by atduarte on 13-03-2014.
  */
-public class PutChunk
-{
+public class PutChunk {
     Channels channels;
     String fileId;
     Integer chunkNo;
     Integer replicationDegree;
     byte[] body;
 
-    public PutChunk(Channels channels, String fileId, Integer chunkNo, Integer replicationDegree, byte[] body)
-    {
+    public PutChunk(Channels channels, String fileId, Integer chunkNo, Integer replicationDegree, byte[] body) {
         this.channels = channels;
         this.fileId = fileId;
         this.chunkNo = chunkNo;
@@ -33,8 +26,7 @@ public class PutChunk
         this.body = body;
     }
 
-    private byte[] createMessage()
-    {
+    private byte[] createMessage() {
         String sMessage = "PUTCHUNK ";
         sMessage += Constants.version + " ";
         sMessage += fileId + " ";
@@ -51,10 +43,9 @@ public class PutChunk
         return message;
     }
 
-    public boolean send() throws IOException
-    {
-    	// Create Message
-    	
+    public boolean send() throws IOException {
+        // Create Message
+
         byte[] message = this.createMessage();
 
         String address = channels.getMDB().getAddress();

@@ -1,19 +1,14 @@
 package Controllers;
 
 import Peer.ChunkManager;
-import Peer.Reactor;
-import Server.Backup;
-import Server.BackupFileInfo;
-import Server.BackupInfo;
-import Server.Restore;
-import ServerProtocol.PutChunk;
+import Reactors.Reactor;
+import Peer.BackupFileInfo;
+import Peer.BackupInfo;
+import Server.Protocol.PutChunk;
 import Utils.Channels;
-import Utils.Constants;
 
 import java.io.IOException;
 import java.util.Random;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by atduarte on 13-03-2014.
@@ -46,10 +41,10 @@ public class Main
         receiver.run();
 
         // TODO
-        
+
         BackupFileInfo file = new BackupFileInfo();
         Random rand = new Random();
-        file.setHash("akjhdsasd" + rand.nextInt(10));        
+        file.setHash("akjhdsasd" + rand.nextInt(10));
         backupInfo.addFile(file);
         byte[] body = "sáfoda".getBytes();
         PutChunk cenas = new PutChunk(channels, file.getHash(), 5, 8, body);

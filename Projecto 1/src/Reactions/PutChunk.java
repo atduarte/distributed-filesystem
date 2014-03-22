@@ -1,7 +1,6 @@
-package PeerProtocol;
+package Reactions;
 
-import Server.BackupInfo;
-import Utils.Channel;
+import Peer.BackupInfo;
 import Utils.Channels;
 import Utils.Constants;
 
@@ -16,24 +15,21 @@ import java.util.regex.Pattern;
 /**
  * Created by atduarte on 13-03-2014.
  */
-public class PutChunk extends Base
+public class PutChunk extends Reaction
 {
-	private String version;
-    private String fileId;
-    private Integer chunkNo;
-
     final public static Pattern pattern = Pattern.compile(
             "^PUTCHUNK " +
             Constants.patternVersion +
             Constants.patternFileId +
-            Constants.patternChunkNo
+            Constants.patternChunkNo +
+            Constants.patternReplicationDeg
 
     );
-    
+
 	public PutChunk(Channels channels, BackupInfo backupInfo, byte[] data) {
 		super(channels, backupInfo, data);
 	}
-    
+
     public void decodeData()
     {
         Matcher matches = pattern.matcher(new String(this.data));
@@ -42,17 +38,20 @@ public class PutChunk extends Base
             this.version = matches.group(1);
             this.fileId = matches.group(2);
             this.chunkNo = Integer.parseInt(matches.group(3));
+            this.replicationDegree = Integer.parseInt(matches.group(4));
+
+            // TODO: Body
         }
     }
 
     public void run()
     {
     	// Check if mine
-    	
+
     	if (backupInfo.isMine(this.fileId)) {
     		return;
     	}
-    	
+
         // TODO: Store
 
         String sMessage = "STORED " + this.version + " " + this.fileId + " " + this.chunkNo;
@@ -77,6 +76,9 @@ public class PutChunk extends Base
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // TODO: Wait Random Delay
+        // If receives somethings, returns
 
         DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
         try {

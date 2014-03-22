@@ -1,4 +1,4 @@
-package Server;
+package Peer;
 
 import java.util.ArrayList;
 

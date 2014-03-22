@@ -1,6 +1,6 @@
-package Peer;
+package Reactors;
 
-import Server.BackupInfo;
+import Peer.BackupInfo;
 import Utils.Channels;
 
 import java.io.IOException;

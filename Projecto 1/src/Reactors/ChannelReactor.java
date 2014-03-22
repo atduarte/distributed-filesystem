@@ -1,11 +1,6 @@
-package Peer;
+package Reactors;
 
-import PeerProtocol.GetChunk;
-import PeerProtocol.PutChunk;
-import PeerProtocol.Removed;
-import Server.BackupInfo;
-import ServerProtocol.Stored;
-import Utils.Channel;
+import Peer.BackupInfo;
 import Utils.Channels;
 import Utils.Constants;
 
@@ -13,7 +8,6 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.net.UnknownHostException;
 
 public abstract class ChannelReactor extends Thread
 {
@@ -63,11 +57,11 @@ public abstract class ChannelReactor extends Thread
 
             byte[] data = packet.getData();
             String message = new String(data); // Received
-            
+
             processMessage(data, message);
         }
     }
 
 	protected abstract void processMessage(byte[] data, String message);
-    
+
 }
