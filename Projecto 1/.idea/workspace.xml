@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ded3c10e-75ca-4e3a-bcdf-d22a5dcef3d4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Peer/MCReactor.java" afterPath="$PROJECT_DIR$/src/Peer/MCReactor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Peer/MDBReactor.java" afterPath="$PROJECT_DIR$/src/Peer/MDBReactor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SDIS_Proj1.iws" />
@@ -84,7 +85,7 @@
       <file leaf-file-name="MDBReactor.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Peer/MDBReactor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="16" selection-start="1778" selection-end="1920" vertical-scroll-proportion="0.0" vertical-offset="863" max-vertical-offset="1566">
+            <state line="44" column="47" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.0" vertical-offset="451" max-vertical-offset="1422">
               <folding />
             </state>
           </provider>
@@ -93,7 +94,7 @@
       <file leaf-file-name="MCReactor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Peer/MCReactor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="5" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.8002774" vertical-offset="737" max-vertical-offset="1458">
+            <state line="45" column="39" selection-start="1127" selection-end="1127" vertical-scroll-proportion="0.41576508" vertical-offset="325" max-vertical-offset="1458">
               <folding />
             </state>
           </provider>
@@ -171,15 +172,17 @@
         <option value="$PROJECT_DIR$/src/PeerProtocol/PutChunk.java" />
         <option value="$PROJECT_DIR$/src/ServerProtocol/PutChunk.java" />
         <option value="$PROJECT_DIR$/src/ServerProtocol/Stored.java" />
-        <option value="$PROJECT_DIR$/src/Peer/MDBReactor.java" />
         <option value="$PROJECT_DIR$/src/Peer/MCReactor.java" />
+        <option value="$PROJECT_DIR$/src/Peer/MDBReactor.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="width" value="1366" />
-    <option name="height" value="768" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -472,7 +475,7 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32846716" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -484,14 +487,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252149" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253012" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32392272" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17642753" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37349397" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="265" width="1366" height="237" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3729569" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="265" width="1366" height="237" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -896,14 +899,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Peer/MDBReactor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="16" selection-start="1778" selection-end="1920" vertical-scroll-proportion="0.0" vertical-offset="863" max-vertical-offset="1566">
+        <state line="44" column="47" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.0" vertical-offset="451" max-vertical-offset="1422">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Peer/MCReactor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="5" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.8002774" vertical-offset="737" max-vertical-offset="1458">
+        <state line="45" column="39" selection-start="1127" selection-end="1127" vertical-scroll-proportion="0.41576508" vertical-offset="325" max-vertical-offset="1458">
           <folding />
         </state>
       </provider>

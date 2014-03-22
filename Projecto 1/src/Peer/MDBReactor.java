@@ -44,6 +44,7 @@ public class MDBReactor extends Thread
         try {
             socket = new MulticastSocket(port);
             socket.joinGroup(group);
+            socket.setLoopbackMode(true);
         } catch (IOException e) {
             e.printStackTrace();
             return;
@@ -68,25 +69,16 @@ public class MDBReactor extends Thread
             byte[] data = packet.getData();
             String message = new String(data); // Received
 
-            try {
-                // Don't respond to own Messages
-                if(packet.getAddress().getHostAddress().equals(InetAddress.getLocalHost().getHostAddress())) {
-                    continue;
-                }
+            System.out.println("MDB Received:" + message + ";");
 
-                System.out.println("MDB Received:" + message + ";");
-
-                if(Delete.pattern.matcher(message).find()) {
-                    Delete thread = new Delete(data);
-                    thread.start();
-                } else if(PutChunk.pattern.matcher(message).find()) {
-                    PutChunk thread = new PutChunk(channels.getMC(), data);
-                    thread.start();
-                } else {
-                    System.out.println("Error on MDBReactor: " + message);
-                }
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
+            if(Delete.pattern.matcher(message).find()) {
+                Delete thread = new Delete(data);
+                thread.start();
+            } else if(PutChunk.pattern.matcher(message).find()) {
+                PutChunk thread = new PutChunk(channels.getMC(), data);
+                thread.start();
+            } else {
+                System.out.println("Error on MDBReactor: " + message);
             }
         }
     }

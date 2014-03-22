@@ -43,7 +43,7 @@ public class MCReactor extends Thread
         try {
             socket = new MulticastSocket(port);
             socket.joinGroup(group);
-            socket.setLoopbackMode(false);
+            socket.setLoopbackMode(true);
         } catch (IOException e) {
             e.printStackTrace();
             return;
