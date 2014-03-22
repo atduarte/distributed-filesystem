@@ -1,5 +1,6 @@
 package PeerProtocol;
 
+import Utils.Channel;
 import Utils.Channels;
 import Utils.Constants;
 
@@ -16,7 +17,7 @@ import java.util.regex.Pattern;
  */
 public class PutChunk  extends Thread
 {
-    Channels channels;
+    Channel channel;
     private byte[] data;
 
     private String version;
@@ -29,31 +30,35 @@ public class PutChunk  extends Thread
             "^PUTCHUNK " +
             Constants.patternVersion +
             Constants.patternFileId +
-            Constants.patternChunkNo +
-            Constants.patternReplicationDeg
+            Constants.patternChunkNo
+
     );
 
-    public PutChunk(Channels channels, byte[] data)
+    public PutChunk(Channel channel,byte[] data)
     {
-        this.channels = channels;
-        this.data = data;
 
+        this.data = data;
+        this.channel = channel;
         Matcher matches = pattern.matcher(new String(data));
 
         if (matches.find()) {
             this.version = matches.group(1);
             this.fileId = matches.group(2);
             this.chunkNo = Integer.parseInt(matches.group(3));
-            this.replicationDegree = Integer.parseInt(matches.group(4));
+
         }
     }
 
     public void run()
     {
-        byte[] message = "STORED".getBytes();
 
-        String address = channels.getMC().getAddress();
-        Integer port = channels.getMC().getPort();
+        String sMessage = "STORED " + this.version + " " + this.fileId + " " + this.chunkNo;
+        sMessage += "\r\n \r\n ";
+
+        byte[] message = sMessage.getBytes();
+
+        String address = channel.getAddress();
+        Integer port = channel.getPort();
 
         InetAddress group = null;
         try {

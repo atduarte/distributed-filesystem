@@ -68,7 +68,7 @@ public class MDBReactor extends Thread
                 Delete thread = new Delete(data);
                 thread.start();
             } else if(PutChunk.pattern.matcher(message).find()) {
-                PutChunk thread = new PutChunk(channels, data);
+                PutChunk thread = new PutChunk(channels.getMC(), data);
                 thread.start();
             } else if(Removed.pattern.matcher(message).find()) {
                 Removed thread = new Removed(data);

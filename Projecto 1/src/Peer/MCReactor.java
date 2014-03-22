@@ -59,7 +59,7 @@ public class MCReactor extends Thread
             String message = new String(data); // Received
 
             if(GetChunk.pattern.matcher(message).find()) {
-                GetChunk thread = new GetChunk(data);
+                GetChunk thread = new GetChunk();
                 thread.start();
             } else {
                 System.out.println("Error on MCReactor: " + message);

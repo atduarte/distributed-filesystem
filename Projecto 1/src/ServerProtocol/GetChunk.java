@@ -28,7 +28,7 @@ public class GetChunk {
 	 
 	   private byte[] createMessage()
 	  {
-	        String sMessage = "GETCHUKL ";
+	        String sMessage = "GETCHUNK ";
 	        sMessage += Constants.version + " ";
 	        sMessage += fileId + " ";
 	        sMessage += chunkNo + " ";
