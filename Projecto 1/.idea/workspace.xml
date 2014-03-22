@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ded3c10e-75ca-4e3a-bcdf-d22a5dcef3d4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ServerProtocol/Stored.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/BackupFileInfo.java" afterPath="$PROJECT_DIR$/src/Server/BackupFileInfo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Peer/MCReactor.java" afterPath="$PROJECT_DIR$/src/Peer/MCReactor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Peer/MDBReactor.java" afterPath="$PROJECT_DIR$/src/Peer/MDBReactor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controllers/Main.java" afterPath="$PROJECT_DIR$/src/Controllers/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PeerProtocol/PutChunk.java" afterPath="$PROJECT_DIR$/src/PeerProtocol/PutChunk.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ServerProtocol/PutChunk.java" afterPath="$PROJECT_DIR$/src/ServerProtocol/PutChunk.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Peer/Reactor.java" afterPath="$PROJECT_DIR$/src/Peer/Reactor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SDIS_Proj1.iws" />
@@ -100,7 +93,7 @@
       <file leaf-file-name="MCReactor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Peer/MCReactor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="29" selection-start="1872" selection-end="1872" vertical-scroll-proportion="0.27600554" vertical-offset="881" max-vertical-offset="1602">
+            <state line="85" column="5" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.8002774" vertical-offset="737" max-vertical-offset="1458">
               <folding />
             </state>
           </provider>
@@ -491,7 +484,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252149" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32612056" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253012" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -528,7 +521,8 @@
     <MESSAGE value="ReclaimSPace" />
     <MESSAGE value="PutChunk - Send Message" />
     <MESSAGE value="PutChunk ..." />
-    <option name="LAST_COMMIT_MESSAGE" value="PutChunk ..." />
+    <MESSAGE value="PutChunk++" />
+    <option name="LAST_COMMIT_MESSAGE" value="PutChunk++" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -909,7 +903,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Peer/MCReactor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="29" selection-start="1872" selection-end="1872" vertical-scroll-proportion="0.27600554" vertical-offset="881" max-vertical-offset="1602">
+        <state line="85" column="5" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.8002774" vertical-offset="737" max-vertical-offset="1458">
           <folding />
         </state>
       </provider>

@@ -43,6 +43,7 @@ public class MCReactor extends Thread
         try {
             socket = new MulticastSocket(port);
             socket.joinGroup(group);
+            socket.setLoopbackMode(false);
         } catch (IOException e) {
             e.printStackTrace();
             return;
@@ -67,28 +68,19 @@ public class MCReactor extends Thread
             byte[] data = packet.getData();
             String message = new String(data); // Received
 
-            try {
-                // Don't respond to own Messages
-                if(packet.getAddress().getHostAddress().equals(InetAddress.getLocalHost().getHostAddress())) {
-                    continue;
-                }
+            System.out.println("MC Received:" + message + ";");
 
-                System.out.println("MC Received:" + message + ";");
-
-                if(GetChunk.pattern.matcher(message).find()) {
-                    GetChunk thread = new GetChunk(data);
-                    thread.start();
-                } else if(Stored.pattern.matcher(message).find()) {
-                    Stored thread = new Stored(data, backupInfo);
-                    thread.start();
-                } else if(Removed.pattern.matcher(message).find()) {
-                    Removed thread = new Removed(data);
-                    thread.start();
-                } else {
-                    System.out.println("Error on MCReactor: " + message);
-                }
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
+            if(GetChunk.pattern.matcher(message).find()) {
+                GetChunk thread = new GetChunk(data);
+                thread.start();
+            } else if(Stored.pattern.matcher(message).find()) {
+                Stored thread = new Stored(data, backupInfo);
+                thread.start();
+            } else if(Removed.pattern.matcher(message).find()) {
+                Removed thread = new Removed(data);
+                thread.start();
+            } else {
+                System.out.println("Error on MCReactor: " + message);
             }
         }
     }
