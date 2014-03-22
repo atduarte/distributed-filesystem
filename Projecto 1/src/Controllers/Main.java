@@ -11,6 +11,7 @@ import Utils.Channels;
 import Utils.Constants;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,7 +48,8 @@ public class Main
         // TODO
         
         BackupFileInfo file = new BackupFileInfo();
-        file.setHash("akjhdsasd");        
+        Random rand = new Random();
+        file.setHash("akjhdsasd" + rand.nextInt(10));        
         backupInfo.addFile(file);
         byte[] body = "sáfoda".getBytes();
         PutChunk cenas = new PutChunk(channels, file.getHash(), 5, 8, body);

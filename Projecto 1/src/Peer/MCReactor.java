@@ -17,72 +17,30 @@ import java.net.UnknownHostException;
 /**
  * Created by atduarte on 15-03-2014.
  */
-public class MCReactor extends Thread
+public class MCReactor extends ChannelReactor
 {
-    private BackupInfo backupInfo;
-    private Channels channels;
-    String address;
-    Integer port;
-    InetAddress group;
+	public MCReactor(Channels channels, BackupInfo backupInfo) 	throws IOException {
+		super(channels, backupInfo);
 
-    public MCReactor(Channels channels, BackupInfo backupInfo) throws IOException {
-        this.channels = channels;
         this.address = channels.getMC().getAddress();
         this.port = channels.getMC().getPort();
-        this.backupInfo = backupInfo;
+	}
 
-        group = InetAddress.getByName(address);
-    }
-
-    public void run()
-    {
-        // Create Socket
-
-        MulticastSocket socket = null;
-
-        try {
-            socket = new MulticastSocket(port);
-            socket.joinGroup(group);
-            socket.setLoopbackMode(true);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-
-        while (true) {
-
-            // Receive Packet
-
-            byte[] buf = new byte[2048];
-            DatagramPacket packet = new DatagramPacket(buf, buf.length);
-
-            try {
-                socket.receive(packet);
-            } catch (IOException e) {
-                e.printStackTrace();
-                continue;
-            }
-
-            // Process Packet
-
-            byte[] data = packet.getData();
-            String message = new String(data); // Received
-            
-            if(GetChunk.pattern.matcher(message).find()) {
-            	System.out.println("MCReceived: GetChunk");
-                GetChunk thread = new GetChunk(data);
-                thread.start();
-            } else if(Stored.pattern.matcher(message).find()) {
-            	System.out.println("MCReceived: Stored");
-                Stored thread = new Stored(data, backupInfo);
-                thread.start();
-            } else if(Removed.pattern.matcher(message).find()) {
-            	System.out.println("MCReceived: Removed");
-                Removed thread = new Removed(data);
-                thread.start();
-            } else {
-                System.out.println("Error on MCReactor: " + message);
-            }
-        }
-    }
+	protected void processMessage(byte[] data, String message) {
+		if(GetChunk.pattern.matcher(message).find()) {
+			System.out.println("MCReceived: GetChunk");
+		    GetChunk thread = new GetChunk(data);
+		    thread.start();
+		} else if(Stored.pattern.matcher(message).find()) {
+			System.out.println("MCReceived: Stored");
+		    Stored thread = new Stored(data, backupInfo);
+		    thread.start();
+		} else if(Removed.pattern.matcher(message).find()) {
+			System.out.println("MCReceived: Removed");
+		    Removed thread = new Removed(data);
+		    thread.start();
+		} else {
+		    System.out.println("Error on MCReactor: " + message);
+		}
+	}   
 }

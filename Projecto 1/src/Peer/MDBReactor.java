@@ -1,13 +1,12 @@
 package Peer;
 
-import PeerProtocol.Delete;
 import PeerProtocol.GetChunk;
 import PeerProtocol.PutChunk;
 import PeerProtocol.Removed;
 import Server.BackupInfo;
+import ServerProtocol.Stored;
 import Utils.Channel;
 import Utils.Channels;
-import Utils.Constants;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -15,72 +14,27 @@ import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.UnknownHostException;
 
-/**
- * Created by atduarte on 15-03-2014.
- */
-public class MDBReactor extends Thread
+public class MDBReactor extends ChannelReactor
 {
-    private BackupInfo backupInfo;
-    private Channels channels;
-    private String address;
-    private Integer port;
-    private InetAddress group;
+	public MDBReactor(Channels channels, BackupInfo backupInfo) 	throws IOException {
+		super(channels, backupInfo);
 
-    public MDBReactor(Channels channels, BackupInfo backupInfo) throws IOException
-    {
-        this.channels = channels;
         this.address = channels.getMDB().getAddress();
-        this.port = channels.getMDB().getPort();
-        this.backupInfo = backupInfo;
+        this.port = channels.getMDB	().getPort();
+	}
 
-        group = InetAddress.getByName(address);
-    }
-
-    public void run()
-    {
-        // Create Socket
-
-        MulticastSocket socket = null;
-
-        try {
-            socket = new MulticastSocket(port);
-            socket.joinGroup(group);
-            socket.setLoopbackMode(true);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
+	protected void processMessage(byte[] data, String message) {
+		/*if(Delete.pattern.matcher(message).find()) {
+        	System.out.println("MDBReceived: Delete");
+            Delete thread = new Delete(data);
+            thread.start();
+        } else */
+		if(PutChunk.pattern.matcher(message).find()) {
+        	System.out.println("MDBReceived: PutChunk");
+            PutChunk thread = new PutChunk(channels, backupInfo, data);
+            thread.start();
+        } else {
+            System.out.println("Error on MDBReactor: " + message);
         }
-
-        while (true) {
-
-            // Receive Packet
-
-            byte[] buf = new byte[Constants.chunkSize + 2048];
-            DatagramPacket packet = new DatagramPacket(buf, buf.length);
-
-            try {
-                socket.receive(packet);
-            } catch (IOException e) {
-                e.printStackTrace();
-                continue;
-            }
-
-            // Process Packet
-
-            byte[] data = packet.getData();
-            String message = new String(data); // Received
-
-            if(Delete.pattern.matcher(message).find()) {
-            	System.out.println("MDBReceived: Delete");
-                Delete thread = new Delete(data);
-                thread.start();
-            } else if(PutChunk.pattern.matcher(message).find()) {
-            	System.out.println("MDBReceived: PutChunk");
-                PutChunk thread = new PutChunk(channels, backupInfo, data);
-                thread.start();
-            } else {
-                System.out.println("Error on MDBReactor: " + message);
-            }
-        }
-    }
+	}   
 }
