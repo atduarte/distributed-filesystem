@@ -67,16 +67,19 @@ public class MCReactor extends Thread
 
             byte[] data = packet.getData();
             String message = new String(data); // Received
-
-            System.out.println("MC Received:" + message + ";");
+            
+            System.out.print("MCReceived: ");
 
             if(GetChunk.pattern.matcher(message).find()) {
+            	System.out.println("GetChunk");
                 GetChunk thread = new GetChunk(data);
                 thread.start();
             } else if(Stored.pattern.matcher(message).find()) {
+            	System.out.println("Stored");
                 Stored thread = new Stored(data, backupInfo);
                 thread.start();
             } else if(Removed.pattern.matcher(message).find()) {
+            	System.out.println("Removed");
                 Removed thread = new Removed(data);
                 thread.start();
             } else {

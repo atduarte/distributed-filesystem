@@ -61,6 +61,7 @@ public class PutChunk
         InetAddress group = InetAddress.getByName(address);
         MulticastSocket socket = new MulticastSocket(port);
         socket.joinGroup(group);
+        //socket.setTimeToLive(1);
 
         DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
         socket.send(packet);

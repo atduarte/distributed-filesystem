@@ -12,10 +12,10 @@ public class Stored extends Thread
     private byte[] data;
 
     final public static Pattern pattern = Pattern.compile(
-            "^STORED " +
+            "^STORED "   /*+
             Constants.patternVersion +
             Constants.patternFileId +
-            Constants.patternChunkNo
+            Constants.patternChunkNo*/
     );
 
     public Stored(byte[] data, BackupInfo backupInfo)

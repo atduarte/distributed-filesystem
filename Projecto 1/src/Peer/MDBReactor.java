@@ -68,13 +68,15 @@ public class MDBReactor extends Thread
 
             byte[] data = packet.getData();
             String message = new String(data); // Received
-
-            System.out.println("MDB Received:" + message + ";");
+            
+            System.out.print("MDBReceived: ");
 
             if(Delete.pattern.matcher(message).find()) {
+            	System.out.println("Delete");
                 Delete thread = new Delete(data);
                 thread.start();
             } else if(PutChunk.pattern.matcher(message).find()) {
+            	System.out.println("PutChunk");
                 PutChunk thread = new PutChunk(channels.getMC(), data);
                 thread.start();
             } else {

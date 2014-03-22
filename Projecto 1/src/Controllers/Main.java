@@ -23,9 +23,9 @@ public class Main
         // Base Data; TODO: From ARGS
         String MCaddress = "228.5.6.7";
         Integer MCport = 6789;
-        String MDBaddress = "228.5.6.7";
+        String MDBaddress = "228.15.16.17";
         Integer MDBport = 6790;
-        String MDRaddress = "228.5.6.7";
+        String MDRaddress = "228.25.26.27";
         Integer MDRport = 6791;
         String chunksPath = "D:\\backupChunks";
         String backupInfoPath = "D:\\backupInfo";
