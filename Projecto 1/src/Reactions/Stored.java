@@ -10,10 +10,10 @@ import java.util.regex.Pattern;
 public class Stored extends Reaction
 {
     final public static Pattern pattern = Pattern.compile(
-            "^STORED " +
-            Constants.patternVersion +
-            Constants.patternFileId +
-            Constants.patternChunkNo
+            "^STORED "
+            + Constants.patternVersion
+            + Constants.patternFileId
+            + Constants.patternChunkNo
     );
 
     public Stored(Channels channels, BackupInfo backupInfo, byte[] data) {
@@ -33,6 +33,14 @@ public class Stored extends Reaction
 
     public void run()
     {
+        // Check it's ours
+        if (!backupInfo.isMine(this.fileId))
+            return;
+
+        // TODO: Ignorar quando supostamente não está a receber?
+
+        backupInfo.incrementRealRepDegree(this.fileId, this.chunkNo);
+
         System.out.println("Someone Stored our Chunk");
     }
 }

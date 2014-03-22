@@ -1,13 +1,14 @@
 package Peer;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BackupFileInfo
 {
     private String name;
     private String hash;
     private Integer replicationDegree;
-    private Integer[][] effectiveReplicationDegree;
+    private Map<Integer, Integer> realReplicationDegree = new HashMap<Integer, Integer>();
     private boolean receiving = false;
 
     public String getName() {
@@ -42,11 +43,16 @@ public class BackupFileInfo
         this.receiving = receiving;
     }
 
-    public Integer[][] getEffectiveReplicationDegree() {
-        return effectiveReplicationDegree;
+    public Integer getRealReplicationDegree(Integer chunkNo) {
+        return realReplicationDegree.get(chunkNo);
     }
 
-    public void setEffectiveReplicationDegree(Integer[][] effectiveReplicationDegree) {
-        this.effectiveReplicationDegree = effectiveReplicationDegree;
+    public void incrementRealReplicationDegree(Integer chunkNo) {
+        if (realReplicationDegree.containsKey(chunkNo)) {
+            Integer newValue = realReplicationDegree.get(chunkNo) + 1;
+            realReplicationDegree.put(chunkNo, newValue);
+        } else {
+            realReplicationDegree.put(chunkNo, 1);
+        }
     }
 }

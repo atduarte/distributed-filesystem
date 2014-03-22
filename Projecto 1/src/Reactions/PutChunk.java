@@ -52,6 +52,8 @@ public class PutChunk extends Reaction
     		return;
     	}
 
+        // TODO: Check I dont't have it already
+
         // TODO: Store
 
         String sMessage = "STORED " + this.version + " " + this.fileId + " " + this.chunkNo;
