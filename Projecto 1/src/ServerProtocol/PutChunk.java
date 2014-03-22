@@ -65,9 +65,7 @@ public class PutChunk
         DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
         socket.send(packet);
 
-        socket.receive(packet);
-
-        System.out.println(new String(packet.getData()));
+        System.out.println("Sent PUTCHUNK");
 
         return true;
     }

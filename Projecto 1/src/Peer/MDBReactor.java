@@ -4,6 +4,7 @@ import PeerProtocol.Delete;
 import PeerProtocol.GetChunk;
 import PeerProtocol.PutChunk;
 import PeerProtocol.Removed;
+import Server.BackupInfo;
 import Utils.Channel;
 import Utils.Channels;
 
@@ -11,22 +12,25 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
+import java.net.UnknownHostException;
 
 /**
  * Created by atduarte on 15-03-2014.
  */
 public class MDBReactor extends Thread
 {
+    private BackupInfo backupInfo;
     private Channels channels;
     private String address;
     private Integer port;
     private InetAddress group;
 
-    public MDBReactor(Channels channels) throws IOException
+    public MDBReactor(Channels channels, BackupInfo backupInfo) throws IOException
     {
         this.channels = channels;
         this.address = channels.getMDB().getAddress();
         this.port = channels.getMDB().getPort();
+        this.backupInfo = backupInfo;
 
         group = InetAddress.getByName(address);
     }
@@ -64,17 +68,25 @@ public class MDBReactor extends Thread
             byte[] data = packet.getData();
             String message = new String(data); // Received
 
-            if(Delete.pattern.matcher(message).find()) {
-                Delete thread = new Delete(data);
-                thread.start();
-            } else if(PutChunk.pattern.matcher(message).find()) {
-                PutChunk thread = new PutChunk(channels.getMC(), data);
-                thread.start();
-            } else if(Removed.pattern.matcher(message).find()) {
-                Removed thread = new Removed(data);
-                thread.start();
-            } else {
-                System.out.println("Error on MDBReactor: " + message);
+            try {
+                // Don't respond to own Messages
+                if(packet.getAddress().getHostAddress().equals(InetAddress.getLocalHost().getHostAddress())) {
+                    continue;
+                }
+
+                System.out.println("MDB Received:" + message + ";");
+
+                if(Delete.pattern.matcher(message).find()) {
+                    Delete thread = new Delete(data);
+                    thread.start();
+                } else if(PutChunk.pattern.matcher(message).find()) {
+                    PutChunk thread = new PutChunk(channels.getMC(), data);
+                    thread.start();
+                } else {
+                    System.out.println("Error on MDBReactor: " + message);
+                }
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
             }
         }
     }

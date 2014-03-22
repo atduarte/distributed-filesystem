@@ -40,7 +40,7 @@ public class Main
         BackupInfo backupInfo = new BackupInfo(backupInfoPath);
 
         // Run Receiver
-        Reactor receiver = new Reactor(channels);
+        Reactor receiver = new Reactor(channels, backupInfo);
         receiver.run();
 
         // TODO

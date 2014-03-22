@@ -52,6 +52,8 @@ public class PutChunk  extends Thread
     public void run()
     {
 
+        // TODO: Store
+
         String sMessage = "STORED " + this.version + " " + this.fileId + " " + this.chunkNo;
         sMessage += "\r\n \r\n ";
 
@@ -82,6 +84,6 @@ public class PutChunk  extends Thread
             e.printStackTrace();
         }
 
-        System.out.println("Enviado");
+        System.out.println("Sent STORED");
     }
 }

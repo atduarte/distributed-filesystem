@@ -1,17 +1,14 @@
 package Server;
 
+import java.util.ArrayList;
+
 public class BackupFileInfo
 {
     private String name;
     private String hash;
     private Integer replicationDegree;
-    private Integer effectiveReplicationDegree = 0;
+    private Integer[][] effectiveReplicationDegree;
     private boolean receiving = false;
-
-    public BackupFileInfo(String _name, String _hash) {
-        setName(_name);
-        setHash(_hash);
-    }
 
     public String getName() {
         return name;
@@ -35,5 +32,21 @@ public class BackupFileInfo
 
     public void setReplicationDegree(Integer replicationDegree) {
         this.replicationDegree = replicationDegree;
+    }
+
+    public boolean isReceiving() {
+        return receiving;
+    }
+
+    public void setReceiving(boolean receiving) {
+        this.receiving = receiving;
+    }
+
+    public Integer[][] getEffectiveReplicationDegree() {
+        return effectiveReplicationDegree;
+    }
+
+    public void setEffectiveReplicationDegree(Integer[][] effectiveReplicationDegree) {
+        this.effectiveReplicationDegree = effectiveReplicationDegree;
     }
 }
