@@ -1,4 +1,4 @@
-package Controllers;
+package Peer;
 
 import Peer.BackupInfo;
 import Peer.ChunkManager;

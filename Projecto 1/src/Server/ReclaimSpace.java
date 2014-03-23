@@ -1,7 +1,7 @@
 package Server;
 
-import Controllers.DependencyInjection;
-import Controllers.Injectable;
+import Peer.DependencyInjection;
+import Peer.Injectable;
 
 public class ReclaimSpace extends Injectable
 {

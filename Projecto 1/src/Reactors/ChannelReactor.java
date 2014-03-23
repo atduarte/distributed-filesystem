@@ -1,7 +1,7 @@
 package Reactors;
 
-import Controllers.DependencyInjection;
-import Controllers.InjectableThread;
+import Peer.DependencyInjection;
+import Peer.InjectableThread;
 import Utils.Constants;
 
 import java.io.IOException;

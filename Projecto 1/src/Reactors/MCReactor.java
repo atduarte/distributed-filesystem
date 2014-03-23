@@ -1,13 +1,10 @@
 package Reactors;
 
-import Controllers.DependencyInjection;
+import Peer.DependencyInjection;
 import Reactions.GetChunk;
 import Reactions.Removed;
-import Peer.BackupInfo;
 import Reactions.Stored;
 import Utils.Channels;
-
-import java.io.IOException;
 
 /**
  * Created by atduarte on 15-03-2014.

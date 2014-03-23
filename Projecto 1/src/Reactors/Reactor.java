@@ -1,8 +1,7 @@
 package Reactors;
 
-import Controllers.DependencyInjection;
-import Controllers.Injectable;
-import Peer.BackupInfo;
+import Peer.DependencyInjection;
+import Peer.Injectable;
 import Utils.Channels;
 
 import java.io.IOException;

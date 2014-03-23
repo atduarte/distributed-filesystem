@@ -1,7 +1,6 @@
 package Reactions;
 
-import Controllers.DependencyInjection;
-import Peer.BackupInfo;
+import Peer.DependencyInjection;
 import Peer.ChunkManager;
 import Utils.Channels;
 import Utils.Constants;

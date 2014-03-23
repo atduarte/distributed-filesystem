@@ -1,9 +1,7 @@
 package Server;
 
-import Controllers.DependencyInjection;
-import Controllers.Injectable;
-import Peer.BackupInfo;
-import Utils.Channels;
+import Peer.DependencyInjection;
+import Peer.Injectable;
 import Utils.FilesManager;
 
 import java.io.File;

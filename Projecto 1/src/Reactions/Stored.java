@@ -1,8 +1,7 @@
 package Reactions;
 
-import Controllers.DependencyInjection;
+import Peer.DependencyInjection;
 import Peer.BackupInfo;
-import Utils.Channels;
 import Utils.Constants;
 
 import java.util.regex.Matcher;

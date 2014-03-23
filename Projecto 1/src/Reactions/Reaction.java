@@ -1,9 +1,7 @@
 package Reactions;
 
-import Controllers.DependencyInjection;
-import Controllers.InjectableThread;
-import Peer.BackupInfo;
-import Utils.Channels;
+import Peer.DependencyInjection;
+import Peer.InjectableThread;
 
 public class Reaction extends InjectableThread
 {

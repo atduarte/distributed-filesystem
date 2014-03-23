@@ -1,7 +1,7 @@
 package Server.Protocol;
 
-import Controllers.DependencyInjection;
-import Controllers.Injectable;
+import Peer.DependencyInjection;
+import Peer.Injectable;
 import Utils.Channels;
 
 import java.io.IOException;

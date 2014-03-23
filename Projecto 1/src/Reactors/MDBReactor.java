@@ -1,11 +1,8 @@
 package Reactors;
 
-import Controllers.DependencyInjection;
+import Peer.DependencyInjection;
 import Reactions.PutChunk;
-import Peer.BackupInfo;
 import Utils.Channels;
-
-import java.io.IOException;
 
 public class MDBReactor extends ChannelReactor
 {

@@ -1,8 +1,7 @@
 package Server;
 
-import Controllers.DependencyInjection;
-import Controllers.Injectable;
-import Peer.BackupInfo;
+import Peer.DependencyInjection;
+import Peer.Injectable;
 
 /**
  * Created by atduarte on 14-03-2014.

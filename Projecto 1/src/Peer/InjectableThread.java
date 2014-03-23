@@ -1,13 +1,10 @@
-package Controllers;
+package Peer;
 
-/**
- * Created by atduarte on 23-03-2014.
- */
-public class Injectable
+public class InjectableThread extends Thread
 {
     protected DependencyInjection di;
 
-    public Injectable(DependencyInjection di)
+    public InjectableThread(DependencyInjection di)
     {
         this.di = di;
     }
@@ -19,5 +16,4 @@ public class Injectable
     public void setDi(DependencyInjection di) {
         this.di = di;
     }
-
 }

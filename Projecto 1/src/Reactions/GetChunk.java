@@ -1,7 +1,6 @@
 package Reactions;
 
-import Controllers.DependencyInjection;
-import Peer.BackupInfo;
+import Peer.DependencyInjection;
 import Peer.ChunkManager;
 import Utils.Channels;
 import Utils.Constants;
@@ -10,7 +9,6 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.net.UnknownHostException;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
