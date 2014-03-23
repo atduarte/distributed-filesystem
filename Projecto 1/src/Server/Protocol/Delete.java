@@ -22,14 +22,8 @@ public class Delete extends Injectable
     }
 
     private byte[] createMessage() {
-        String sMessage = "DELETE ";
-        sMessage += fileId + " ";
-
-        sMessage += "\r\n \r\n ";
-
-        byte[] one = sMessage.getBytes();
-
-        return one;
+        String sMessage = "DELETE " + fileId + " \r\n \r\n ";
+        return sMessage.getBytes();
     }
 
 
@@ -46,10 +40,6 @@ public class Delete extends Injectable
 
         DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
         socket.send(packet);
-
-        socket.receive(packet);
-
-        System.out.println(new String(packet.getData()));
 
         return true;
     }

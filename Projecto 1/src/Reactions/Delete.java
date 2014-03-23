@@ -1,5 +1,6 @@
 package Reactions;
 
+import Peer.ChunkManager;
 import Peer.DependencyInjection;
 import Utils.Constants;
 
@@ -31,7 +32,6 @@ public class Delete extends Reaction
 
     public void run()
     {
-        // TODO: Process Message
-        System.out.println("Delete");
+        di.getChunkManager().deleteFile(fileId);
     }
 }
