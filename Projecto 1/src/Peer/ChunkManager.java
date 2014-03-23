@@ -16,17 +16,11 @@ public class ChunkManager
         chunksPath = _chunksPath;
     }
 
-    public boolean hasChunk(String fileId, Integer chunkNo) {
-
-
-        String personalchunksFile = chunksPath+File.separator+fileId+File.separator+chunkNo;
-        File saveChunk = new File(personalchunksFile);
-        if(saveChunk.exists())
-        {
-            return true;
-        }
-
-        return false;
+    public boolean hasChunk(String fileId, Integer chunkNo)
+    {
+        String personalChunksFile = chunksPath+File.separator+fileId+File.separator+chunkNo;
+        File saveChunk = new File(personalChunksFile);
+        return saveChunk.exists();
     }
 
     public void deleteChunk(String fileId, Integer chunkNo) {
@@ -72,7 +66,7 @@ public class ChunkManager
             saveDir.mkdir();
         }
 
-        Path path = Paths.get(personalChunksPath + "/" + chunkNo);
+        Path path = Paths.get(personalChunksPath + File.separator + chunkNo);
         Files.write(path, data);
     }
 

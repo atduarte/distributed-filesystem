@@ -24,8 +24,8 @@ public class Main
         Integer MDBport = 6790;
         String MDRaddress = "229.60.60.28";
         Integer MDRport = 6791;
-        String chunksPath = "D:\\backupChunks";
-        String backupInfoPath = "D:\\backupInfo";
+        String chunksPath = "D:\\backups\\chunks";
+        String backupInfoPath = "D:\\backups\\info";
 
         // Dependency Injection
         DependencyInjection di = new DependencyInjection();
