@@ -34,15 +34,14 @@ public class PutChunk extends Reaction
 
     public void decodeData()
     {
-        Matcher matches = pattern.matcher(new String(this.data));
+        Matcher matches = pattern.matcher(new String(data));
 
         if (matches.find()) {
             this.version = matches.group(1);
             this.fileId = matches.group(2);
             this.chunkNo = Integer.parseInt(matches.group(3));
             this.replicationDegree = Integer.parseInt(matches.group(4));
-
-            // TODO: Body
+            this.body = getBodyFromMessage(data);
         }
     }
 

@@ -56,7 +56,7 @@ public class Main
         file.setHash("akjhdsasd" + rand.nextInt(10));
         backupInfo.addFile(file);
         byte[] body = "sáfoda".getBytes();
-        PutChunk cenas = new PutChunk(channels, file.getHash(), 5, 8, body);
+        PutChunk cenas = new PutChunk(di, file.getHash(), 5, 8, body);
         cenas.send();
 
         // Backup Example
