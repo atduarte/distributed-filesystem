@@ -1,16 +1,16 @@
 package Server;
 
+import Controllers.DependencyInjection;
+import Controllers.Injectable;
 import Peer.BackupInfo;
 
 /**
  * Created by atduarte on 14-03-2014.
  */
-public class Restore
+public class Restore extends Injectable
 {
-    BackupInfo backupInfo;
-
-    public Restore(BackupInfo _backupInfo)
+    public Restore(DependencyInjection di)
     {
-        backupInfo = _backupInfo;
+        super(di);
     }
 }

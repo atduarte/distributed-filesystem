@@ -1,5 +1,6 @@
 package Reactions;
 
+import Controllers.DependencyInjection;
 import Peer.BackupInfo;
 import Utils.Channels;
 import Utils.Constants;
@@ -26,8 +27,8 @@ public class PutChunk extends Reaction
 
     );
 
-	public PutChunk(Channels channels, BackupInfo backupInfo, byte[] data) {
-		super(channels, backupInfo, data);
+	public PutChunk(DependencyInjection di, byte[] data) {
+        super(di, data);
 	}
 
     public void decodeData()
@@ -48,7 +49,7 @@ public class PutChunk extends Reaction
     {
     	// Check if mine
 
-    	if (backupInfo.isMine(this.fileId)) {
+    	if (di.getBackupInfo().isMine(this.fileId)) {
     		return;
     	}
 
@@ -61,6 +62,7 @@ public class PutChunk extends Reaction
 
         byte[] message = sMessage.getBytes();
 
+        Channels channels = di.getChannels();
         String address = channels.getMC().getAddress();
         Integer port = channels.getMC().getPort();
 

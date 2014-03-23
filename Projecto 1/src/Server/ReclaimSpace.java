@@ -1,16 +1,12 @@
 package Server;
 
-import Peer.BackupInfo;
+import Controllers.DependencyInjection;
+import Controllers.Injectable;
 
-/**
- * Created by atduarte on 14-03-2014.
- */
-public class ReclaimSpace
+public class ReclaimSpace extends Injectable
 {
-    BackupInfo backupInfo;
-
-    public ReclaimSpace(BackupInfo _backupInfo)
+    public ReclaimSpace(DependencyInjection di)
     {
-        backupInfo = _backupInfo;
+        super(di);
     }
 }

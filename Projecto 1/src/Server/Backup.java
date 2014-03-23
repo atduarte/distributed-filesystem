@@ -1,5 +1,7 @@
 package Server;
 
+import Controllers.DependencyInjection;
+import Controllers.Injectable;
 import Peer.BackupInfo;
 import Utils.Channels;
 import Utils.FilesManager;
@@ -11,17 +13,14 @@ import java.util.ArrayList;
 /**
  * Created by atduarte on 13-03-2014.
  */
-public class Backup
+public class Backup extends Injectable
 {
     FilesManager filesManager = new FilesManager();
-    BackupInfo backupInfo = null;
-    Channels channels;
 
-    public Backup(Channels channels, BackupInfo backupInfo)
+    public Backup(DependencyInjection di)
     {
-        this.channels = channels;
+        super(di);
         filesManager = new FilesManager();
-        this.backupInfo = backupInfo;
     }
 
     public void sendFolder(String path) throws IOException

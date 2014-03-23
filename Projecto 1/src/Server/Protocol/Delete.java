@@ -1,5 +1,7 @@
 package Server.Protocol;
 
+import Controllers.DependencyInjection;
+import Controllers.Injectable;
 import Utils.Channels;
 
 import java.io.IOException;
@@ -10,18 +12,13 @@ import java.net.MulticastSocket;
 /**
  * Created by atduarte on 13-03-2014.
  */
-public class Delete {
-
-
-    Channels channels;
+public class Delete extends Injectable
+{
     String fileId;
-    Integer chunkNo;
 
-
-    public Delete(Channels channels, String fileId) {
-        this.channels = channels;
+    public Delete(DependencyInjection di, String fileId) {
+        super(di);
         this.fileId = fileId;
-
     }
 
     private byte[] createMessage() {
@@ -39,6 +36,7 @@ public class Delete {
     public boolean send() throws IOException {
         byte[] message = this.createMessage();
 
+        Channels channels = di.getChannels();
         String address = channels.getMDB().getAddress();
         Integer port = channels.getMDB().getPort();
 

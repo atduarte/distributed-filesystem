@@ -1,5 +1,6 @@
 package Reactions;
 
+import Controllers.DependencyInjection;
 import Peer.BackupInfo;
 import Utils.Channels;
 import Utils.Constants;
@@ -16,8 +17,8 @@ public class Removed extends Reaction
             + Constants.patternChunkNo
     );
 
-    public Removed(Channels channels, BackupInfo backupInfo, byte[] data) {
-        super(channels, backupInfo, data);
+    public Removed(DependencyInjection di, byte[] data) {
+        super(di, data);
     }
 
     public void decodeData()

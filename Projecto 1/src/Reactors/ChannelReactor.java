@@ -1,7 +1,7 @@
 package Reactors;
 
-import Peer.BackupInfo;
-import Utils.Channels;
+import Controllers.DependencyInjection;
+import Controllers.InjectableThread;
 import Utils.Constants;
 
 import java.io.IOException;
@@ -9,17 +9,14 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 
-public abstract class ChannelReactor extends Thread
+public abstract class ChannelReactor extends InjectableThread
 {
-	protected BackupInfo backupInfo;
-    protected Channels channels;
     protected String address;
     protected Integer port;
     protected InetAddress group;
 
-    public ChannelReactor(Channels channels, BackupInfo backupInfo) throws IOException {
-        this.channels = channels;
-        this.backupInfo = backupInfo;
+    public ChannelReactor(DependencyInjection di) {
+        super(di);
     }
 
     public void run()

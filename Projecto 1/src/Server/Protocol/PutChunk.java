@@ -1,5 +1,7 @@
 package Server.Protocol;
 
+import Controllers.DependencyInjection;
+import Controllers.Injectable;
 import Utils.Channels;
 import Utils.Constants;
 
@@ -11,15 +13,15 @@ import java.net.MulticastSocket;
 /**
  * Created by atduarte on 13-03-2014.
  */
-public class PutChunk {
-    Channels channels;
+public class PutChunk extends Injectable
+{
     String fileId;
     Integer chunkNo;
     Integer replicationDegree;
     byte[] body;
 
-    public PutChunk(Channels channels, String fileId, Integer chunkNo, Integer replicationDegree, byte[] body) {
-        this.channels = channels;
+    public PutChunk(DependencyInjection di, String fileId, Integer chunkNo, Integer replicationDegree, byte[] body) {
+        super(di);
         this.fileId = fileId;
         this.chunkNo = chunkNo;
         this.replicationDegree = replicationDegree;
@@ -48,6 +50,7 @@ public class PutChunk {
 
         byte[] message = this.createMessage();
 
+        Channels channels = di.getChannels();
         String address = channels.getMDB().getAddress();
         Integer port = channels.getMDB().getPort();
 

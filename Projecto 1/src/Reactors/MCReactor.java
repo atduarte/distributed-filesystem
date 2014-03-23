@@ -1,5 +1,6 @@
 package Reactors;
 
+import Controllers.DependencyInjection;
 import Reactions.GetChunk;
 import Reactions.Removed;
 import Peer.BackupInfo;
@@ -13,9 +14,10 @@ import java.io.IOException;
  */
 public class MCReactor extends ChannelReactor
 {
-	public MCReactor(Channels channels, BackupInfo backupInfo) 	throws IOException {
-		super(channels, backupInfo);
+	public MCReactor(DependencyInjection di) {
+		super(di);
 
+        Channels channels = di.getChannels();
         this.address = channels.getMC().getAddress();
         this.port = channels.getMC().getPort();
 	}
@@ -23,15 +25,15 @@ public class MCReactor extends ChannelReactor
 	protected void processMessage(byte[] data, String message) {
 		if(GetChunk.pattern.matcher(message).find()) {
 			System.out.println("MCReceived: GetChunk");
-		    GetChunk thread = new GetChunk(channels, backupInfo, data);
+		    GetChunk thread = new GetChunk(di, data);
 		    thread.start();
 		} else if(Stored.pattern.matcher(message).find()) {
 			System.out.println("MCReceived: Stored");
-		    Stored thread = new Stored(channels, backupInfo, data);
+		    Stored thread = new Stored(di, data);
 		    thread.start();
 		} else if(Removed.pattern.matcher(message).find()) {
 			System.out.println("MCReceived: Removed");
-		    Removed thread = new Removed(channels, backupInfo, data);
+		    Removed thread = new Removed(di, data);
 		    thread.start();
 		} else {
 		    System.out.println("Error on MCReactor: " + message);

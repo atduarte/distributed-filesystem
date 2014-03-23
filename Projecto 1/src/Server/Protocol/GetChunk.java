@@ -1,5 +1,7 @@
 package Server.Protocol;
 
+import Controllers.DependencyInjection;
+import Controllers.Injectable;
 import Utils.Channels;
 import Utils.Constants;
 
@@ -8,14 +10,13 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 
-public class GetChunk {
-
-    Channels channels;
+public class GetChunk extends Injectable
+{
     String fileId;
     Integer chunkNo;
 
-    public GetChunk(Channels channels, String fileId, Integer chunkNo) {
-        this.channels = channels;
+    public GetChunk(DependencyInjection di, String fileId, Integer chunkNo) {
+        super(di);
         this.fileId = fileId;
         this.chunkNo = chunkNo;
     }
@@ -40,6 +41,7 @@ public class GetChunk {
     protected boolean send() throws IOException {
         byte[] message = this.createMessage();
 
+        Channels channels = di.getChannels();
         String address = channels.getMC().getAddress();
         Integer port = channels.getMC().getPort();
 
@@ -56,6 +58,7 @@ public class GetChunk {
     protected byte[] receive() throws IOException {
         byte[] message = new byte[Constants.chunkSize + 2084];
 
+        Channels channels = di.getChannels();
         String address = channels.getMDR().getAddress();
         Integer port = channels.getMDR().getPort();
 

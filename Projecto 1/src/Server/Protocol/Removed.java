@@ -1,5 +1,7 @@
 package Server.Protocol;
 
+import Controllers.DependencyInjection;
+import Controllers.Injectable;
 import Utils.Channels;
 import Utils.Constants;
 
@@ -11,18 +13,14 @@ import java.net.MulticastSocket;
 /**
  * Created by atduarte on 14-03-2014.
  */
-public class Removed {
-
-
-    Channels channels;
+public class Removed extends Injectable
+{
     String fileId;
     Integer chunkNo;
 
-
-    public Removed(Channels channels, String fileId) {
-        this.channels = channels;
+    public Removed(DependencyInjection di, String fileId) {
+        super(di);
         this.fileId = fileId;
-
     }
 
     private byte[] createMessage() {
@@ -42,6 +40,7 @@ public class Removed {
     public boolean send() throws IOException {
         byte[] message = this.createMessage();
 
+        Channels channels = di.getChannels();
         String address = channels.getMDB().getAddress();
         Integer port = channels.getMDB().getPort();
 

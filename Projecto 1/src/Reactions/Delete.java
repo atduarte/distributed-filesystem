@@ -1,5 +1,6 @@
 package Reactions;
 
+import Controllers.DependencyInjection;
 import Peer.BackupInfo;
 import Utils.Channels;
 import Utils.Constants;
@@ -17,8 +18,8 @@ public class Delete extends Reaction
             Constants.patternFileId
     );
 
-    public Delete(Channels channels, BackupInfo backupInfo, byte[] data) {
-        super(channels, backupInfo, data);
+    public Delete(DependencyInjection di, byte[] data) {
+        super(di, data);
     }
 
     public void decodeData()

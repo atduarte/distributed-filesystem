@@ -27,17 +27,26 @@ public class Main
         String chunksPath = "D:\\backupChunks";
         String backupInfoPath = "D:\\backupInfo";
 
+        // Dependency Injection
+        DependencyInjection di = new DependencyInjection();
+
         // Channels
         Channels channels = new Channels();
         channels.setMC(MCaddress, MCport);
         channels.setMDB(MDBaddress, MDBport);
         channels.setMDR(MDRaddress, MDRport);
+        di.setChannels(channels);
 
+        // Chunk Manager
         ChunkManager chunkManager = new ChunkManager(chunksPath);
+        di.setChunkManager(chunkManager);
+
+        // Backup Info
         BackupInfo backupInfo = new BackupInfo(backupInfoPath);
+        di.setBackupInfo(backupInfo);
 
         // Run Receiver
-        Reactor receiver = new Reactor(channels, backupInfo);
+        Reactor receiver = new Reactor(di);
         receiver.run();
 
         // TODO

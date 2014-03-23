@@ -1,12 +1,12 @@
 package Reactions;
 
+import Controllers.DependencyInjection;
+import Controllers.InjectableThread;
 import Peer.BackupInfo;
 import Utils.Channels;
 
-public class Reaction extends Thread
+public class Reaction extends InjectableThread
 {
-	protected Channels channels;
-	protected BackupInfo backupInfo;
     protected byte[] data;
 
     protected String version;
@@ -15,10 +15,9 @@ public class Reaction extends Thread
     protected Integer replicationDegree;
     protected byte[] body;
 
-	public Reaction(Channels channels, BackupInfo backupInfo, byte[] data)
+	public Reaction(DependencyInjection di, byte[] data)
     {
-    	this.channels = channels;
-    	this.backupInfo = backupInfo;
+        super(di);
         this.data = data;
         decodeData();
     }

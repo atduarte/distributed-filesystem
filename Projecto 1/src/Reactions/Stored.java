@@ -1,5 +1,6 @@
 package Reactions;
 
+import Controllers.DependencyInjection;
 import Peer.BackupInfo;
 import Utils.Channels;
 import Utils.Constants;
@@ -16,8 +17,8 @@ public class Stored extends Reaction
             + Constants.patternChunkNo
     );
 
-    public Stored(Channels channels, BackupInfo backupInfo, byte[] data) {
-        super(channels, backupInfo, data);
+    public Stored(DependencyInjection di, byte[] data) {
+        super(di, data);
     }
 
     public void decodeData()
@@ -33,6 +34,8 @@ public class Stored extends Reaction
 
     public void run()
     {
+        BackupInfo backupInfo = di.getBackupInfo();
+
         // Check it's ours
         if (!backupInfo.isMine(this.fileId))
             return;

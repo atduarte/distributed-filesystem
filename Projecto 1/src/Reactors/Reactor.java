@@ -1,30 +1,30 @@
 package Reactors;
 
+import Controllers.DependencyInjection;
+import Controllers.Injectable;
 import Peer.BackupInfo;
 import Utils.Channels;
 
 import java.io.IOException;
 
-public class Reactor
+public class Reactor extends Injectable
 {
-    private BackupInfo backupInfo;
-    Channels channels;
-
-    public Reactor(Channels channels, BackupInfo backupInfo)
+    public Reactor(DependencyInjection di)
     {
-        this.channels = channels;
-        this.backupInfo = backupInfo;
+        super(di);
     }
 
     public void run() throws IOException
     {
+        Channels channels = di.getChannels();
+
         if (channels.getMC() != null) {
-            MCReactor MCReactor = new MCReactor(channels, backupInfo);
+            MCReactor MCReactor = new MCReactor(di);
             MCReactor.start();
         }
 
         if (channels.getMDB() != null) {
-            MDBReactor MDBReactor = new MDBReactor(channels, backupInfo);
+            MDBReactor MDBReactor = new MDBReactor(di);
             MDBReactor.start();
         }
 
