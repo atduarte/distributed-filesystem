@@ -2,6 +2,7 @@ package Reactions;
 
 import Controllers.DependencyInjection;
 import Peer.BackupInfo;
+import Peer.ChunkManager;
 import Utils.Channels;
 import Utils.Constants;
 
@@ -48,18 +49,25 @@ public class PutChunk extends Reaction
     public void run()
     {
     	// Check if mine
-
     	if (di.getBackupInfo().isMine(this.fileId)) {
     		return;
     	}
 
-        // TODO: Check I dont't have it already
+        // Check I dont't have it already
+        ChunkManager chunkManager = di.getChunkManager();
+        if (chunkManager.hasChunk(fileId, chunkNo)) {
+            return;
+        }
 
-        // TODO: Store
+        // Store
+        try {
+            chunkManager.addChunk(fileId, chunkNo, data);
+        } catch (IOException e) {
+            return;
+        }
 
-        String sMessage = "STORED " + this.version + " " + this.fileId + " " + this.chunkNo;
-        sMessage += " \r\n \r\n ";
-
+        // Send STORED Message
+        String sMessage = "STORED " + this.version + " " + this.fileId + " " + this.chunkNo + " \r\n \r\n ";
         byte[] message = sMessage.getBytes();
 
         Channels channels = di.getChannels();
@@ -71,6 +79,7 @@ public class PutChunk extends Reaction
             group = InetAddress.getByName(address);
         } catch (UnknownHostException e) {
             e.printStackTrace();
+            return;
         }
 
         MulticastSocket socket = null;
@@ -79,6 +88,7 @@ public class PutChunk extends Reaction
             socket.joinGroup(group);
         } catch (IOException e) {
             e.printStackTrace();
+            return;
         }
 
         // TODO: Wait Random Delay

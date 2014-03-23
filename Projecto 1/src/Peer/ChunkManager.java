@@ -64,19 +64,16 @@ public class ChunkManager
         return( path.delete() );
     }
 
-    public void addChunk(String fileId, Integer chunkNo, byte[] data) {
-        String personalchunksPath = chunksPath+"/"+fileId;
-        File saveDir = new File(personalchunksPath);
-        if(!saveDir.exists())
-        {
+    public void addChunk(String fileId, Integer chunkNo, byte[] data) throws IOException {
+        String personalChunksPath = chunksPath + File.separator + fileId;
+        File saveDir = new File(personalChunksPath);
+
+        if(!saveDir.exists()) {
             saveDir.mkdir();
         }
-        Path path = Paths.get(personalchunksPath + "/" + chunkNo);
-        try {
-            Files.write(path, data);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        Path path = Paths.get(personalChunksPath + "/" + chunkNo);
+        Files.write(path, data);
     }
 
     public byte[] getChunk(String fileId, Integer chunkNo) {
