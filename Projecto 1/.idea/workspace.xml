@@ -5,15 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ded3c10e-75ca-4e3a-bcdf-d22a5dcef3d4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Peer/BackupFileInfo.java" afterPath="$PROJECT_DIR$/src/Peer/BackupFileInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utils/Constants.java" afterPath="$PROJECT_DIR$/src/Utils/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Reactions/GetChunk.java" afterPath="$PROJECT_DIR$/src/Reactions/GetChunk.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Protocol/GetChunk.java" afterPath="$PROJECT_DIR$/src/Server/Protocol/GetChunk.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controllers/Main.java" afterPath="$PROJECT_DIR$/src/Controllers/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Reactions/PutChunk.java" afterPath="$PROJECT_DIR$/src/Reactions/PutChunk.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Protocol/PutChunk.java" afterPath="$PROJECT_DIR$/src/Server/Protocol/PutChunk.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Reactions/Reaction.java" afterPath="$PROJECT_DIR$/src/Reactions/Reaction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Reactions/Stored.java" afterPath="$PROJECT_DIR$/src/Reactions/Stored.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SDIS_Proj1.iws" />
@@ -717,7 +708,8 @@
     <MESSAGE value="Reaction - PutChunk" />
     <MESSAGE value="getBodyFromMessage" />
     <MESSAGE value="Stored Chunk&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stored Chunk&#10;" />
+    <MESSAGE value="randtime + getNElementOfMessage" />
+    <option name="LAST_COMMIT_MESSAGE" value="randtime + getNElementOfMessage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
