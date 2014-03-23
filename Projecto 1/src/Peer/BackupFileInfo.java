@@ -44,7 +44,8 @@ public class BackupFileInfo
     }
 
     public Integer getRealReplicationDegree(Integer chunkNo) {
-        return realReplicationDegree.get(chunkNo);
+        Integer result = realReplicationDegree.get(chunkNo);
+        return result != null ? result : 0;
     }
 
     public void incrementRealReplicationDegree(Integer chunkNo) {

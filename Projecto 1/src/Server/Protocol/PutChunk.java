@@ -2,6 +2,7 @@ package Server.Protocol;
 
 import Controllers.DependencyInjection;
 import Controllers.Injectable;
+import Peer.BackupInfo;
 import Utils.Channels;
 import Utils.Constants;
 
@@ -45,9 +46,9 @@ public class PutChunk extends Injectable
         return message;
     }
 
-    public boolean send() throws IOException {
+    public boolean send() throws IOException
+    {
         // Create Message
-
         byte[] message = this.createMessage();
 
         Channels channels = di.getChannels();
@@ -55,13 +56,33 @@ public class PutChunk extends Injectable
         Integer port = channels.getMDB().getPort();
 
         InetAddress group = InetAddress.getByName(address);
-        MulticastSocket socket = new MulticastSocket(port);
-        socket.joinGroup(group);
 
-        DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
-        socket.send(packet);
+        while (true) {
+            MulticastSocket socket = new MulticastSocket(port);
+            socket.joinGroup(group);
 
-        System.out.println("Sent PUTCHUNK");
+            DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
+            socket.send(packet);
+
+            socket.close();
+
+            System.out.println("Sent PUTCHUNK");
+
+            // Wait for replies
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                break;
+            }
+
+            // Verify Real Replication Degrees
+            BackupInfo backupInfo = di.getBackupInfo();
+            if (backupInfo.getFile(fileId).getRealReplicationDegree(chunkNo) >= replicationDegree) {
+                break;
+            }
+        }
+
+
 
         return true;
     }

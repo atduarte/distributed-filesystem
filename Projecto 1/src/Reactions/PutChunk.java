@@ -41,7 +41,7 @@ public class PutChunk extends Reaction
             this.fileId = matches.group(2);
             this.chunkNo = Integer.parseInt(matches.group(3));
             this.replicationDegree = Integer.parseInt(matches.group(4));
-            this.body = getBodyFromMessage(data);
+            this.body = Constants.getBodyFromMessage(data);
         }
     }
 

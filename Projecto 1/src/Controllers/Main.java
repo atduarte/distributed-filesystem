@@ -6,6 +6,7 @@ import Peer.BackupFileInfo;
 import Peer.BackupInfo;
 import Server.Protocol.PutChunk;
 import Utils.Channels;
+import Utils.Constants;
 
 import java.io.IOException;
 import java.util.Random;
@@ -45,6 +46,15 @@ public class Main
         BackupInfo backupInfo = new BackupInfo(backupInfoPath);
         di.setBackupInfo(backupInfo);
 
+        /*
+        String s=new String("aaaaa bbbbbb ddddd eeeee ");
+        System.out.println(new String(Constants.getNElementFromMessage(s.getBytes(),0)));
+        System.out.println(new String(Constants.getNElementFromMessage(s.getBytes(),1)));
+        System.out.println(new String(Constants.getNElementFromMessage(s.getBytes(),2)));
+        System.out.println(new String(Constants.getNElementFromMessage(s.getBytes(),3)));
+
+        */
+
         // Run Receiver
         Reactor receiver = new Reactor(di);
         receiver.run();
@@ -56,7 +66,8 @@ public class Main
         file.setHash("akjhdsasd" + rand.nextInt(10));
         backupInfo.addFile(file);
         byte[] body = "sáfoda".getBytes();
-        PutChunk cenas = new PutChunk(di, file.getHash(), 5, 8, body);
+
+        PutChunk cenas = new PutChunk(di, file.getHash(), 5, 1, body);
         cenas.send();
 
         // Backup Example
@@ -66,5 +77,9 @@ public class Main
         // Restore Examples
 //        Restore restore = new Restore(backupInfo);
         // ...
+
+
+
+
     }
 }

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
+import java.util.Random;
 
 public class GetChunk extends Injectable
 {
@@ -70,9 +71,24 @@ public class GetChunk extends Injectable
         socket.setSoTimeout(500);
         socket.receive(packet);
 
-        // TODO: Just Return Chunk Data
 
-        return packet.getData();
+
+        if(Constants.getNElementFromMessage(message,2).equals(fileId) && Constants.getNElementFromMessage(message,3).equals(chunkNo.toString()))
+        {
+            return Constants.getBodyFromMessage(packet.getData());
+        }
+        else
+        {
+            int randWait = (new Random()).nextInt(400);
+            try {
+                Thread.sleep(randWait);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            receive();
+        }
+        return null;
+
     }
 
 }

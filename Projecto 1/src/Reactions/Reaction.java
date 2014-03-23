@@ -26,13 +26,4 @@ public class Reaction extends InjectableThread
     {
 
 	}
-
-    public byte[] getBodyFromMessage(byte[] message)
-    {
-        String sMessage = new String(message);
-        String separator = "\r\n \r\n ";
-        int i = sMessage.indexOf(separator) + separator.length();
-        return sMessage.substring(i).getBytes();
-    }
-
 }

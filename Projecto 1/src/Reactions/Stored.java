@@ -40,8 +40,6 @@ public class Stored extends Reaction
         if (!backupInfo.isMine(this.fileId))
             return;
 
-        // TODO: Ignorar quando supostamente não está a receber?
-
         backupInfo.incrementRealRepDegree(this.fileId, this.chunkNo);
 
         System.out.println("Someone Stored our Chunk");

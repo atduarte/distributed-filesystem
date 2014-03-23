@@ -10,4 +10,31 @@ public class Constants {
     public final static String patternFileId = "(\\w+) ";
     public final static String patternChunkNo = "(\\d+) ";
     public final static String patternReplicationDeg = "(\\d+) ";
+
+    public static byte[] getBodyFromMessage(byte[] message)
+    {
+        String sMessage = new String(message);
+        String separator = "\r\n \r\n ";
+        int i = sMessage.indexOf(separator) + separator.length();
+        return sMessage.substring(i).getBytes();
+    }
+
+
+    public static byte[] getNElementFromMessage(byte[] message,int n)
+    {
+        String sMessage = new String(message);
+        String separator = " ";
+
+        for(int i = 0;i < n; i++)
+        {
+            int index = sMessage.indexOf(separator) + separator.length();
+            sMessage=sMessage.substring(index+separator.length());
+        }
+        int index = sMessage.indexOf(separator) + separator.length();
+
+        return sMessage.substring(0,index-separator.length()).getBytes();
+
+    }
+
+
 }

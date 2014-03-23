@@ -2,9 +2,16 @@ package Reactions;
 
 import Controllers.DependencyInjection;
 import Peer.BackupInfo;
+import Peer.ChunkManager;
 import Utils.Channels;
 import Utils.Constants;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.UnknownHostException;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,7 +41,74 @@ public class GetChunk extends Reaction
 
     public void run()
     {
-        // TODO: Process Message
-        System.out.println("GetChunk");
+        ChunkManager chunkManager = di.getChunkManager();
+
+        if (!chunkManager.hasChunk(fileId, chunkNo)) {
+            return;
+        }
+
+        byte[] chunkData = chunkManager.getChunk(fileId, chunkNo);
+        byte[] message = createMessage(chunkData);
+
+        // TODO: Wait Random Delay
+        int randWait = (new Random()).nextInt(400);
+
+        // Check Network, for repeat packets
+        Channels channels = di.getChannels();
+        String address = channels.getMDR().getAddress();
+        Integer port = channels.getMDR().getPort();
+
+        InetAddress group = null;
+        MulticastSocket socket = null;
+        try {
+            group = InetAddress.getByName(address);
+            socket = new MulticastSocket(port);
+            socket.joinGroup(group);
+        } catch (IOException e) {
+            return;
+        }
+
+        try {
+            byte[] tmpMessage = new byte[Constants.chunkSize + 2048];
+            DatagramPacket packet = new DatagramPacket(tmpMessage, tmpMessage.length, group, port);
+            socket.setSoTimeout(randWait);
+            socket.receive(packet);
+
+            // TODO: Check if it's the same packet
+
+            if(Constants.getNElementFromMessage(tmpMessage,1).equals("CHUNK") &&
+                    Constants.getNElementFromMessage(tmpMessage,2).equals(fileId) &&
+                    Constants.getNElementFromMessage(tmpMessage,3).equals(chunkNo))
+            {
+                return;
+            }
+
+
+
+            return;
+        } catch (IOException e) {
+        }
+
+        // Send
+        try {
+            DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
+            socket.send(packet);
+            System.out.println("Sent CHUNK");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private byte[] createMessage(byte[] body) {
+        String sMessage = "CHUNK " + version + " " + fileId + " " + chunkNo + " \r\n \r\n ";
+
+        byte[] one = sMessage.getBytes();
+        byte[] message = new byte[one.length + body.length];
+
+        System.arraycopy(one, 0, message, 0, one.length);
+        System.arraycopy(body, 0, message, one.length, body.length);
+
+        return message;
     }
 }
