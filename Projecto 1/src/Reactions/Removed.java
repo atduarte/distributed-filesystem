@@ -32,7 +32,14 @@ public class Removed extends Reaction
 
     public void run()
     {
-        // TODO: Process Message
         System.out.println("Removed");
+
+        // TODO: Verificar se é meu
+            // Se não é, return
+
+        // TODO: Diminuir replication degree
+
+        // TODO: Verificar replication degree
+            // TODO: Se for menor que o necessário, iniciar Putchunk
     }
 }
