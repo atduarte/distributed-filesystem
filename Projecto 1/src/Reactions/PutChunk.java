@@ -59,7 +59,7 @@ public class PutChunk extends Reaction
 
         // Store
         try {
-            chunkManager.addChunk(fileId, chunkNo, data);
+            chunkManager.addChunk(fileId, chunkNo, body);
         } catch (IOException e) {
             return;
         }

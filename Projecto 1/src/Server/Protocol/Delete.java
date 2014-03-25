@@ -26,6 +26,10 @@ public class Delete extends Injectable
         return sMessage.getBytes();
     }
 
+    public boolean run() throws IOException {
+        return this.send();
+    }
+
 
     public boolean send() throws IOException {
         byte[] message = this.createMessage();

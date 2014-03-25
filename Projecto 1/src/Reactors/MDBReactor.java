@@ -1,6 +1,7 @@
 package Reactors;
 
 import Peer.DependencyInjection;
+import Reactions.Delete;
 import Reactions.PutChunk;
 import Utils.Channels;
 
@@ -15,12 +16,11 @@ public class MDBReactor extends ChannelReactor
     }
 
 	protected void processMessage(byte[] data, String message) {
-		/*if(Delete.pattern.matcher(message).find()) {
+		if(Delete.pattern.matcher(message).find()) {
         	System.out.println("MDBReceived: Delete");
             Delete thread = new Delete(di, data);
             thread.start();
-        } else */
-		if(PutChunk.pattern.matcher(message).find()) {
+        } else if(PutChunk.pattern.matcher(message).find()) {
         	System.out.println("MDBReceived: PutChunk");
             PutChunk thread = new PutChunk(di, data);
             thread.start();

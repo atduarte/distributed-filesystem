@@ -2,10 +2,13 @@ package Controllers;
 
 import Peer.ChunkManager;
 import Peer.DependencyInjection;
+import Server.Protocol.Delete;
+import Server.Protocol.GetChunk;
 import Reactors.Reactor;
 import Peer.BackupFileInfo;
 import Peer.BackupInfo;
 import Server.Protocol.PutChunk;
+import Server.Protocol.Removed;
 import Utils.Channels;
 
 import java.io.IOException;
@@ -25,7 +28,13 @@ public class Main
         Integer MDBport = 6790;
         String MDRaddress = "229.60.60.28";
         Integer MDRport = 6791;
-        String chunksPath = "D:\\backups\\chunks";
+
+        String chunksPath = null;
+        if (args[0].equals("server")) {
+            chunksPath = "D:\\backups\\chunks_server";
+        } else {
+            chunksPath = "D:\\backups\\chunks_peer";
+        }
         String backupInfoPath = "D:\\backups\\info";
 
         // Dependency Injection
@@ -46,40 +55,45 @@ public class Main
         BackupInfo backupInfo = new BackupInfo(backupInfoPath);
         di.setBackupInfo(backupInfo);
 
-        /*
-        String s=new String("aaaaa bbbbbb ddddd eeeee ");
-        System.out.println(new String(Constants.getNElementFromMessage(s.getBytes(),0)));
-        System.out.println(new String(Constants.getNElementFromMessage(s.getBytes(),1)));
-        System.out.println(new String(Constants.getNElementFromMessage(s.getBytes(),2)));
-        System.out.println(new String(Constants.getNElementFromMessage(s.getBytes(),3)));
-
-        */
-
         // Run Receiver
         Reactor receiver = new Reactor(di);
         receiver.run();
 
-        // TODO
+        if (args[0].equals("server")) {
+            // Create File
+            BackupFileInfo file = new BackupFileInfo();
+            Random rand = new Random();
+            file.setReplicationDegree(1);
+            file.setHash("akjhdsasd89" /*+ rand.nextInt(100)*/);
+            backupInfo.addFile(file);
 
-        BackupFileInfo file = new BackupFileInfo();
-        Random rand = new Random();
-        file.setHash("akjhdsasd" + rand.nextInt(10));
-        backupInfo.addFile(file);
-        byte[] body = "sáfoda".getBytes();
+            // Test Putchunk
+            PutChunk putChunk = new PutChunk(di, file.getHash(), 5, file.getReplicationDegree(), "sáfoda".getBytes());
+            putChunk.run();
 
-        PutChunk cenas = new PutChunk(di, file.getHash(), 5, 1, body);
-        cenas.send();
+            // Test GetChunk
+            GetChunk getChunk = new GetChunk(di, file.getHash(), 5);
+            getChunk.run();
 
-        // Backup Example
-        //Backup backup = new Backup(channels, backupInfo);
-        //backup.sendFolder("...");
+            /*try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
-        // Restore Examples
-//        Restore restore = new Restore(backupInfo);
-        // ...
+            // Test Delete
+            Delete delete = new Delete(di, file.getHash());
+            delete.run();*/
+        } else {
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
-
-
-
+            // Test Removed
+            Removed removed = new Removed(di, "akjhdsasd89", 5);
+            removed.run();
+        }
     }
 }

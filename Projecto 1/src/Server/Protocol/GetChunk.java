@@ -34,9 +34,13 @@ public class GetChunk extends Injectable
         return one;
     }
 
-    public byte[] run() throws IOException {
-        send();
-        return receive();
+    public byte[] run() {
+        try {
+            send();
+            return receive();
+        } catch (IOException e) {
+            return this.run();
+        }
     }
 
     protected boolean send() throws IOException {
@@ -68,23 +72,15 @@ public class GetChunk extends Injectable
         socket.joinGroup(group);
 
         DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(1000);
         socket.receive(packet);
 
-
-
-        if(Constants.getNElementFromMessage(message,2).equals(fileId) && Constants.getNElementFromMessage(message,3).equals(chunkNo.toString()))
-        {
+        System.out.println("Received one packet");
+        if(Constants.getNElementFromMessage(message,2).equals(fileId) && Constants.getNElementFromMessage(message,3).equals(chunkNo.toString())) {
+            System.out.println("GetChunk: Correct packet");
             return Constants.getBodyFromMessage(packet.getData());
-        }
-        else
-        {
-            int randWait = (new Random()).nextInt(400);
-            try {
-                Thread.sleep(randWait);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        } else {
+            System.out.println("GetChunk: Wrong packet");
             receive();
         }
         return null;

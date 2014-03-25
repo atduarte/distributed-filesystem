@@ -48,7 +48,7 @@ public class GetChunk extends Reaction
         byte[] chunkData = chunkManager.getChunk(fileId, chunkNo);
         byte[] message = createMessage(chunkData);
 
-        // TODO: Wait Random Delay
+        // Wait Random Delay
         int randWait = (new Random()).nextInt(400);
 
         // Check Network, for repeat packets
@@ -72,18 +72,14 @@ public class GetChunk extends Reaction
             socket.setSoTimeout(randWait);
             socket.receive(packet);
 
-            // TODO: Check if it's the same packet
-
+            // Check if it's the same packet
             if(Constants.getNElementFromMessage(tmpMessage,1).equals("CHUNK") &&
-                    Constants.getNElementFromMessage(tmpMessage,2).equals(fileId) &&
-                    Constants.getNElementFromMessage(tmpMessage,3).equals(chunkNo))
+               Constants.getNElementFromMessage(tmpMessage,2).equals(fileId) &&
+               Constants.getNElementFromMessage(tmpMessage,3).equals(chunkNo.toString()))
             {
+                System.out.println("Dont send Chunk. Someone already sent.");
                 return;
             }
-
-
-
-            return;
         } catch (IOException e) {
         }
 
@@ -95,7 +91,6 @@ public class GetChunk extends Reaction
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     private byte[] createMessage(byte[] body) {

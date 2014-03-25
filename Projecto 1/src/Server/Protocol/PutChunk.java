@@ -46,6 +46,10 @@ public class PutChunk extends Injectable
         return message;
     }
 
+    public boolean run() throws IOException {
+        return this.send();
+    }
+
     public boolean send() throws IOException
     {
         // Create Message

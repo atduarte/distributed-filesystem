@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class Removed extends Reaction
 {
     final public static Pattern pattern = Pattern.compile(
-            "^REMOVED"
+            "^REMOVED "
             + Constants.patternVersion
             + Constants.patternFileId
             + Constants.patternChunkNo
@@ -32,29 +32,25 @@ public class Removed extends Reaction
 
     public void run()
     {
-        System.out.println("Removed");
-
-        // TODO: Verificar se é meu
-        if(di.getBackupInfo().isMine(fileId))
-        {
-            // TODO: Diminuir replication degree
+        // Verificar se é meu
+        if (di.getBackupInfo().isMine(fileId)) {
+            // Diminuir replication degree
             di.getBackupInfo().getFile(fileId).decrementRealReplicationDegree(chunkNo);
 
+            System.out.println("PROCESSED Removed");
 
-            // TODO: Verificar replication degree
-
+            // Verificar replication degree
             if(di.getBackupInfo().getFile(fileId).getRealReplicationDegree(chunkNo)< di.getBackupInfo().getFile(fileId).getReplicationDegree())
             {
-                // TODO: Se for menor que o necessário, iniciar Putchunk
-                PutChunk thread = new PutChunk(di, data);
-                thread.start();
+                // TODO: Get Body
+                // GetChunk
+
+                // TODO Se for menor que o necessário, iniciar Putchunk
+//                Server.Protocol.PutChunk putChunk = new Server.Protocol.PutChunk(di, fileId)
+//                putChunk.run();
             }
+
         }
-        else
-        {
-            return;
-        }
-        // Se não é, return
 
 
     }

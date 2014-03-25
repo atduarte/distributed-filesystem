@@ -20,19 +20,19 @@ public class Constants {
     }
 
 
-    public static byte[] getNElementFromMessage(byte[] message,int n)
+    public static String getNElementFromMessage(byte[] message,int n)
     {
         String sMessage = new String(message);
         String separator = " ";
 
-        for(int i = 0;i < n; i++)
+        for(int i = 0; i < n; i++)
         {
             int index = sMessage.indexOf(separator) + separator.length();
-            sMessage=sMessage.substring(index+separator.length());
+            sMessage = sMessage.substring(index);
         }
         int index = sMessage.indexOf(separator) + separator.length();
 
-        return sMessage.substring(0,index-separator.length()).getBytes();
+        return sMessage.substring(0, index-separator.length());
 
     }
 

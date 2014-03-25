@@ -18,9 +18,10 @@ public class Removed extends Injectable
     String fileId;
     Integer chunkNo;
 
-    public Removed(DependencyInjection di, String fileId) {
+    public Removed(DependencyInjection di, String fileId, Integer chunkNo) {
         super(di);
         this.fileId = fileId;
+        this.chunkNo = chunkNo;
     }
 
     private byte[] createMessage() {
@@ -30,10 +31,11 @@ public class Removed extends Injectable
         sMessage += chunkNo + " ";
         sMessage += "\r\n \r\n ";
 
+        return sMessage.getBytes();
+    }
 
-        byte[] one = sMessage.getBytes();
-
-        return one;
+    public boolean run() throws IOException {
+        return this.send();
     }
 
 
@@ -41,8 +43,8 @@ public class Removed extends Injectable
         byte[] message = this.createMessage();
 
         Channels channels = di.getChannels();
-        String address = channels.getMDB().getAddress();
-        Integer port = channels.getMDB().getPort();
+        String address = channels.getMC().getAddress();
+        Integer port = channels.getMC().getPort();
 
         InetAddress group = InetAddress.getByName(address);
         MulticastSocket socket = new MulticastSocket(port);
@@ -50,10 +52,6 @@ public class Removed extends Injectable
 
         DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
         socket.send(packet);
-
-        socket.receive(packet);
-
-        System.out.println(new String(packet.getData()));
 
         return true;
     }
