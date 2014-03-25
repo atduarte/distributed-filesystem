@@ -56,4 +56,11 @@ public class BackupFileInfo
             realReplicationDegree.put(chunkNo, 1);
         }
     }
+
+    public void decrementRealReplicationDegree(Integer chunkNo) {
+        if (realReplicationDegree.containsKey(chunkNo)) {
+            Integer newValue = realReplicationDegree.get(chunkNo) - 1;
+            realReplicationDegree.put(chunkNo, newValue);
+        }
+    }
 }

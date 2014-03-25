@@ -35,11 +35,27 @@ public class Removed extends Reaction
         System.out.println("Removed");
 
         // TODO: Verificar se é meu
-            // Se não é, return
+        if(di.getBackupInfo().isMine(fileId))
+        {
+            // TODO: Diminuir replication degree
+            di.getBackupInfo().getFile(fileId).decrementRealReplicationDegree(chunkNo);
 
-        // TODO: Diminuir replication degree
 
-        // TODO: Verificar replication degree
-            // TODO: Se for menor que o necessário, iniciar Putchunk
+            // TODO: Verificar replication degree
+
+            if(di.getBackupInfo().getFile(fileId).getRealReplicationDegree(chunkNo)< di.getBackupInfo().getFile(fileId).getReplicationDegree())
+            {
+                // TODO: Se for menor que o necessário, iniciar Putchunk
+                PutChunk thread = new PutChunk(di, data);
+                thread.start();
+            }
+        }
+        else
+        {
+            return;
+        }
+        // Se não é, return
+
+
     }
 }
