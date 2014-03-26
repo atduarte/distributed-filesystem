@@ -16,7 +16,7 @@ public class Constants {
         String sMessage = new String(message);
         String separator = "\r\n \r\n ";
         int i = sMessage.indexOf(separator) + separator.length();
-        return sMessage.substring(i).getBytes();
+        return sMessage.substring(i, (i-1)+chunkSize).getBytes();
     }
 
 

@@ -81,9 +81,8 @@ public class GetChunk extends Injectable
             return Constants.getBodyFromMessage(packet.getData());
         } else {
             System.out.println("GetChunk: Wrong packet");
-            receive();
+            return receive();
         }
-        return null;
 
     }
 

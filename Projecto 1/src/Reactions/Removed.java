@@ -1,8 +1,11 @@
 package Reactions;
 
+import Peer.BackupFileInfo;
 import Peer.DependencyInjection;
+import Server.Protocol.*;
 import Utils.Constants;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,14 +43,20 @@ public class Removed extends Reaction
             System.out.println("PROCESSED Removed");
 
             // Verificar replication degree
-            if(di.getBackupInfo().getFile(fileId).getRealReplicationDegree(chunkNo)< di.getBackupInfo().getFile(fileId).getReplicationDegree())
+            BackupFileInfo file = di.getBackupInfo().getFile(fileId);
+            if(file.getRealReplicationDegree(chunkNo)< file.getReplicationDegree())
             {
-                // TODO: Get Body
-                // GetChunk
+                // Get Body
+                // TODO: E se nao houver na rede?
+                Server.Protocol.GetChunk getChunk = new Server.Protocol.GetChunk(di, fileId, chunkNo);
+                byte[] data = getChunk.run();
 
-                // TODO Se for menor que o necessário, iniciar Putchunk
-//                Server.Protocol.PutChunk putChunk = new Server.Protocol.PutChunk(di, fileId)
-//                putChunk.run();
+                Server.Protocol.PutChunk putChunk = new Server.Protocol.PutChunk(di, fileId, chunkNo, file.getReplicationDegree(), data);
+                try {
+                    putChunk.run();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
         }
