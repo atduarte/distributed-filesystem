@@ -25,16 +25,29 @@ public class Constants {
     {
         String sMessage = new String(message);
         String separator = " ";
+        String separator2= Constants.separator;
+
+        // Remove Firsts
 
         for(int i = 0; i < n; i++)
         {
-            int index = sMessage.indexOf(separator) + separator.length();
-            sMessage = sMessage.substring(index);
+           int index = sMessage.indexOf(separator) + separator.length();
+           if(index == -1){
+               index = sMessage.indexOf(separator2) + separator2.length();
+           }
+           sMessage = sMessage.substring(index);
         }
-        int index = sMessage.indexOf(separator) + separator.length();
 
-        return sMessage.substring(0, index-separator.length());
+        // Last
 
+        int index = sMessage.indexOf(separator);
+        int index2 = sMessage.indexOf(separator2);
+
+        if(index == -1 || index2 < index) {
+            return sMessage.substring(0, index2);
+        } else {
+            return sMessage.substring(0, index);
+        }
     }
 
 

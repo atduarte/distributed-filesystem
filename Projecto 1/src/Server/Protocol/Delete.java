@@ -36,8 +36,8 @@ public class Delete extends Injectable
         byte[] message = this.createMessage();
 
         Channels channels = di.getChannels();
-        String address = channels.getMDB().getAddress();
-        Integer port = channels.getMDB().getPort();
+        String address = channels.getMC().getAddress();
+        Integer port = channels.getMC().getPort();
 
         InetAddress group = InetAddress.getByName(address);
         MulticastSocket socket = new MulticastSocket(port);

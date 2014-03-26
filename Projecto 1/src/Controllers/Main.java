@@ -22,12 +22,12 @@ public class Main
     public static void main(String [] args) throws IOException
     {
         // Base Data; TODO: From ARGS
-        String MCaddress = "229.60.60.8";
-        Integer MCport = 6789;
-        String MDBaddress = "229.60.60.18";
-        Integer MDBport = 6790;
-        String MDRaddress = "229.60.60.28";
-        Integer MDRport = 6791;
+        String MCaddress = "239.0.0.1";
+        Integer MCport = 8765;
+        String MDBaddress = "239.0.0.1";
+        Integer MDBport = 8766;
+        String MDRaddress = "239.0.0.1";
+        Integer MDRport = 8767;
 
         String chunksPath = null;
         if (args[0].equals("server")) {
@@ -71,19 +71,20 @@ public class Main
             PutChunk putChunk = new PutChunk(di, file.getHash(), 5, file.getReplicationDegree(), "sáfoda".getBytes());
             putChunk.run();
 
+
             // Test GetChunk
             GetChunk getChunk = new GetChunk(di, file.getHash(), 5);
             getChunk.run();
 
-            /*try {
-                Thread.sleep(10000);
+            try {
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
             // Test Delete
             Delete delete = new Delete(di, file.getHash());
-            delete.run();*/
+            delete.run();
         } else {
             try {
                 Thread.sleep(10000);

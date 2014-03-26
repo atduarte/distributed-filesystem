@@ -1,6 +1,7 @@
 package Reactors;
 
 import Peer.DependencyInjection;
+import Reactions.Delete;
 import Reactions.GetChunk;
 import Reactions.Removed;
 import Reactions.Stored;
@@ -20,7 +21,11 @@ public class MCReactor extends ChannelReactor
 	}
 
 	protected void processMessage(byte[] data, String message) {
-		if(GetChunk.pattern.matcher(message).find()) {
+        if(Delete.pattern.matcher(message).find()) {
+            System.out.println("MDBReceived: Delete");
+            Delete thread = new Delete(di, data);
+            thread.start();
+        } else if(GetChunk.pattern.matcher(message).find()) {
 			System.out.println("MCReceived: GetChunk");
 		    GetChunk thread = new GetChunk(di, data);
 		    thread.start();
