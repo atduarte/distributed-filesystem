@@ -26,12 +26,10 @@ public class GetChunk extends Injectable
         String message = "GETCHUNK ";
         message += Constants.version + " ";
         message += fileId + " ";
-        message += chunkNo + " ";
-        message += "\r\n \r\n ";
+        message += chunkNo;
+        message += Constants.separator;
 
-        byte[] one = message.getBytes();
-
-        return one;
+        return message.getBytes();
     }
 
     public byte[] run() {

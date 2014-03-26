@@ -3,6 +3,7 @@ package Server.Protocol;
 import Peer.DependencyInjection;
 import Peer.Injectable;
 import Utils.Channels;
+import Utils.Constants;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -22,7 +23,7 @@ public class Delete extends Injectable
     }
 
     private byte[] createMessage() {
-        String sMessage = "DELETE " + fileId + " \r\n \r\n ";
+        String sMessage = "DELETE " + fileId + Constants.separator;
         return sMessage.getBytes();
     }
 

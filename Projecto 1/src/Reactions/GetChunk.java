@@ -17,8 +17,8 @@ public class GetChunk extends Reaction
 {
     final public static Pattern pattern = Pattern.compile(
             "^GETCHUNK " +
-            Constants.patternVersion +
-            Constants.patternFileId +
+            Constants.patternVersion + " " +
+            Constants.patternFileId + " " +
             Constants.patternChunkNo
     );
 
@@ -94,7 +94,7 @@ public class GetChunk extends Reaction
     }
 
     private byte[] createMessage(byte[] body) {
-        String sMessage = "CHUNK " + version + " " + fileId + " " + chunkNo + " \r\n \r\n ";
+        String sMessage = "CHUNK " + version + " " + fileId + " " + chunkNo + Constants.separator;
 
         byte[] one = sMessage.getBytes();
         byte[] message = new byte[one.length + body.length];

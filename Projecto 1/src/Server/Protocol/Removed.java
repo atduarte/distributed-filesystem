@@ -28,8 +28,8 @@ public class Removed extends Injectable
         String sMessage = "REMOVED ";
         sMessage += Constants.version + " ";
         sMessage += fileId + " ";
-        sMessage += chunkNo + " ";
-        sMessage += "\r\n \r\n ";
+        sMessage += chunkNo;
+        sMessage += Constants.separator;
 
         return sMessage.getBytes();
     }

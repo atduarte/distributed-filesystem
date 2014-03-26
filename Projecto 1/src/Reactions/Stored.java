@@ -11,8 +11,8 @@ public class Stored extends Reaction
 {
     final public static Pattern pattern = Pattern.compile(
             "^STORED "
-            + Constants.patternVersion
-            + Constants.patternFileId
+            + Constants.patternVersion + " "
+            + Constants.patternFileId + " "
             + Constants.patternChunkNo
     );
 

@@ -35,7 +35,7 @@ public class PutChunk extends Injectable
         sMessage += fileId + " ";
         sMessage += chunkNo + " ";
         sMessage += replicationDegree + " ";
-        sMessage += "\r\n \r\n ";
+        sMessage += Constants.separator;
 
         byte[] one = sMessage.getBytes();
         byte[] message = new byte[one.length + body.length];

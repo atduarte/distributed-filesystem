@@ -13,8 +13,8 @@ public class Removed extends Reaction
 {
     final public static Pattern pattern = Pattern.compile(
             "^REMOVED "
-            + Constants.patternVersion
-            + Constants.patternFileId
+            + Constants.patternVersion + " "
+            + Constants.patternFileId + " "
             + Constants.patternChunkNo
     );
 

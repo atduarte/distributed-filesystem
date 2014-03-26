@@ -6,15 +6,16 @@ package Utils;
 public class Constants {
     public final static String version = "1.0";
     public final static Integer chunkSize = 64*1000;
-    public final static String patternVersion = "(\\d\\.\\d) ";
-    public final static String patternFileId = "(\\w+) ";
-    public final static String patternChunkNo = "(\\d+) ";
-    public final static String patternReplicationDeg = "(\\d+) ";
+    public final static String patternVersion = "(\\d\\.\\d)";
+    public final static String patternFileId = "(\\w+)";
+    public final static String patternChunkNo = "(\\d+)";
+    public final static String patternReplicationDeg = "(\\d+)";
+    public final static String separator = "\r\n\r\n";
 
     public static byte[] getBodyFromMessage(byte[] message)
     {
         String sMessage = new String(message);
-        String separator = "\r\n \r\n ";
+        String separator = Constants.separator;
         int i = sMessage.indexOf(separator) + separator.length();
         return sMessage.substring(i, (i-1)+chunkSize).getBytes();
     }

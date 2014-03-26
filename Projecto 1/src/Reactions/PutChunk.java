@@ -20,9 +20,9 @@ public class PutChunk extends Reaction
 {
     final public static Pattern pattern = Pattern.compile(
             "^PUTCHUNK " +
-            Constants.patternVersion +
-            Constants.patternFileId +
-            Constants.patternChunkNo +
+            Constants.patternVersion  + " " +
+            Constants.patternFileId  + " " +
+            Constants.patternChunkNo  + " " +
             Constants.patternReplicationDeg
 
     );
@@ -65,7 +65,7 @@ public class PutChunk extends Reaction
         }
 
         // Send STORED Message
-        String sMessage = "STORED " + this.version + " " + this.fileId + " " + this.chunkNo + " \r\n \r\n ";
+        String sMessage = "STORED " + this.version + " " + this.fileId + " " + this.chunkNo + Constants.separator;
         byte[] message = sMessage.getBytes();
 
         Channels channels = di.getChannels();
