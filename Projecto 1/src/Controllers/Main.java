@@ -10,6 +10,7 @@ import Peer.BackupInfo;
 import Server.Protocol.PutChunk;
 import Server.Protocol.Removed;
 import Utils.Channels;
+import Utils.Constants;
 
 import java.io.IOException;
 import java.util.Random;
@@ -19,8 +20,7 @@ import java.util.Random;
  */
 public class Main
 {
-    public static void main(String [] args) throws IOException
-    {
+    public static void main(String [] args) throws IOException {
         // Base Data; TODO: From ARGS
         String MCaddress = "239.0.0.1";
         Integer MCport = 8765;
@@ -30,12 +30,7 @@ public class Main
         Integer MDRport = 8767;
 
         String chunksPath = null;
-        if (args[0].equals("server")) {
-            chunksPath = "D:\\backups\\chunks_server";
-        } else {
-            chunksPath = "D:\\backups\\chunks_peer";
-        }
-        String backupInfoPath = "D:\\backups\\info";
+
 
         // Dependency Injection
         DependencyInjection di = new DependencyInjection();
@@ -46,6 +41,9 @@ public class Main
         channels.setMDB(MDBaddress, MDBport);
         channels.setMDR(MDRaddress, MDRport);
         di.setChannels(channels);
+
+        String backupInfoPath = "D:\\backups\\info";
+
 
         // Chunk Manager
         ChunkManager chunkManager = new ChunkManager(chunksPath);
@@ -59,42 +57,20 @@ public class Main
         Reactor receiver = new Reactor(di);
         receiver.run();
 
-        if (args[0].equals("server")) {
-            // Create File
-            BackupFileInfo file = new BackupFileInfo();
-            Random rand = new Random();
-            file.setReplicationDegree(1);
-            file.setHash("akjhdsasd89" /*+ rand.nextInt(100)*/);
-            backupInfo.addFile(file);
+        Menu menu = new Menu();
+        menu.ask();
 
-            // Test Putchunk
-            PutChunk putChunk = new PutChunk(di, file.getHash(), 5, file.getReplicationDegree(), "sáfoda".getBytes());
-            putChunk.run();
-
-
-            // Test GetChunk
-            GetChunk getChunk = new GetChunk(di, file.getHash(), 5);
-            getChunk.run();
-
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        menu.readanswer();
+        if (menu.isServer()) {
+            chunksPath = "D:\\backups\\chunks_server";
+            while(!menu.isExit()) {
+                menu.show();
+                menu.readoption();
             }
 
-            // Test Delete
-            Delete delete = new Delete(di, file.getHash());
-            delete.run();
         } else {
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            // Test Removed
-            Removed removed = new Removed(di, "akjhdsasd89", 5);
-            removed.run();
+            chunksPath = "D:\\backups\\chunks_peer";
         }
+        System.out.println("André Duarte, Sérgio Esteves Version:"+ Constants.version);
     }
 }
