@@ -30,6 +30,7 @@ public class PutChunk extends Reaction
 
 	public PutChunk(DependencyInjection di, byte[] data) {
         super(di, data);
+        this.version = Constants.version;
 	}
 
     public void decodeData()
@@ -37,10 +38,9 @@ public class PutChunk extends Reaction
         Matcher matches = pattern.matcher(new String(data));
 
         if (matches.find()) {
-            this.version = matches.group(1);
-            this.fileId = matches.group(2);
-            this.chunkNo = Integer.parseInt(matches.group(3));
-            this.replicationDegree = Integer.parseInt(matches.group(4));
+            this.fileId = matches.group(1);
+            this.chunkNo = Integer.parseInt(matches.group(2));
+            this.replicationDegree = Integer.parseInt(matches.group(3));
             this.body = Constants.getBodyFromMessage(data);
         }
     }

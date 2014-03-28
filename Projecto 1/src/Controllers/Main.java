@@ -1,5 +1,6 @@
 package Controllers;
 
+import Peer.BackupFileInfo;
 import Peer.ChunkManager;
 import Peer.DependencyInjection;
 import Reactors.Reactor;

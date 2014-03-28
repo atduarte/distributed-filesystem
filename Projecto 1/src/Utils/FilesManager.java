@@ -113,7 +113,7 @@ public class FilesManager
 
         FileInputStream is = new FileInputStream(file);
         byte[] chunk = new byte[Constants.chunkSize];
-        int chunkNo = 0;
+        int chunkNo = 1;
         int chunkLen = 0;
 
         while ((chunkLen = is.read(chunk)) != -1) {

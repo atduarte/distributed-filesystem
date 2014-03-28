@@ -19,6 +19,7 @@ public class Stored extends Reaction
 
     public Stored(DependencyInjection di, byte[] data) {
         super(di, data);
+        this.version = Constants.version;
     }
 
     public void decodeData()
@@ -26,9 +27,8 @@ public class Stored extends Reaction
         Matcher matches = pattern.matcher(new String(this.data));
 
         if (matches.find()) {
-            this.version = matches.group(1);
-            this.fileId = matches.group(2);
-            this.chunkNo = Integer.parseInt(matches.group(3));
+            this.fileId = matches.group(1);
+            this.chunkNo = Integer.parseInt(matches.group(2));
         }
     }
 
