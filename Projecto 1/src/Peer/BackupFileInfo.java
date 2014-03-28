@@ -1,11 +1,15 @@
 package Peer;
 
+import Utils.Constants;
+
+import java.awt.*;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 public class BackupFileInfo implements Serializable
 {
+    private int chunkNo;
     private String name;
     private String hash;
     private Integer replicationDegree;
@@ -63,5 +67,13 @@ public class BackupFileInfo implements Serializable
             Integer newValue = realReplicationDegree.get(chunkNo) - 1;
             realReplicationDegree.put(chunkNo, newValue);
         }
+    }
+
+    public void setNumChunks(long tam) {
+        chunkNo = (int)Math.ceil(tam/(Constants.chunkSize*1.0));
+    }
+    public long getChunkNo()
+    {
+        return chunkNo;
     }
 }

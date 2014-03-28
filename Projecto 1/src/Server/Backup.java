@@ -55,6 +55,8 @@ public class Backup extends Injectable
         newFile.setHash(hash);
         newFile.setReplicationDegree(replicationDegree);
         newFile.setName(file.getAbsolutePath());
+        newFile.setNumChunks(file.length());
+
         backupInfo.addFile(newFile);
         backupInfo.save();
 

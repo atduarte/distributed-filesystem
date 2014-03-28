@@ -18,6 +18,9 @@ import java.io.ObjectInputStream;
 public class Main
 {
     public static void main(String [] args) throws IOException {
+
+        System.out.println("André Duarte, Sérgio Esteves Version:"+ Constants.version);
+
         // Base Data; TODO: From ARGS
         String MCaddress = "239.0.0.1";
         Integer MCport = 8765;
@@ -39,7 +42,7 @@ public class Main
         channels.setMDR(MDRaddress, MDRport);
         di.setChannels(channels);
 
-        String backupInfoPath = "D:\\backups\\info";
+        String backupInfoPath = "S:\\serverfolder";
 
 
         // Chunk Manager
@@ -73,16 +76,14 @@ public class Main
         menu.readanswer();
 
         if (menu.isServer()) {
-            chunkManager.setChunksPath("D:\\backups\\chunks_server");
-        } else {
-            chunkManager.setChunksPath("D:\\backups\\chunks_server");
-        }
-
-        while(!menu.isExit()) {
+            chunkManager.setChunksPath("S:\\serverfolder");
             menu.show();
             menu.readoption();
+        } else {
+            chunkManager.setChunksPath("S:\\backups");
         }
 
-        System.out.println("André Duarte, Sérgio Esteves Version:"+ Constants.version);
+
+
     }
 }

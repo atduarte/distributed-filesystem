@@ -32,6 +32,7 @@ public class BackupInfo implements Serializable
 
         // or Add
         files.add(newFile);
+
     }
 
     public boolean incrementRealRepDegree(String fileId, Integer chunkNo) {
@@ -69,6 +70,16 @@ public class BackupInfo implements Serializable
         return null;
     }
 
+
+    public BackupFileInfo getFilebyName(String name) {
+        for (BackupFileInfo file : files) {
+            if (file.getName().equals(name)) {
+                return file;
+            }
+        }
+
+        return null;
+    }
     public boolean isMine(String fileId)
     {
         for (BackupFileInfo file : files) {
