@@ -15,6 +15,12 @@ public class ChunkManager
     {
         chunksPath = _chunksPath;
     }
+
+    public String getChunksPath()
+    {
+        return chunksPath;
+    }
+
     public void setChunksPath(String chunksPath) {
         this.chunksPath = chunksPath;
     }
@@ -24,6 +30,11 @@ public class ChunkManager
         String personalChunksFile = chunksPath+File.separator+fileId+File.separator+chunkNo;
         File saveChunk = new File(personalChunksFile);
         return saveChunk.exists();
+    }
+
+    public void deleteRandomChunk()
+    {
+        // TODO
     }
 
     public void deleteChunk(String fileId, Integer chunkNo) {
@@ -84,8 +95,6 @@ public class ChunkManager
                 e.printStackTrace();
             }
 
-
-
             if (out != null) {
                 try {
                     out.read(chunk);
@@ -94,16 +103,8 @@ public class ChunkManager
                     e.printStackTrace();
                 }
             }
-
-
-
-
-
         }
+
         return chunk;
-
     }
-
-
-
 }

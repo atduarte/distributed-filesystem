@@ -54,6 +54,11 @@ public class BackupInfo implements Serializable
         this.usedDiskSpace = usedDiskSpace;
     }
 
+    public String getPath()
+    {
+        return this.path;
+    }
+
     public BackupFileInfo getFile(String fileId) {
         for (BackupFileInfo file : files) {
             if (file.getHash().equals(fileId)) {
