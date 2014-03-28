@@ -35,7 +35,7 @@ public class Restore extends Injectable
         for(int i=0;i<numChunks;i++)
         {
 
-            GetChunk getchunk = new GetChunk(di, fileid, i);
+            GetChunk getchunk = new GetChunk(di, fileid, i+1);
             byte [] body = getchunk.run();
             out.write(body);
 

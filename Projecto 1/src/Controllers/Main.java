@@ -42,7 +42,8 @@ public class Main
         channels.setMDR(MDRaddress, MDRport);
         di.setChannels(channels);
 
-        String backupInfoPath = "S:\\serverfolder";
+       String backupInfoPath = "S:\\serverfolder";
+        //String backupInfoPath = "S:\\backups";
 
 
         // Chunk Manager
@@ -76,10 +77,12 @@ public class Main
         menu.readanswer();
 
         if (menu.isServer()) {
+            System.out.println("Im a server");
             chunkManager.setChunksPath("S:\\serverfolder");
             menu.show();
             menu.readoption();
         } else {
+            System.out.println("Im a peer");
             chunkManager.setChunksPath("S:\\backups");
         }
 
