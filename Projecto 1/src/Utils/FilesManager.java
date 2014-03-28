@@ -27,9 +27,9 @@ public class FilesManager
         return listOfFiles;
     }
 
-    public String generateHash(String basePath, File file) throws UnsupportedEncodingException
+    public String generateHash(File file) throws UnsupportedEncodingException
     {
-        String id = file.getPath().replace(basePath, "");
+        String id = file.getName();
 
         // Remove First '\'
         if (id.charAt(0) == '\\') {
@@ -82,7 +82,21 @@ public class FilesManager
         }
     }
 
-    public String saveChunks(File file) throws IOException {
+    public static boolean deleteDirectory(File path) {
+        if( path.exists() ) {
+            File[] files = path.listFiles();
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    deleteDirectory(file);
+                } else {
+                    file.delete();
+                }
+            }
+        }
+        return( path.delete() );
+    }
+
+    public File saveChunks(File file) throws IOException {
         String chunkPath = null;
         File chunksFolder = null;
 
@@ -114,9 +128,11 @@ public class FilesManager
 
         is.close();
 
+        // TODO: EOF
+
 
         // Return
-        return chunkPath;
+        return chunksFolder;
     }
 
     private boolean saveChunk(String path, int chunkNo, byte[] chunk) throws IOException {

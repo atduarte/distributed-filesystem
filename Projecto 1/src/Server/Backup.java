@@ -1,10 +1,15 @@
 package Server;
 
+import Peer.BackupFileInfo;
+import Peer.BackupInfo;
 import Peer.DependencyInjection;
 import Peer.Injectable;
+import Server.Protocol.PutChunk;
+import Utils.Constants;
 import Utils.FilesManager;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -21,7 +26,7 @@ public class Backup extends Injectable
         filesManager = new FilesManager();
     }
 
-    public void sendFolder(String path) throws IOException
+   /* public void sendFolder(String path) throws IOException
     {
         ArrayList<File> listOfFiles = filesManager.getFilesList(path);
 
@@ -31,16 +36,49 @@ public class Backup extends Injectable
 
         // TODO: Save Hashes
     }
-
-    public void sendFile(File file, String path) throws IOException
+*/
+    public void sendFile(File file, Integer replicationDegree) throws IOException
     {
-        String hash = filesManager.generateHash(path, file);
-        String chunksFolder = filesManager.saveChunks(file);
+        String hash = filesManager.generateHash(file);
+        File chunksFolder = filesManager.saveChunks(file);
 
-        // TODO: Envias a tua cena
+        if (chunksFolder == null || !chunksFolder.isDirectory()){
+            throw new IOException();
+        }
 
-        // TODO: Remove chunk folder
+        // Get Chunks List
+        File[] chunks = chunksFolder.listFiles();
+        if (chunks == null) {
+            throw new IOException();
+        }
 
-        // TODO: Save Hash
+        // Save Hash
+        BackupInfo backupInfo = di.getBackupInfo();
+        BackupFileInfo newFile = new BackupFileInfo();
+        newFile.setHash(hash);
+        newFile.setReplicationDegree(replicationDegree);
+        newFile.setName(file.getAbsolutePath());
+        backupInfo.addFile(newFile);
+
+        // Send Each Chunk
+        for (File chunk : chunks) {
+            if (chunk.isFile()) { //this line weeds out other directories/folders
+                FileInputStream is = new FileInputStream(file);
+
+                // Read File to Data
+                byte[] data = new byte[(int)file.length()];
+                is.read(data);
+                is.close();
+
+                // Send Chunk
+                Integer chunkNo = Integer.parseInt(chunk.getName());
+                PutChunk putChunk = new PutChunk(di, hash, chunkNo, replicationDegree, data);
+                putChunk.run();
+            }
+        }
+
+        // Remove chunk folder
+        FilesManager.deleteDirectory(chunksFolder);
+
     }
 }

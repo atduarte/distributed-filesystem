@@ -42,7 +42,7 @@ public class ChunkManager
         deleteDirectory(file);
     }
 
-
+    // TODO: Remover. Repliquei isto para o Files Manager como static, porque dá jeito
     private boolean deleteDirectory(File path) {
         if( path.exists() ) {
             File[] files = path.listFiles();
