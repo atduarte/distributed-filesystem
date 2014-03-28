@@ -63,10 +63,10 @@ public class Backup extends Injectable
         // Send Each Chunk
         for (File chunk : chunks) {
             if (chunk.isFile()) { //this line weeds out other directories/folders
-                FileInputStream is = new FileInputStream(file);
+                FileInputStream is = new FileInputStream(chunk);
 
                 // Read File to Data
-                byte[] data = new byte[(int)file.length()];
+                byte[] data = new byte[(int)chunk.length()];
                 is.read(data);
                 is.close();
 

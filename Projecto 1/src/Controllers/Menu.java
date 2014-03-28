@@ -1,13 +1,21 @@
 package Controllers;
 
+import Peer.DependencyInjection;
+import Peer.Injectable;
+import Server.Backup;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
  * Created by Sergio Esteves on 27/03/2014.
  */
-public class Menu {
+public class Menu extends Injectable
+{
 
-    Menu(){
+    public Menu(DependencyInjection di){
+        super(di);
         isServer=false;
         isPeer=false;
         exit=false;
@@ -62,7 +70,13 @@ public class Menu {
         Scanner in = new Scanner(System.in);
         op = in.nextInt();
         if(op==1) {
-            //TODO: CALL BACKUP
+            Backup backup = new Backup(di);
+            File file = new File("D:\\Teste\\1.txt");
+            try {
+                backup.sendFile(file, 1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         else if(op==2)
         {

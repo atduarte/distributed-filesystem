@@ -15,6 +15,9 @@ public class ChunkManager
     {
         chunksPath = _chunksPath;
     }
+    public void setChunksPath(String chunksPath) {
+        this.chunksPath = chunksPath;
+    }
 
     public boolean hasChunk(String fileId, Integer chunkNo)
     {

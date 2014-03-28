@@ -57,20 +57,22 @@ public class Main
         Reactor receiver = new Reactor(di);
         receiver.run();
 
-        Menu menu = new Menu();
+        Menu menu = new Menu(di);
         menu.ask();
 
         menu.readanswer();
-        if (menu.isServer()) {
-            chunksPath = "D:\\backups\\chunks_server";
-            while(!menu.isExit()) {
-                menu.show();
-                menu.readoption();
-            }
 
+        if (menu.isServer()) {
+            chunkManager.setChunksPath("D:\\backups\\chunks_server");
         } else {
-            chunksPath = "D:\\backups\\chunks_peer";
+            chunkManager.setChunksPath("D:\\backups\\chunks_server");
         }
+
+        while(!menu.isExit()) {
+            menu.show();
+            menu.readoption();
+        }
+
         System.out.println("André Duarte, Sérgio Esteves Version:"+ Constants.version);
     }
 }
