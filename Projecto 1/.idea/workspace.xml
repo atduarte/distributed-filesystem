@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/Peer/BackupInfo.java" line="95" />
+    <bookmark url="file://$PROJECT_DIR$/src/Peer/BackupInfo.java" line="106" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ded3c10e-75ca-4e3a-bcdf-d22a5dcef3d4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Peer/BackupInfo.java" afterPath="$PROJECT_DIR$/src/Peer/BackupInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Peer/ChunkManager.java" afterPath="$PROJECT_DIR$/src/Peer/ChunkManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/ReclaimSpace.java" afterPath="$PROJECT_DIR$/src/Server/ReclaimSpace.java" />
+    <list default="true" id="ded3c10e-75ca-4e3a-bcdf-d22a5dcef3d4" name="Default" comment="Reclaim Space Init&#10;">
+      <change type="DELETED" beforePath="D:\Projects\Universidade\SDIS\Projecto 1\src\Reactions\Delete.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Projects\Universidade\SDIS\Projecto 1\src\Reactions\GetChunk.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Projects\Universidade\SDIS\Projecto 1\src\Reactions\PutChunk.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Projects\Universidade\SDIS\Projecto 1\src\Reactions\Removed.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Projects\Universidade\SDIS\Projecto 1\src\Reactions\Stored.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Projects\Universidade\SDIS\Projecto 1\src\Server\Protocol\Delete.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Projects\Universidade\SDIS\Projecto 1\src\Server\Protocol\GetChunk.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Projects\Universidade\SDIS\Projecto 1\src\Server\Protocol\PutChunk.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Projects\Universidade\SDIS\Projecto 1\src\Server\Protocol\Removed.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SDIS_Proj1.iws" />
@@ -73,28 +79,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Backup.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Server/Backup.java">
+      <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controllers/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="0" selection-start="2308" selection-end="2308" vertical-scroll-proportion="0.0" vertical-offset="801" max-vertical-offset="1422">
+            <state line="78" column="59" selection-start="2239" selection-end="2239" vertical-scroll-proportion="0.22816901" vertical-offset="1143" max-vertical-offset="1530">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReclaimSpace.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Server/ReclaimSpace.java">
+      <file leaf-file-name="Restore.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Server/Restore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="16" selection-start="736" selection-end="736" vertical-scroll-proportion="0.7105263" vertical-offset="0" max-vertical-offset="612">
+            <state line="21" column="34" selection-start="434" selection-end="440" vertical-scroll-proportion="0.0" vertical-offset="188" max-vertical-offset="882">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BackupInfo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Peer/BackupInfo.java">
+      <file leaf-file-name="GetChunk.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Server/Protocol/Normal/GetChunk.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="43" selection-start="225" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1746">
+            <state line="34" column="21" selection-start="817" selection-end="820" vertical-scroll-proportion="0.0" vertical-offset="341" max-vertical-offset="1512">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MCReactor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Reactors/MCReactor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="36" selection-start="1385" selection-end="1385" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1170">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,48 +117,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChunkManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Peer/ChunkManager.java">
+      <file leaf-file-name="Menu.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controllers/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="26" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0" vertical-offset="9" max-vertical-offset="738">
-              <folding>
-                <element signature="method#ChunkManager#0;class#ChunkManager#0" expanded="false" />
-                <element signature="e#323#324#0" expanded="true" />
-                <element signature="e#356#357#0" expanded="true" />
-                <element signature="method#hasChunk#0;class#ChunkManager#0" expanded="false" />
-                <element signature="method#deleteRandomChunk#0;class#ChunkManager#0" expanded="false" />
-                <element signature="method#deleteChunk#0;class#ChunkManager#0" expanded="false" />
-                <element signature="method#deleteFile#0;class#ChunkManager#0" expanded="false" />
-                <element signature="method#deleteDirectory#0;class#ChunkManager#0" expanded="false" />
-                <element signature="method#addChunk#0;class#ChunkManager#0" expanded="false" />
-                <element signature="method#getChunk#0;class#ChunkManager#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PutChunk.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Reactions/Normal/PutChunk.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="8" selection-start="831" selection-end="864" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1782">
+            <state line="76" column="17" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.0" vertical-offset="854" max-vertical-offset="1818">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Removed.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Reactions/Normal/Removed.java">
+      <file leaf-file-name="GetChunk.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Reactions/Normal/GetChunk.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="59" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="1206">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Stored.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Reactions/Normal/Stored.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="59" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
+            <state line="53" column="0" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="1836">
               <folding />
             </state>
           </provider>
@@ -193,7 +179,6 @@
         <option value="$PROJECT_DIR$/src/Reactions/Stored.java" />
         <option value="$PROJECT_DIR$/src/Server/Protocol/GetChunk.java" />
         <option value="$PROJECT_DIR$/src/Server/Protocol/Removed.java" />
-        <option value="$PROJECT_DIR$/src/Reactions/GetChunk.java" />
         <option value="$PROJECT_DIR$/src/Reactions/PutChunk.java" />
         <option value="$PROJECT_DIR$/src/Server/Protocol/PutChunk.java" />
         <option value="$PROJECT_DIR$/src/Server/Protocol/Delete.java" />
@@ -207,7 +192,6 @@
         <option value="$PROJECT_DIR$/src/Reactors/MDBReactor.java" />
         <option value="$PROJECT_DIR$/src/Reactors/MCReactor.java" />
         <option value="$PROJECT_DIR$/src/Peer/BackupFileInfo.java" />
-        <option value="$PROJECT_DIR$/src/Controllers/Main.java" />
         <option value="$PROJECT_DIR$/src/Server/Backup.java" />
         <option value="$PROJECT_DIR$/src/Utils/FilesManager.java" />
         <option value="$PROJECT_DIR$/src/Utils/Constants.java" />
@@ -218,6 +202,8 @@
         <option value="$PROJECT_DIR$/src/Peer/BackupInfo.java" />
         <option value="$PROJECT_DIR$/src/Peer/ChunkManager.java" />
         <option value="$PROJECT_DIR$/src/Server/ReclaimSpace.java" />
+        <option value="$PROJECT_DIR$/src/Controllers/Main.java" />
+        <option value="$PROJECT_DIR$/src/Reactions/GetChunk.java" />
       </list>
     </option>
   </component>
@@ -667,18 +653,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32846716" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32766616" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4080371" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6321484" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41285715" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3251599" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32457495" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32302937" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -686,7 +672,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21815519" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41112828" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="265" width="1366" height="237" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41112828" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="265" width="1366" height="237" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -734,7 +720,6 @@
       <TodoPanelSettings />
     </option>
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
-    <MESSAGE value="PutChunk - Send Message" />
     <MESSAGE value="PutChunk ..." />
     <MESSAGE value="PutChunk++" />
     <MESSAGE value="Fuck This Shit!" />
@@ -759,7 +744,8 @@
     <MESSAGE value="BackupInfo Save" />
     <MESSAGE value="Enhancements Reactions" />
     <MESSAGE value="Backup Save Fixed + Message Matcher Fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Backup Save Fixed + Message Matcher Fixed" />
+    <MESSAGE value="Reclaim Space Init" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reclaim Space Init" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -769,20 +755,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Server/Backup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="9" selection-start="494" selection-end="494" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="714">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Peer/BackupFileInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="442">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Peer/BackupInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="5" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="425">
@@ -900,13 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/Protocol/Normal/GetChunk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="37" selection-start="2190" selection-end="2190" vertical-scroll-proportion="0.0" vertical-offset="1097" max-vertical-offset="1512">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/Protocol/Normal/Delete.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="37" selection-start="940" selection-end="940" vertical-scroll-proportion="0.458194" vertical-offset="284" max-vertical-offset="882">
@@ -1000,30 +965,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/Restore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="5" selection-start="211" selection-end="211" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="33" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="1674">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Peer/BackupFileInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="27" selection-start="120" selection-end="120" vertical-scroll-proportion="0.21052632" vertical-offset="0" max-vertical-offset="990">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="9" selection-start="2257" selection-end="2257" vertical-scroll-proportion="0.0" vertical-offset="891" max-vertical-offset="1512">
           <folding />
         </state>
       </provider>
@@ -1032,15 +976,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="115" column="23" selection-start="3099" selection-end="3099" vertical-scroll-proportion="0.5854342" vertical-offset="1807" max-vertical-offset="2664">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Reactors/MCReactor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1213" selection-end="1213" vertical-scroll-proportion="0.5072464" vertical-offset="351" max-vertical-offset="1170">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1058,44 +993,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Reactions/Normal/GetChunk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="59" selection-start="995" selection-end="995" vertical-scroll-proportion="0.6956522" vertical-offset="0" max-vertical-offset="1836">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Reactions/Normal/PutChunk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="8" selection-start="831" selection-end="864" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1782">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Reactions/Normal/Removed.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="59" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="1206">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Reactions/Normal/Stored.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="59" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/Backup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="0" selection-start="2308" selection-end="2308" vertical-scroll-proportion="0.0" vertical-offset="801" max-vertical-offset="1422">
+        <state line="82" column="0" selection-start="2308" selection-end="2308" vertical-scroll-proportion="1.1408451" vertical-offset="909" max-vertical-offset="1422">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/ReclaimSpace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="9" selection-start="659" selection-end="659" vertical-scroll-proportion="1.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Peer/BackupInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="43" selection-start="225" selection-end="259" vertical-scroll-proportion="0.55774647" vertical-offset="0" max-vertical-offset="1746">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Peer/ChunkManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="26" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0" vertical-offset="9" max-vertical-offset="738">
+        <state line="20" column="26" selection-start="351" selection-end="351" vertical-scroll-proportion="0.63380283" vertical-offset="9" max-vertical-offset="738">
           <folding>
             <element signature="method#ChunkManager#0;class#ChunkManager#0" expanded="false" />
             <element signature="e#323#324#0" expanded="true" />
@@ -1111,18 +1034,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Peer/BackupInfo.java">
+    <entry file="file://$PROJECT_DIR$/src/Reactions/Normal/PutChunk.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="43" selection-start="225" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1746">
+        <state line="32" column="8" selection-start="831" selection-end="864" vertical-scroll-proportion="0.4385965" vertical-offset="210" max-vertical-offset="1782">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Reactions/Normal/Removed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="59" selection-start="932" selection-end="932" vertical-scroll-proportion="1.0140845" vertical-offset="72" max-vertical-offset="1206">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Reactions/Normal/Stored.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="59" selection-start="841" selection-end="841" vertical-scroll-proportion="1.2169014" vertical-offset="0" max-vertical-offset="846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Reactors/MCReactor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="36" selection-start="1385" selection-end="1385" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1170">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/ReclaimSpace.java">
+    <entry file="file://$PROJECT_DIR$/src/Server/Protocol/Normal/GetChunk.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="16" selection-start="736" selection-end="736" vertical-scroll-proportion="0.7105263" vertical-offset="0" max-vertical-offset="612">
+        <state line="34" column="21" selection-start="817" selection-end="820" vertical-scroll-proportion="0.0" vertical-offset="341" max-vertical-offset="1512">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Reactions/Normal/GetChunk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="0" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="1836">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/Restore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="34" selection-start="434" selection-end="440" vertical-scroll-proportion="0.0" vertical-offset="188" max-vertical-offset="882">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="17" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.0" vertical-offset="854" max-vertical-offset="1818">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="59" selection-start="2239" selection-end="2239" vertical-scroll-proportion="0.22816901" vertical-offset="1143" max-vertical-offset="1530">
           <folding />
         </state>
       </provider>
