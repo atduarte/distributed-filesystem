@@ -12,7 +12,9 @@ import Server.Protocol.Removed;
 import Utils.Channels;
 import Utils.Constants;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.Random;
 
 /**
@@ -50,7 +52,20 @@ public class Main
         di.setChunkManager(chunkManager);
 
         // Backup Info
-        BackupInfo backupInfo = new BackupInfo(backupInfoPath);
+        BackupInfo backupInfo = null;
+        try
+        {
+            FileInputStream fileIn = new FileInputStream(backupInfoPath + "\\backupInfo.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            backupInfo = (BackupInfo) in.readObject();
+            in.close();
+            fileIn.close();
+            System.out.println("BackupInfo Loaded");
+        }catch(IOException i) {
+            backupInfo = new BackupInfo(backupInfoPath);
+        } catch (ClassNotFoundException e) {
+            backupInfo = new BackupInfo(backupInfoPath);
+        }
         di.setBackupInfo(backupInfo);
 
         // Run Receiver

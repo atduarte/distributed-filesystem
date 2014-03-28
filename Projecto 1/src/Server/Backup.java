@@ -34,7 +34,6 @@ public class Backup extends Injectable
             sendFile(listOfFiles.get(i), path);
         }
 
-        // TODO: Save Hashes
     }
 */
     public void sendFile(File file, Integer replicationDegree) throws IOException
@@ -59,6 +58,7 @@ public class Backup extends Injectable
         newFile.setReplicationDegree(replicationDegree);
         newFile.setName(file.getAbsolutePath());
         backupInfo.addFile(newFile);
+        backupInfo.save();
 
         // Send Each Chunk
         for (File chunk : chunks) {

@@ -1,11 +1,12 @@
 package Peer;
 
+import java.io.*;
 import java.util.ArrayList;
 
 /**
  * Created by atduarte on 13-03-2014.
  */
-public class BackupInfo
+public class BackupInfo implements Serializable
 {
     public String path;
     public ArrayList<BackupFileInfo> files;
@@ -45,6 +46,14 @@ public class BackupInfo
         return true;
     }
 
+    public Integer getUsedDiskSpace() {
+        return usedDiskSpace;
+    }
+
+    public void setUsedDiskSpace(Integer usedDiskSpace) {
+        this.usedDiskSpace = usedDiskSpace;
+    }
+
     public BackupFileInfo getFile(String fileId) {
         for (BackupFileInfo file : files) {
             if (file.getHash().equals(fileId)) {
@@ -67,7 +76,17 @@ public class BackupInfo
 
     public boolean save()
     {
-        // TODO
+        try
+        {
+            FileOutputStream fileOut = new FileOutputStream(path + "\\backupInfo.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(this);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved in " + path + "\\backupInfo.ser");
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
 
         return false;
     }

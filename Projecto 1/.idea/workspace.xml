@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/Peer/BackupInfo.java" line="71" />
+    <bookmark url="file://$PROJECT_DIR$/src/Peer/BackupInfo.java" line="90" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ded3c10e-75ca-4e3a-bcdf-d22a5dcef3d4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Backup.java" afterPath="$PROJECT_DIR$/src/Server/Backup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Peer/ChunkManager.java" afterPath="$PROJECT_DIR$/src/Peer/ChunkManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Peer/BackupInfo.java" afterPath="$PROJECT_DIR$/src/Peer/BackupInfo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controllers/Main.java" afterPath="$PROJECT_DIR$/src/Controllers/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controllers/Menu.java" afterPath="$PROJECT_DIR$/src/Controllers/Menu.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SDIS_Proj1.iws" />
@@ -77,8 +76,23 @@
       <file leaf-file-name="Backup.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Server/Backup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="36" selection-start="1891" selection-end="1891" vertical-scroll-proportion="0.26425856" vertical-offset="869" max-vertical-offset="1422">
+            <state line="60" column="26" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.85641026" vertical-offset="381" max-vertical-offset="1422">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BackupInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Peer/BackupInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="28" selection-start="1278" selection-end="1278" vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="1782">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1153#1154#0" expanded="true" />
+                <element signature="e#1189#1190#0" expanded="true" />
+                <element signature="e#1248#1249#0" expanded="true" />
+                <element signature="e#1298#1299#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -86,16 +100,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="31" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.0" vertical-offset="260" max-vertical-offset="1278">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PutChunk.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Server/Protocol/PutChunk.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="1320" selection-end="1320" vertical-scroll-proportion="0.0" vertical-offset="545" max-vertical-offset="1620">
+            <state line="67" column="9" selection-start="1998" selection-end="1998" vertical-scroll-proportion="0.0" vertical-offset="602" max-vertical-offset="1512">
               <folding />
             </state>
           </provider>
@@ -104,11 +109,8 @@
       <file leaf-file-name="ChunkManager.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Peer/ChunkManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="1" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1980">
-              <folding>
-                <element signature="e#333#334#0" expanded="true" />
-                <element signature="e#377#378#0" expanded="true" />
-              </folding>
+            <state line="10" column="1" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1944">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,10 +118,8 @@
       <file leaf-file-name="Menu.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="5" selection-start="401" selection-end="401" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1782">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="60" column="37" selection-start="1090" selection-end="1090" vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="1674">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -127,7 +127,7 @@
       <file leaf-file-name="FilesManager.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Utils/FilesManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="28" selection-start="3643" selection-end="3643" vertical-scroll-proportion="0.0" vertical-offset="1605" max-vertical-offset="2664">
+            <state line="134" column="28" selection-start="3643" selection-end="3643" vertical-scroll-proportion="0.0" vertical-offset="2412" max-vertical-offset="2718">
               <folding />
             </state>
           </provider>
@@ -174,7 +174,6 @@
         <option value="$PROJECT_DIR$/src/PeerProtocol/Delete.java" />
         <option value="$PROJECT_DIR$/src/PeerProtocol/GetChunk.java" />
         <option value="$PROJECT_DIR$/src/PeerProtocol/Removed.java" />
-        <option value="$PROJECT_DIR$/src/Peer/BackupInfo.java" />
         <option value="$PROJECT_DIR$/src/Controllers/DependencyInjector.java" />
         <option value="$PROJECT_DIR$/src/Controllers/DependencyInjection.java" />
         <option value="$PROJECT_DIR$/src/Controllers/Injectable.java" />
@@ -199,6 +198,7 @@
         <option value="$PROJECT_DIR$/src/Reactors/MCReactor.java" />
         <option value="$PROJECT_DIR$/src/Utils/FilesManager.java" />
         <option value="$PROJECT_DIR$/src/Peer/ChunkManager.java" />
+        <option value="$PROJECT_DIR$/src/Peer/BackupInfo.java" />
         <option value="$PROJECT_DIR$/src/Controllers/Menu.java" />
         <option value="$PROJECT_DIR$/src/Controllers/Main.java" />
         <option value="$PROJECT_DIR$/src/Server/Backup.java" />
@@ -209,8 +209,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -238,6 +238,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -389,7 +390,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -483,9 +483,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -504,6 +501,9 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
@@ -575,33 +575,33 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32846716" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40811965" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40811965" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41285715" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258547" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3251599" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32371795" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21033014" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29833838" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4113248" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="265" width="1366" height="237" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -609,14 +609,14 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40865386" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40811965" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41285715" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258547" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3251599" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32371795" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -625,9 +625,9 @@
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21033014" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41185898" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="265" width="1366" height="237" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4113248" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="265" width="1366" height="237" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -643,7 +643,6 @@
       <TodoPanelSettings />
     </option>
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
-    <MESSAGE value="RequestInterpreter + Main + BackupInfo" />
     <MESSAGE value="Removed" />
     <MESSAGE value="Reactor" />
     <MESSAGE value="ReclaimSPace" />
@@ -668,7 +667,8 @@
     <MESSAGE value="All Tested" />
     <MESSAGE value="Backup" />
     <MESSAGE value="EOF&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="EOF&#10;" />
+    <MESSAGE value="Backup Reviewed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Backup Reviewed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -678,13 +678,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="8" selection-start="267" selection-end="751" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="646">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Reactions/GetChunk.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="21" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="221">
@@ -732,7 +725,13 @@
     <entry file="file://$PROJECT_DIR$/src/Peer/BackupInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="5" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="425">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
+            <element signature="e#1189#1190#0" expanded="true" />
+            <element signature="e#1248#1249#0" expanded="true" />
+            <element signature="e#1298#1299#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -798,13 +797,6 @@
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/lang/Integer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="51" column="19" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.33226836" vertical-offset="296" max-vertical-offset="22086">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Peer/BackupInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="17" selection-start="760" selection-end="760" vertical-scroll-proportion="0.0" vertical-offset="37" max-vertical-offset="1440">
           <folding />
         </state>
       </provider>
@@ -978,9 +970,7 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/lang/System.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="489" column="30" selection-start="19310" selection-end="19310" vertical-scroll-proportion="0.510989" vertical-offset="7599" max-vertical-offset="21168">
-          <folding />
-        </state>
+        <state line="489" column="30" selection-start="19310" selection-end="19310" vertical-scroll-proportion="0.510989" vertical-offset="7599" max-vertical-offset="21168" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Utils/FilesManager.java">
@@ -990,42 +980,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Peer/ChunkManager.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/io/Serializable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="1" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1980">
-          <folding>
-            <element signature="e#333#334#0" expanded="true" />
-            <element signature="e#377#378#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="5" selection-start="401" selection-end="401" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1782">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="31" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.0" vertical-offset="260" max-vertical-offset="1278">
+        <state line="164" column="27" selection-start="7509" selection-end="7509" vertical-scroll-proportion="0.0" vertical-offset="2229" max-vertical-offset="2754">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/Protocol/PutChunk.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1320" selection-end="1320" vertical-scroll-proportion="0.0" vertical-offset="545" max-vertical-offset="1620">
+        <state line="49" column="0" selection-start="1320" selection-end="1320" vertical-scroll-proportion="0.010989011" vertical-offset="710" max-vertical-offset="1620">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Peer/BackupInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="28" selection-start="1278" selection-end="1278" vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="1782">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
+            <element signature="e#1189#1190#0" expanded="true" />
+            <element signature="e#1248#1249#0" expanded="true" />
+            <element signature="e#1298#1299#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="37" selection-start="1090" selection-end="1090" vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="1674">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Peer/ChunkManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="1" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1980">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="9" selection-start="1998" selection-end="1998" vertical-scroll-proportion="0.0" vertical-offset="602" max-vertical-offset="1512">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/Backup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="36" selection-start="1891" selection-end="1891" vertical-scroll-proportion="0.26425856" vertical-offset="869" max-vertical-offset="1422">
+        <state line="60" column="26" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.85641026" vertical-offset="381" max-vertical-offset="1422">
           <folding />
         </state>
       </provider>
