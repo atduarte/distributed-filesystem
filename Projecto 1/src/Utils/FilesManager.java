@@ -117,19 +117,19 @@ public class FilesManager
         int chunkLen = 0;
 
         while ((chunkLen = is.read(chunk)) != -1) {
-            saveChunk(chunkPath, chunkNo, chunk);
+            byte[] tmpChunk = new byte[chunkLen];
+            System.arraycopy(chunk, 0, tmpChunk, 0, chunkLen);
+            saveChunk(chunkPath, chunkNo, tmpChunk);
             chunkNo++;
         }
 
-        // Save last Chunk
+        // Save extra Chunk if last has the exact size
         if (chunkLen == Constants.chunkSize) {
-           saveChunk(chunkPath, chunkNo, chunk);
+            chunk = new byte[0];
+            saveChunk(chunkPath, chunkNo, chunk);
         }
 
         is.close();
-
-        // TODO: EOF
-
 
         // Return
         return chunksFolder;

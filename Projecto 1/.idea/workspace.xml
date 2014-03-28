@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ded3c10e-75ca-4e3a-bcdf-d22a5dcef3d4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/Backup.java" afterPath="$PROJECT_DIR$/src/Server/Backup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Peer/ChunkManager.java" afterPath="$PROJECT_DIR$/src/Peer/ChunkManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utils/FilesManager.java" afterPath="$PROJECT_DIR$/src/Utils/FilesManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -73,10 +71,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Backup.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Backup.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server/Backup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="51" selection-start="1370" selection-end="1413" vertical-scroll-proportion="0.54405284" vertical-offset="298" max-vertical-offset="1422">
+            <state line="42" column="47" selection-start="1059" selection-end="1059" vertical-scroll-proportion="-130.0" vertical-offset="298" max-vertical-offset="1422">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FilesManager.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Utils/FilesManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="134" column="28" selection-start="3643" selection-end="3643" vertical-scroll-proportion="0.8274725" vertical-offset="1605" max-vertical-offset="2664">
               <folding />
             </state>
           </provider>
@@ -536,6 +543,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41285715" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258547" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32371795" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -547,7 +555,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32371795" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -616,7 +623,8 @@
     <MESSAGE value="Removed Fix&#10;" />
     <MESSAGE value="New Separator" />
     <MESSAGE value="All Tested" />
-    <option name="LAST_COMMIT_MESSAGE" value="All Tested" />
+    <MESSAGE value="Backup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Backup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -626,13 +634,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Reactions/Delete.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="5" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="8" selection-start="267" selection-end="751" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="646">
@@ -959,16 +960,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Utils/FilesManager.java">
+    <entry file="file://$PROJECT_DIR$/src/Server/Backup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="20" selection-start="3439" selection-end="3439" vertical-scroll-proportion="0.8303985" vertical-offset="2660" max-vertical-offset="4144">
+        <state line="42" column="47" selection-start="1059" selection-end="1059" vertical-scroll-proportion="-130.0" vertical-offset="298" max-vertical-offset="1422">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/Backup.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/lang/System.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="51" selection-start="1370" selection-end="1413" vertical-scroll-proportion="0.54405284" vertical-offset="298" max-vertical-offset="1422">
+        <state line="489" column="30" selection-start="19310" selection-end="19310" vertical-scroll-proportion="0.510989" vertical-offset="7599" max-vertical-offset="21168">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Utils/FilesManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="134" column="28" selection-start="3643" selection-end="3643" vertical-scroll-proportion="0.8274725" vertical-offset="1605" max-vertical-offset="2664">
           <folding />
         </state>
       </provider>
