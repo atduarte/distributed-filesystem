@@ -2,20 +2,14 @@ package Controllers;
 
 import Peer.ChunkManager;
 import Peer.DependencyInjection;
-import Server.Protocol.Delete;
-import Server.Protocol.GetChunk;
 import Reactors.Reactor;
-import Peer.BackupFileInfo;
 import Peer.BackupInfo;
-import Server.Protocol.PutChunk;
-import Server.Protocol.Removed;
 import Utils.Channels;
 import Utils.Constants;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.Random;
 
 /**
  * Created by atduarte on 13-03-2014.

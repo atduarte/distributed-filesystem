@@ -1,7 +1,7 @@
-package Reactions;
+package Reactions.Normal;
 
-import Peer.ChunkManager;
 import Peer.DependencyInjection;
+import Reactions.Reaction;
 import Utils.Constants;
 
 import java.util.regex.Matcher;

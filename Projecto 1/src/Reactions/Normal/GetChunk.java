@@ -1,7 +1,8 @@
-package Reactions;
+package Reactions.Normal;
 
 import Peer.DependencyInjection;
 import Peer.ChunkManager;
+import Reactions.Reaction;
 import Utils.Channels;
 import Utils.Constants;
 
@@ -17,7 +18,7 @@ public class GetChunk extends Reaction
 {
     final public static Pattern pattern = Pattern.compile(
             "^GETCHUNK " +
-            Constants.patternVersion + " " +
+            Constants.version + " " +
             Constants.patternFileId + " " +
             Constants.patternChunkNo
     );

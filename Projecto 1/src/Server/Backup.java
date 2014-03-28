@@ -4,14 +4,12 @@ import Peer.BackupFileInfo;
 import Peer.BackupInfo;
 import Peer.DependencyInjection;
 import Peer.Injectable;
-import Server.Protocol.PutChunk;
-import Utils.Constants;
+import Server.Protocol.Normal.PutChunk;
 import Utils.FilesManager;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by atduarte on 13-03-2014.

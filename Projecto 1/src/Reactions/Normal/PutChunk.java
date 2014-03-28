@@ -1,7 +1,8 @@
-package Reactions;
+package Reactions.Normal;
 
 import Peer.DependencyInjection;
 import Peer.ChunkManager;
+import Reactions.Reaction;
 import Utils.Channels;
 import Utils.Constants;
 
@@ -20,7 +21,7 @@ public class PutChunk extends Reaction
 {
     final public static Pattern pattern = Pattern.compile(
             "^PUTCHUNK " +
-            Constants.patternVersion  + " " +
+            Constants.version  + " " +
             Constants.patternFileId  + " " +
             Constants.patternChunkNo  + " " +
             Constants.patternReplicationDeg

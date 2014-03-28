@@ -1,8 +1,10 @@
-package Reactions;
+package Reactions.Normal;
 
 import Peer.BackupFileInfo;
 import Peer.DependencyInjection;
-import Server.Protocol.*;
+import Reactions.Reaction;
+import Server.Protocol.Normal.GetChunk;
+import Server.Protocol.Normal.PutChunk;
 import Utils.Constants;
 
 import java.io.IOException;
@@ -13,7 +15,7 @@ public class Removed extends Reaction
 {
     final public static Pattern pattern = Pattern.compile(
             "^REMOVED "
-            + Constants.patternVersion + " "
+            + Constants.version + " "
             + Constants.patternFileId + " "
             + Constants.patternChunkNo
     );
@@ -46,12 +48,14 @@ public class Removed extends Reaction
             BackupFileInfo file = di.getBackupInfo().getFile(fileId);
             if(file.getRealReplicationDegree(chunkNo)< file.getReplicationDegree())
             {
+                // TODO: Random Delay 0 - 400ms
+
                 // Get Body
                 // TODO: E se nao houver na rede?
-                Server.Protocol.GetChunk getChunk = new Server.Protocol.GetChunk(di, fileId, chunkNo);
+                Server.Protocol.Normal.GetChunk getChunk = new GetChunk(di, fileId, chunkNo);
                 byte[] data = getChunk.run();
 
-                Server.Protocol.PutChunk putChunk = new Server.Protocol.PutChunk(di, fileId, chunkNo, file.getReplicationDegree(), data);
+                PutChunk putChunk = new PutChunk(di, fileId, chunkNo, file.getReplicationDegree(), data);
                 try {
                     putChunk.run();
                 } catch (IOException e) {

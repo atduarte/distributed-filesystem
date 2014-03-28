@@ -1,10 +1,8 @@
 package Reactors;
 
 import Peer.DependencyInjection;
-import Reactions.Delete;
-import Reactions.GetChunk;
-import Reactions.Removed;
-import Reactions.Stored;
+import Reactions.*;
+import Reactions.Normal.Delete;
 import Utils.Channels;
 
 /**
@@ -20,25 +18,42 @@ public class MCReactor extends ChannelReactor
         this.port = channels.getMC().getPort();
 	}
 
-	protected void processMessage(byte[] data, String message) {
-        if(Delete.pattern.matcher(message).find()) {
+	protected void processMessage(byte[] data, String message)
+    {
+        // Enhancements
+        if (Reactions.Enhanced.GetChunk.pattern.matcher(message).find()) {
+            System.out.println("MCReceived: Enhanced GetChunk");
+
+        } else if(Reactions.Enhanced.Stored.pattern.matcher(message).find()) {
+            System.out.println("MCReceived: Enhanced Stored");
+
+        } else if(Reactions.Enhanced.Removed.pattern.matcher(message).find()) {
+            System.out.println("MCReceived: Enhanced Removed");
+
+        // Normal
+        } else if(Reactions.Normal.Delete.pattern.matcher(message).find()) {
             System.out.println("MDBReceived: Delete");
-            Delete thread = new Delete(di, data);
+            Reactions.Normal.Delete thread = new Reactions.Normal.Delete(di, data);
             thread.start();
-        } else if(GetChunk.pattern.matcher(message).find()) {
-			System.out.println("MCReceived: GetChunk");
-		    GetChunk thread = new GetChunk(di, data);
-		    thread.start();
-		} else if(Stored.pattern.matcher(message).find()) {
-			System.out.println("MCReceived: Stored");
-		    Stored thread = new Stored(di, data);
-		    thread.start();
-		} else if(Removed.pattern.matcher(message).find()) {
-			System.out.println("MCReceived: Removed");
-		    Removed thread = new Removed(di, data);
-		    thread.start();
-		} else {
-		    System.out.println("Error on MCReactor: " + message);
-		}
+
+        } else if(Reactions.Normal.GetChunk.pattern.matcher(message).find()) {
+            System.out.println("MCReceived: GetChunk");
+            Reactions.Normal.GetChunk thread = new Reactions.Normal.GetChunk(di, data);
+            thread.start();
+
+        } else if(Reactions.Normal.Stored.pattern.matcher(message).find()) {
+            System.out.println("MCReceived: Stored");
+            Reactions.Normal.Stored thread = new Reactions.Normal.Stored(di, data);
+            thread.start();
+
+        } else if(Reactions.Normal.Removed.pattern.matcher(message).find()) {
+            System.out.println("MCReceived: Removed");
+            Reactions.Normal.Removed thread = new Reactions.Normal.Removed(di, data);
+            thread.start();
+
+        // Error
+        } else {
+            System.out.println("Error on MCReactor: " + message);
+        }
 	}
 }

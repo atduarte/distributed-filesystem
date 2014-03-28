@@ -1,4 +1,4 @@
-package Server.Protocol;
+package Server.Protocol.Normal;
 
 import Peer.DependencyInjection;
 import Peer.Injectable;

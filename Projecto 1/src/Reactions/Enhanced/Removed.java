@@ -1,22 +1,26 @@
-package Reactions;
+package Reactions.Enhanced;
 
+import Peer.BackupFileInfo;
 import Peer.DependencyInjection;
-import Peer.BackupInfo;
+import Reactions.Reaction;
+import Server.Protocol.Normal.GetChunk;
+import Server.Protocol.Normal.PutChunk;
 import Utils.Constants;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Stored extends Reaction
+public class Removed extends Reaction
 {
     final public static Pattern pattern = Pattern.compile(
-            "^STORED "
-            + Constants.patternVersion + " "
+            "^REMOVED "
+            + Constants.enhancedVersion + " "
             + Constants.patternFileId + " "
             + Constants.patternChunkNo
     );
 
-    public Stored(DependencyInjection di, byte[] data) {
+    public Removed(DependencyInjection di, byte[] data) {
         super(di, data);
     }
 
@@ -33,14 +37,6 @@ public class Stored extends Reaction
 
     public void run()
     {
-        BackupInfo backupInfo = di.getBackupInfo();
-
-        // Check it's ours
-        if (!backupInfo.isMine(this.fileId))
-            return;
-
-        backupInfo.incrementRealRepDegree(this.fileId, this.chunkNo);
-
-        System.out.println("Someone Stored our Chunk");
+        // ...
     }
 }
