@@ -88,16 +88,17 @@ public class Main
 
 
         // Run Receiver
-        /*Reactor receiver = new Reactor(di);
-        receiver.run();*/
+        Reactor receiver = new Reactor(di);
+        receiver.run();
 
-        ReclaimSpace n1 = new ReclaimSpace(di);
+       /* ReclaimSpace n1 = new ReclaimSpace(di);
         System.out.println(n1.getFolderSize(new File("S:\\serverfolder")));
+        n1.run();*/
 
-        /*// Menu Options
+        // Menu Options
         while (true) {
             menu.show();
             menu.readOption();
-        }*/
+        }
     }
 }

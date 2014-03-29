@@ -1,11 +1,14 @@
 package Peer;
 
+import Server.Protocol.Normal.Delete;
+import Server.Protocol.Normal.Removed;
 import Utils.Constants;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Random;
 
 public class ChunkManager
 {
@@ -37,9 +40,27 @@ public class ChunkManager
         return saveChunk.exists();
     }
 
-    public void deleteRandomChunk()
+    public File deleteRandomChunk()
     {
-        // TODO
+        return deleteRandomChunkAux(new File(chunksPath));
+    }
+
+    public File deleteRandomChunkAux(File folder)
+    {
+        int i = folder.listFiles().length;
+
+        Random rn = new Random();
+        int n = i;
+        int fileorder = rn.nextInt() % n;
+
+        for(int j=0;j<i;j++) {
+            if(j==fileorder) {
+                int auxi = folder.listFiles()[i].listFiles().length;
+                int chunkorder = rn.nextInt() % auxi;
+                return folder.listFiles()[i].listFiles()[chunkorder];
+
+            }
+        }
     }
 
     public void deleteChunk(String fileId, Integer chunkNo) {
