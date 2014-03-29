@@ -92,8 +92,13 @@ public class BackupInfo implements Serializable
 
     public boolean save()
     {
-        try
-        {
+        // Create Dir if doesn't exist
+        File folder = new File(path);
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+
+        try {
             FileOutputStream fileOut = new FileOutputStream(path + "\\backupInfo.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(this);

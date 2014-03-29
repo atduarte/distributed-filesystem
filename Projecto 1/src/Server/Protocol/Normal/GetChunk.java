@@ -54,7 +54,6 @@ public class GetChunk extends Injectable
 
         DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
         socket.send(packet);
-
         return true;
     }
 
@@ -76,7 +75,10 @@ public class GetChunk extends Injectable
         System.out.println("Received one packet");
         if(Constants.getNElementFromMessage(message,2).equals(fileId) && Constants.getNElementFromMessage(message,3).equals(chunkNo.toString())) {
             System.out.println("GetChunk: Correct packet");
-            return Constants.getBodyFromMessage(packet.getData());
+
+            byte[] data = new byte[packet.getLength()];
+            System.arraycopy(packet.getData(), 0, data, 0, packet.getLength());
+            return Constants.getBodyFromMessage(data);
         } else {
             System.out.println("GetChunk: Wrong packet");
             return receive();

@@ -15,10 +15,27 @@ public class Constants {
 
     public static byte[] getBodyFromMessage(byte[] message)
     {
-        String sMessage = new String(message);
-        String separator = Constants.separator;
-        int i = sMessage.indexOf(separator) + separator.length();
-        return sMessage.substring(i, (i-1)+chunkSize).getBytes();
+        int i = 0;
+        int j = 0;
+        for(; j < message.length; j++) {
+            byte character = message[j];
+
+            if ((i == 0 || i == 2) && character == '\r') {
+                i++;
+            } else if ((i == 1 || i == 3) && character == '\n') {
+                i++;
+            } else {
+                i = 0;
+            }
+
+            if (i == 4)
+                break;
+        }
+
+        byte[] body = new byte[message.length-j-1];
+        System.arraycopy(message, j+1, body, 0, body.length);
+
+        return body;
     }
 
 

@@ -14,6 +14,11 @@ public class ChunkManager
     public ChunkManager(String _chunksPath)
     {
         chunksPath = _chunksPath;
+
+        File dir = new File(chunksPath);
+        if(!dir.exists()) {
+            dir.mkdirs();
+        }
     }
 
     public String getChunksPath()
@@ -76,7 +81,7 @@ public class ChunkManager
         File saveDir = new File(personalChunksPath);
 
         if(!saveDir.exists()) {
-            saveDir.mkdir();
+            saveDir.mkdirs();
         }
 
         Path path = Paths.get(personalChunksPath + File.separator + chunkNo);

@@ -1,6 +1,5 @@
 package Controllers;
 
-import Peer.BackupFileInfo;
 import Peer.ChunkManager;
 import Peer.DependencyInjection;
 import Reactors.Reactor;
@@ -29,11 +28,19 @@ public class Main
         String MDRaddress = "239.0.0.1";
         Integer MDRport = 8767;
 
-        String chunksPath = null;
+        String chunksPathServer = "D:\\backups\\server\\chunks";
+        String chunksPathPeer = "D:\\backups\\peer\\chunks";
 
+        String backupInfoPathServer = "D:\\backups\\server\\info";
+        String backupInfoPathPeer = "D:\\backups\\peer\\info";
 
         // Dependency Injection
         DependencyInjection di = new DependencyInjection();
+
+        // Menu
+        Menu menu = new Menu(di);
+        menu.ask();
+        menu.readanswer();
 
         // Channels
         Channels channels = new Channels();
@@ -42,51 +49,50 @@ public class Main
         channels.setMDR(MDRaddress, MDRport);
         di.setChannels(channels);
 
-       String backupInfoPath = "S:\\serverfolder";
-        //String backupInfoPath = "S:\\backups";
-
-
         // Chunk Manager
+        String chunksPath = null;
+        if (menu.isServer()) {
+            chunksPath = chunksPathServer;
+        } else {
+            chunksPath = chunksPathPeer;
+        }
         ChunkManager chunkManager = new ChunkManager(chunksPath);
         di.setChunkManager(chunkManager);
 
         // Backup Info
+
         BackupInfo backupInfo = null;
-        try
-        {
+        String backupInfoPath = null;
+
+        if (menu.isServer()) {
+            backupInfoPath = backupInfoPathServer;
+        } else {
+            backupInfoPath = backupInfoPathPeer;
+        }
+
+        try {
             FileInputStream fileIn = new FileInputStream(backupInfoPath + "\\backupInfo.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             backupInfo = (BackupInfo) in.readObject();
             in.close();
             fileIn.close();
             System.out.println("BackupInfo Loaded");
-        }catch(IOException i) {
+        } catch(IOException i) {
             backupInfo = new BackupInfo(backupInfoPath);
         } catch (ClassNotFoundException e) {
             backupInfo = new BackupInfo(backupInfoPath);
         }
         di.setBackupInfo(backupInfo);
 
+
         // Run Receiver
         Reactor receiver = new Reactor(di);
         receiver.run();
 
-        Menu menu = new Menu(di);
-        menu.ask();
-
-        menu.readanswer();
-
-        if (menu.isServer()) {
-            System.out.println("Im a server");
-            chunkManager.setChunksPath("S:\\serverfolder");
+        // Menu Options
+        while (true) {
             menu.show();
-            menu.readoption();
-        } else {
-            System.out.println("Im a peer");
-            chunkManager.setChunksPath("S:\\backups");
+            menu.readOption();
         }
-
-
-
     }
 }

@@ -66,14 +66,14 @@ public class Menu extends Injectable
         System.out.println("1-Server");
         System.out.println("2-Peer");
     }
-    public void readoption()
+    public void readOption()
     {
         Scanner in = new Scanner(System.in);
         op = in.nextInt();
         if(op==1) {
             Backup backup = new Backup(di);
 
-            File file = new File("S:\\serverfolder\\1.txt");
+            File file = new File("D:\\Teste\\1.txt");
             try {
                 backup.sendFile(file, 1);
             } catch (IOException e) {
@@ -83,7 +83,7 @@ public class Menu extends Injectable
         else if(op==2)
         {
             Restore restore = new Restore(di);
-            String s = new String("S:\\serverfolder\\1.txt");
+            String s = "D:\\Teste\\1.txt";
             //String path = new String("S:\\backups");
             try {
                 restore.receiveFile(s);
