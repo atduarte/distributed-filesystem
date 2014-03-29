@@ -4,9 +4,11 @@ import Peer.ChunkManager;
 import Peer.DependencyInjection;
 import Reactors.Reactor;
 import Peer.BackupInfo;
+import Server.ReclaimSpace;
 import Utils.Channels;
 import Utils.Constants;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -86,13 +88,16 @@ public class Main
 
 
         // Run Receiver
-        Reactor receiver = new Reactor(di);
-        receiver.run();
+        /*Reactor receiver = new Reactor(di);
+        receiver.run();*/
 
-        // Menu Options
+        ReclaimSpace n1 = new ReclaimSpace(di);
+        System.out.println(n1.getFolderSize(new File("S:\\serverfolder")));
+
+        /*// Menu Options
         while (true) {
             menu.show();
             menu.readOption();
-        }
+        }*/
     }
 }

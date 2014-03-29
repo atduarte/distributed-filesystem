@@ -25,8 +25,9 @@ public class ReclaimSpace extends Injectable
         }
     }
 
-    private long getFolderSize(File folder)
+    public long getFolderSize(File folder)
     {
+
         long size = 0;
         for (File file : folder.listFiles()) {
             if (file.isFile()) {
