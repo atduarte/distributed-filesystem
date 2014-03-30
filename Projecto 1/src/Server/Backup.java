@@ -54,7 +54,6 @@ public class Backup extends Injectable
         BackupInfo backupInfo = di.getBackupInfo();
         BackupFileInfo newFile = new BackupFileInfo();
         newFile.setHash(hash);
-        newFile.setReplicationDegree(replicationDegree);
         newFile.setName(file.getAbsolutePath());
         newFile.setNumChunks(file.length());
 

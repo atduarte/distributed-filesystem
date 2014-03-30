@@ -12,8 +12,6 @@ public class BackupFileInfo implements Serializable
     private int chunkNo;
     private String name;
     private String hash;
-    private Integer replicationDegree;
-    private Map<Integer, Integer> realReplicationDegree = new HashMap<Integer, Integer>();
     private boolean receiving = false;
 
     public String getName() {
@@ -31,7 +29,7 @@ public class BackupFileInfo implements Serializable
     public void setHash(String hash) {
         this.hash = hash;
     }
-
+/*
     public Integer getReplicationDegree() {
         return replicationDegree;
     }
@@ -73,7 +71,7 @@ public class BackupFileInfo implements Serializable
             realReplicationDegree.put(chunkNo, newValue);
         }
     }
-
+*/
     public void setNumChunks(long tam) {
         chunkNo = (int)Math.ceil(tam/(Constants.chunkSize*1.0));
     }

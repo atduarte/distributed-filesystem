@@ -32,6 +32,7 @@ public class Delete extends Reaction
 
     public void run()
     {
+        di.getChunksInfo().deleteFile(fileId);
         di.getChunkManager().deleteFile(fileId);
     }
 }

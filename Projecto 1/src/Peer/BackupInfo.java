@@ -3,9 +3,7 @@ package Peer;
 import java.io.*;
 import java.util.ArrayList;
 
-/**
- * Created by atduarte on 13-03-2014.
- */
+
 public class BackupInfo implements Serializable
 {
     public String path;
@@ -15,9 +13,6 @@ public class BackupInfo implements Serializable
     public BackupInfo(String path) {
         this.path = path;
         files = new ArrayList<BackupFileInfo>();
-
-        // TODO: Unserialize Data from path
-        // TODO: If Data doesn't exist create
     }
 
     public void addFile(BackupFileInfo newFile)
@@ -34,7 +29,7 @@ public class BackupInfo implements Serializable
         // Add
         files.add(newFile);
     }
-
+/*
     public boolean incrementRealRepDegree(String fileId, Integer chunkNo) {
         BackupFileInfo file = this.getFile(fileId);
 
@@ -46,7 +41,7 @@ public class BackupInfo implements Serializable
 
         return true;
     }
-
+*/
     public Integer getUsedDiskSpace() {
         return usedDiskSpace;
     }
@@ -69,7 +64,6 @@ public class BackupInfo implements Serializable
 
         return null;
     }
-
 
     public BackupFileInfo getFilebyName(String name) {
         for (BackupFileInfo file : files) {

@@ -84,7 +84,7 @@ public class GetChunk extends Reaction
                 System.out.println("Dont send Chunk. Someone already sent.");
                 return;
             }
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
 
         // Send

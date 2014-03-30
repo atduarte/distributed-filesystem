@@ -1,13 +1,13 @@
 package Reactions.Normal;
 
-import Peer.BackupFileInfo;
-import Peer.DependencyInjection;
+import Peer.*;
 import Reactions.Reaction;
 import Server.Protocol.Normal.GetChunk;
 import Server.Protocol.Normal.PutChunk;
 import Utils.Constants;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,38 +37,33 @@ public class Removed extends Reaction
 
     public void run()
     {
-        // Verificar se é meu
-        if (di.getBackupInfo().isMine(fileId)) {
-            // Diminuir replication degree
-            di.getBackupInfo().getFile(fileId).decrementRealReplicationDegree(chunkNo);
+        // Decrement Local Count
+        ChunksInfo chunksInfo = di.getChunksInfo();
+        ChunkInfo chunkInfo = chunksInfo.getChunk(fileId, chunkNo);
+        chunkInfo.realRepDegree--;
 
-            System.out.println("PROCESSED Removed");
+        ChunkManager chunkManager = di.getChunkManager();
+        if (chunkManager.hasChunk(fileId, chunkNo) && chunkInfo.realRepDegree < chunkInfo.repDegree) {
+            chunkInfo.startPutChunk = true;
+            byte[] chunk = chunkManager.getChunk(fileId, chunkNo);
 
-            // Verificar replication degree
-            BackupFileInfo file = di.getBackupInfo().getFile(fileId);
-            if(file.getRealReplicationDegree(chunkNo)< file.getReplicationDegree())
-            {
-                // TODO: Random Delay 0 - 400ms
+            // Wait Random Delay
+            int randWait = (new Random()).nextInt(400);
+            try {
+                Thread.sleep(randWait);
+            } catch (InterruptedException ignored) {
+            }
 
-                // Get Body
-                Server.Protocol.Normal.GetChunk getChunk = new GetChunk(di, fileId, chunkNo);
-                byte[] data = null;
-                try {
-                    data = getChunk.run();
-                } catch (IOException e) {
-                    return;
-                }
-
-                PutChunk putChunk = new PutChunk(di, fileId, chunkNo, file.getReplicationDegree(), data);
+            if (chunkInfo.startPutChunk) {
+                PutChunk putChunk = new PutChunk(di, fileId, chunkNo, chunkInfo.repDegree, chunk);
                 try {
                     putChunk.run();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            } else {
+                return;
             }
-
         }
-
-
     }
 }

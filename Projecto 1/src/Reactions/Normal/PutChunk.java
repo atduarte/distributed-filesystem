@@ -1,5 +1,7 @@
 package Reactions.Normal;
 
+import Peer.ChunkInfo;
+import Peer.ChunksInfo;
 import Peer.DependencyInjection;
 import Peer.ChunkManager;
 import Reactions.Reaction;
@@ -53,20 +55,38 @@ public class PutChunk extends Reaction
     		return;
     	}
 
-        // Check I dont't have it already
-        ChunkManager chunkManager = di.getChunkManager();
-        if (chunkManager.hasChunk(fileId, chunkNo)) {
-            chunkManager.deleteChunk(fileId, chunkNo);
+
+        // Reset Real Replication Degree
+        // && Stop Possible Removed-Reactions Waiting
+        ChunksInfo chunksInfo = di.getChunksInfo();
+        chunksInfo.resetChunk(fileId, chunkNo, replicationDegree);
+
+        // Wait Random Delay
+        int randWait = (new Random()).nextInt(400);
+        try {
+            Thread.sleep(randWait);
+        } catch (InterruptedException ignored) {
+        }
+
+        // Check if it's necessary to store
+        ChunkInfo chunkInfo = chunksInfo.getChunk(fileId, chunkNo);
+        if (chunkInfo.realRepDegree >= replicationDegree) {
+            return;
         }
 
         // Store
+        ChunkManager chunkManager = di.getChunkManager();
         try {
+            chunkManager.deleteChunk(fileId, chunkNo);
             chunkManager.addChunk(fileId, chunkNo, body);
         } catch (IOException e) {
             return;
         }
 
+        //
         // Send STORED Message
+        //
+
         String sMessage = "STORED " + this.version + " " + this.fileId + " " + this.chunkNo + Constants.separator;
         byte[] message = sMessage.getBytes();
 
@@ -91,14 +111,6 @@ public class PutChunk extends Reaction
             return;
         }
 
-        // Wait Random Delay
-        int randWait = (new Random()).nextInt(400);
-        try {
-            Thread.sleep(randWait);
-        } catch (InterruptedException ignored) {
-        }
-
-        // Send
         DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
         try {
             socket.send(packet);

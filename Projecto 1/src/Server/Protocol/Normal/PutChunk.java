@@ -1,8 +1,6 @@
 package Server.Protocol.Normal;
 
-import Peer.DependencyInjection;
-import Peer.Injectable;
-import Peer.BackupInfo;
+import Peer.*;
 import Utils.Channels;
 import Utils.Constants;
 
@@ -52,6 +50,8 @@ public class PutChunk extends Injectable
 
     public boolean send() throws IOException
     {
+        ChunksInfo chunksInfo = di.getChunksInfo();
+
         // Create Message
         byte[] message = this.createMessage();
 
@@ -66,8 +66,7 @@ public class PutChunk extends Injectable
         Integer n = 1;
         while (n < 6) {
             // Reset Replication Degree
-            BackupInfo backupInfo = di.getBackupInfo();
-            backupInfo.getFile(fileId).setRealReplicationDegree(chunkNo, 0);
+            chunksInfo.resetChunk(fileId, chunkNo, replicationDegree);
 
             MulticastSocket socket = new MulticastSocket(port);
             socket.joinGroup(group);
@@ -87,7 +86,8 @@ public class PutChunk extends Injectable
             }
 
             // Verify Real Replication Degrees
-            if (backupInfo.getFile(fileId).getRealReplicationDegree(chunkNo) >= replicationDegree) {
+            ChunkInfo chunkInfo = chunksInfo.getChunk(fileId, chunkNo);
+            if (chunkInfo.realRepDegree >= replicationDegree) {
                 return true;
             } else {
                 timeoutTime *= 2;

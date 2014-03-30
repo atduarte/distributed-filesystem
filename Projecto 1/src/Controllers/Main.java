@@ -1,6 +1,7 @@
 package Controllers;
 
 import Peer.ChunkManager;
+import Peer.ChunksInfo;
 import Peer.DependencyInjection;
 import Reactors.Reactor;
 import Peer.BackupInfo;
@@ -38,6 +39,9 @@ public class Main
 
         // Dependency Injection
         DependencyInjection di = new DependencyInjection();
+
+        // Chunks Info
+        di.setChunksInfo(new ChunksInfo());
 
         // Menu
         Menu menu = new Menu(di);
