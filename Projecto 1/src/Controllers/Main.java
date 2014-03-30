@@ -1,15 +1,12 @@
 package Controllers;
 
 import Peer.ChunkManager;
-import Peer.ChunksInfo;
 import Peer.DependencyInjection;
 import Reactors.Reactor;
 import Peer.BackupInfo;
-import Server.ReclaimSpace;
 import Utils.Channels;
 import Utils.Constants;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -22,29 +19,23 @@ public class Main
 {
     public static void main(String [] args) throws IOException {
 
-        boolean isServer = false;
+        boolean isServer = true;
 
         System.out.println("André Duarte, Sérgio Esteves Version:"+ Constants.version);
 
         // Base Data; TODO: From ARGS
-        String MCaddress = "239.0.0.1";
-        Integer MCport = 8765;
-        String MDBaddress = "239.0.0.1";
-        Integer MDBport = 8766;
-        String MDRaddress = "239.0.0.1";
-        Integer MDRport = 8767;
+        String MCaddress = args[0];
+        Integer MCport = Integer.parseInt(args[1]);
+        String MDBaddress = args[2];
+        Integer MDBport = Integer.parseInt(args[3]);
+        String MDRaddress = args[4];
+        Integer MDRport = Integer.parseInt(args[5]);
 
-        String chunksPathServer = "D:\\backups\\server\\chunks\\";
-        String chunksPathPeer = "D:\\backups\\peer\\chunks\\";
-
-        String backupInfoPathServer = "D:\\backups\\server\\info\\";
-        String backupInfoPathPeer = "D:\\backups\\peer\\info\\";
+        String chunksPath = args[7];
+        String backupInfoPath = args[6];
 
         // Dependency Injection
         DependencyInjection di = new DependencyInjection();
-
-        // Chunks Info
-        di.setChunksInfo(new ChunksInfo());
 
         // Menu
         Menu menu = new Menu(di);
@@ -57,26 +48,12 @@ public class Main
         di.setChannels(channels);
 
         // Chunk Manager
-        String chunksPath = null;
-        if (isServer) {
-            chunksPath = chunksPathServer;
-        } else {
-            chunksPath = chunksPathPeer;
-        }
         ChunkManager chunkManager = new ChunkManager(chunksPath);
         di.setChunkManager(chunkManager);
 
         // Backup Info
 
         BackupInfo backupInfo = null;
-        String backupInfoPath = null;
-
-        if (isServer) {
-            backupInfoPath = backupInfoPathServer;
-        } else {
-            backupInfoPath = backupInfoPathPeer;
-        }
-
         try {
             FileInputStream fileIn = new FileInputStream(backupInfoPath + "\\backupInfo.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -89,6 +66,7 @@ public class Main
         } catch (ClassNotFoundException e) {
             backupInfo = new BackupInfo(backupInfoPath);
         }
+        backupInfo.save();
         di.setBackupInfo(backupInfo);
 
 

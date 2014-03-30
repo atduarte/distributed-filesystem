@@ -1,7 +1,6 @@
 package Reactions.Normal;
 
 import Peer.ChunkInfo;
-import Peer.ChunksInfo;
 import Peer.DependencyInjection;
 import Peer.ChunkManager;
 import Reactions.Reaction;
@@ -58,8 +57,8 @@ public class PutChunk extends Reaction
 
         // Reset Real Replication Degree
         // && Stop Possible Removed-Reactions Waiting
-        ChunksInfo chunksInfo = di.getChunksInfo();
-        chunksInfo.resetChunk(fileId, chunkNo, replicationDegree);
+        ChunkManager chunkManager = di.getChunkManager();
+        chunkManager.resetChunkInfo(fileId, chunkNo, replicationDegree);
 
         // Wait Random Delay
         int randWait = (new Random()).nextInt(400);
@@ -69,13 +68,12 @@ public class PutChunk extends Reaction
         }
 
         // Check if it's necessary to store
-        ChunkInfo chunkInfo = chunksInfo.getChunk(fileId, chunkNo);
+        ChunkInfo chunkInfo = chunkManager.getChunkInfo(fileId, chunkNo);
         if (chunkInfo.realRepDegree >= replicationDegree) {
             return;
         }
 
         // Store
-        ChunkManager chunkManager = di.getChunkManager();
         try {
             chunkManager.deleteChunk(fileId, chunkNo);
             chunkManager.addChunk(fileId, chunkNo, body);

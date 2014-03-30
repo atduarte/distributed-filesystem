@@ -12,16 +12,6 @@ public class DependencyInjection
     ChunkManager chunkManager;
     BackupInfo backupInfo;
     Channels channels;
-    ChunksInfo chunksInfo;
-
-
-    public ChunksInfo getChunksInfo() {
-        return chunksInfo;
-    }
-
-    public void setChunksInfo(ChunksInfo chunksInfo) {
-        this.chunksInfo = chunksInfo;
-    }
 
     public Channels getChannels() {
         return channels;

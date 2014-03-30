@@ -2,7 +2,6 @@ package Reactions.Normal;
 
 import Peer.*;
 import Reactions.Reaction;
-import Server.Protocol.Normal.GetChunk;
 import Server.Protocol.Normal.PutChunk;
 import Utils.Constants;
 
@@ -37,12 +36,12 @@ public class Removed extends Reaction
 
     public void run()
     {
+        ChunkManager chunkManager = di.getChunkManager();
+
         // Decrement Local Count
-        ChunksInfo chunksInfo = di.getChunksInfo();
-        ChunkInfo chunkInfo = chunksInfo.getChunk(fileId, chunkNo);
+        ChunkInfo chunkInfo = chunkManager.getChunkInfo(fileId, chunkNo);
         chunkInfo.realRepDegree--;
 
-        ChunkManager chunkManager = di.getChunkManager();
         if (chunkManager.hasChunk(fileId, chunkNo) && chunkInfo.realRepDegree < chunkInfo.repDegree) {
             chunkInfo.startPutChunk = true;
             byte[] chunk = chunkManager.getChunk(fileId, chunkNo);

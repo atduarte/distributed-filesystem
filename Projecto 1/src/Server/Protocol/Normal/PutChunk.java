@@ -50,7 +50,7 @@ public class PutChunk extends Injectable
 
     public boolean send() throws IOException
     {
-        ChunksInfo chunksInfo = di.getChunksInfo();
+        ChunkManager chunkManager = di.getChunkManager();
 
         // Create Message
         byte[] message = this.createMessage();
@@ -66,7 +66,7 @@ public class PutChunk extends Injectable
         Integer n = 1;
         while (n < 6) {
             // Reset Replication Degree
-            chunksInfo.resetChunk(fileId, chunkNo, replicationDegree);
+            chunkManager.resetChunkInfo(fileId, chunkNo, replicationDegree);
 
             MulticastSocket socket = new MulticastSocket(port);
             socket.joinGroup(group);
@@ -86,7 +86,7 @@ public class PutChunk extends Injectable
             }
 
             // Verify Real Replication Degrees
-            ChunkInfo chunkInfo = chunksInfo.getChunk(fileId, chunkNo);
+            ChunkInfo chunkInfo = chunkManager.getChunkInfo(fileId, chunkNo);
             if (chunkInfo.realRepDegree >= replicationDegree) {
                 return true;
             } else {

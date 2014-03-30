@@ -1,8 +1,7 @@
 package Reactions.Normal;
 
-import Peer.ChunksInfo;
+import Peer.ChunkManager;
 import Peer.DependencyInjection;
-import Peer.BackupInfo;
 import Reactions.Reaction;
 import Utils.Constants;
 
@@ -35,8 +34,8 @@ public class Stored extends Reaction
 
     public void run()
     {
-        ChunksInfo chunksInfo = di.getChunksInfo();
-        chunksInfo.incrementRealRepDegree(fileId, chunkNo);
+        ChunkManager chunkManager = di.getChunkManager();
+        chunkManager.incrementRealRepDegree(fileId, chunkNo);
 
         System.out.println("Someone Stored our Chunk");
     }

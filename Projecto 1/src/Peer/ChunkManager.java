@@ -3,6 +3,7 @@ package Peer;
 import Server.Protocol.Normal.Delete;
 import Server.Protocol.Normal.Removed;
 import Utils.Constants;
+import Utils.FilesManager;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -14,6 +15,7 @@ import java.util.Random;
 public class ChunkManager
 {
     String chunksPath;
+    ArrayList<ChunkInfo> chunksInfo = new ArrayList<ChunkInfo>();
 
     public ChunkManager(String _chunksPath)
     {
@@ -30,7 +32,8 @@ public class ChunkManager
         return chunksPath;
     }
 
-    public void setChunksPath(String chunksPath) {
+    public void setChunksPath(String chunksPath)
+    {
         this.chunksPath = chunksPath;
     }
 
@@ -77,24 +80,11 @@ public class ChunkManager
     }
 
     public void deleteFile(String fileId) {
+        this.deleteFileInfo(fileId);
+
         String path = chunksPath+File.separator+fileId;
         File file = new File(path);
-        deleteDirectory(file);
-    }
-
-    // TODO: Remover. Repliquei isto para o Files Manager como static, porque dá jeito
-    private boolean deleteDirectory(File path) {
-        if( path.exists() ) {
-            File[] files = path.listFiles();
-            for (File file : files) {
-                if (file.isDirectory()) {
-                    deleteDirectory(file);
-                } else {
-                    file.delete();
-                }
-            }
-        }
-        return( path.delete() );
+        FilesManager.deleteDirectory(file);
     }
 
     public void addChunk(String fileId, Integer chunkNo, byte[] data) throws IOException {
@@ -136,5 +126,56 @@ public class ChunkManager
         }
 
         return chunk;
+    }
+
+    public void addChunkInfo(ChunkInfo info)
+    {
+        chunksInfo.add(info);
+    }
+
+    public void resetChunkInfo(String fileId, Integer chunkNo, Integer replicationDegree)
+    {
+        for (ChunkInfo info : chunksInfo) {
+            if (info.is(fileId, chunkNo)) {
+                info.realRepDegree = 0;
+                info.startPutChunk = false;
+                return;
+            }
+        }
+
+        chunksInfo.add(new ChunkInfo(fileId, chunkNo, replicationDegree, 0));
+    }
+
+    public void incrementRealRepDegree(String fileId, Integer chunkNo)
+    {
+        for (ChunkInfo info : chunksInfo) {
+            if (info.is(fileId, chunkNo)) {
+                info.realRepDegree++;
+                return;
+            }
+        }
+
+        chunksInfo.add(new ChunkInfo(fileId, chunkNo, 0, 1));
+    }
+
+    public ChunkInfo getChunkInfo(String fileId, Integer chunkNo)
+    {
+        for (ChunkInfo info : chunksInfo) {
+            if (info.is(fileId, chunkNo)) {
+                return info;
+            }
+        }
+
+        return null;
+    }
+
+    public void deleteFileInfo(String fileId) {
+        for (int i = 0; i < chunksInfo.size(); i++)
+        {
+            if (chunksInfo.get(i).fileId.equals(fileId)) {
+                chunksInfo.remove(i);
+                i--;
+            }
+        }
     }
 }
