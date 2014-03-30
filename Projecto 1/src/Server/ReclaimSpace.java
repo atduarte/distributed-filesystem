@@ -23,9 +23,17 @@ public class ReclaimSpace extends Injectable
         File chunksFolder = new File(chunkManager.getChunksPath());
 
         while(chunkManager.getFolderSize() > backupInfo.getUsedDiskSpace() || chunkManager.getFolderSize() == 0) {
-            String fileid = chunkManager.getRandomFolder();
-            int chunkNo = chunkManager.getRandomChunkNo(fileid);
-            System.out.println(fileid + " " + chunkNo);
+            String fileid = new String();
+            int chunkNo = 0;
+            while(true) {
+                 fileid = chunkManager.getRandomFolder();
+                 chunkNo = chunkManager.getRandomChunkNo(fileid);
+                System.out.println(fileid + " " + chunkNo);
+                if(chunkManager.getChunkInfo(new File(fileid).getName(),chunkNo).repDegree>1)
+                {
+                    break;
+                }
+            }
             Removed rm = new Removed(di,new File(fileid).getName(),chunkNo);
             try {
                 File f1 = new File(chunkManager.getChunksPath()+"\\"+new File(fileid).getName()+"\\"+chunkNo);
