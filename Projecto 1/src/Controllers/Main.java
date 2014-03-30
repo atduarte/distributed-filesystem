@@ -40,6 +40,11 @@ public class Main
         // Menu
         Menu menu = new Menu(di);
 
+        // Disk Space
+
+
+
+
         // Channels
         Channels channels = new Channels();
         channels.setMC(MCaddress, MCport);
@@ -78,11 +83,7 @@ public class Main
         System.out.println(n1.getFolderSize(new File("S:\\serverfolder")));
         n1.run();*/
 
-        // Disk Space
-        System.out.print("Disk Space (kb) : ");
-        Scanner in = new Scanner(System.in);
-        int diskspace = in.nextInt();
-        di.getBackupInfo().setUsedDiskSpace(diskspace);
+
 
         // Menu Options
         while (true) {
