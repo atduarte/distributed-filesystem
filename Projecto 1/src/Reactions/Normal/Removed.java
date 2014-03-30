@@ -51,9 +51,13 @@ public class Removed extends Reaction
                 // TODO: Random Delay 0 - 400ms
 
                 // Get Body
-                // TODO: E se nao houver na rede?
                 Server.Protocol.Normal.GetChunk getChunk = new GetChunk(di, fileId, chunkNo);
-                byte[] data = getChunk.run();
+                byte[] data = null;
+                try {
+                    data = getChunk.run();
+                } catch (IOException e) {
+                    return;
+                }
 
                 PutChunk putChunk = new PutChunk(di, fileId, chunkNo, file.getReplicationDegree(), data);
                 try {
