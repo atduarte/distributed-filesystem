@@ -53,6 +53,11 @@ public class BackupFileInfo implements Serializable
         return result != null ? result : 0;
     }
 
+    public void setRealReplicationDegree(Integer chunkNo, Integer value)
+    {
+        realReplicationDegree.put(chunkNo, value);
+    }
+
     public void incrementRealReplicationDegree(Integer chunkNo) {
         if (realReplicationDegree.containsKey(chunkNo)) {
             Integer newValue = realReplicationDegree.get(chunkNo) + 1;

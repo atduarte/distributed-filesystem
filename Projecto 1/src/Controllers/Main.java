@@ -30,11 +30,11 @@ public class Main
         String MDRaddress = "239.0.0.1";
         Integer MDRport = 8767;
 
-        String chunksPathServer = "S:\\serverfolder";
-        String chunksPathPeer = "S:\\backups";
+        String chunksPathServer = "D:\\backups\\server\\chunks\\";
+        String chunksPathPeer = "D:\\backups\\peer\\chunks\\";
 
-        String backupInfoPathServer = "S:\\serverfolder";
-        String backupInfoPathPeer = "S:\\backups";
+        String backupInfoPathServer = "D:\\backups\\server\\info\\";
+        String backupInfoPathPeer = "D:\\backups\\peer\\info\\";
 
         // Dependency Injection
         DependencyInjection di = new DependencyInjection();

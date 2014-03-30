@@ -68,15 +68,18 @@ public class GetChunk extends Reaction
         }
 
         try {
-            byte[] tmpMessage = new byte[Constants.chunkSize + 2048];
-            DatagramPacket packet = new DatagramPacket(tmpMessage, tmpMessage.length, group, port);
+            byte[] buf = new byte[Constants.chunkSize + 2048];
+            DatagramPacket packet = new DatagramPacket(buf, buf.length, group, port);
             socket.setSoTimeout(randWait);
             socket.receive(packet);
 
+            byte[] data = new byte[packet.getLength()];
+            System.arraycopy(packet.getData(), 0, data, 0, packet.getLength());
+
             // Check if it's the same packet
-            if(Constants.getNElementFromMessage(tmpMessage,1).equals("CHUNK") &&
-               Constants.getNElementFromMessage(tmpMessage,2).equals(fileId) &&
-               Constants.getNElementFromMessage(tmpMessage,3).equals(chunkNo.toString()))
+            if(Constants.getNElementFromMessage(data,1).equals("CHUNK") &&
+               Constants.getNElementFromMessage(data,2).equals(fileId) &&
+               Constants.getNElementFromMessage(data,3).equals(chunkNo.toString()))
             {
                 System.out.println("Dont send Chunk. Someone already sent.");
                 return;

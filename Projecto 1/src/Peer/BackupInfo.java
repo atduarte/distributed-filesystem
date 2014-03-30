@@ -20,19 +20,19 @@ public class BackupInfo implements Serializable
         // TODO: If Data doesn't exist create
     }
 
-    public void addFile(BackupFileInfo newFile) {
-        String fileId = newFile.getHash();
+    public void addFile(BackupFileInfo newFile)
+    {
         for (int i = 0; i < files.size(); i++) {
-            if (files.get(i).getHash().equals(fileId)) {
-                // Replace
-                files.set(i, newFile);
-                return;
+            if (files.get(i).getHash().equals(newFile.getHash()) ||
+                files.get(i).getName().equalsIgnoreCase(newFile.getName()))
+            {
+                files.remove(i);
+                i--;
             }
         }
 
-        // or Add
+        // Add
         files.add(newFile);
-
     }
 
     public boolean incrementRealRepDegree(String fileId, Integer chunkNo) {
@@ -104,7 +104,7 @@ public class BackupInfo implements Serializable
             out.writeObject(this);
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in " + path + "\\backupInfo.ser");
+            System.out.println("Serialized data is saved in " + path + "\\backupInfo.ser");
         } catch (IOException i) {
             i.printStackTrace();
         }

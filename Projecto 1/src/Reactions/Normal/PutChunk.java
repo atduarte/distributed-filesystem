@@ -55,7 +55,7 @@ public class PutChunk extends Reaction
         // Check I dont't have it already
         ChunkManager chunkManager = di.getChunkManager();
         if (chunkManager.hasChunk(fileId, chunkNo)) {
-            return;
+            chunkManager.deleteChunk(fileId, chunkNo);
         }
 
         // Store

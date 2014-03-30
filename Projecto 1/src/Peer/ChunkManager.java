@@ -61,6 +61,8 @@ public class ChunkManager
 
             }
         }
+
+        return null;
     }
 
     public void deleteChunk(String fileId, Integer chunkNo) {
@@ -109,9 +111,11 @@ public class ChunkManager
         Files.write(path, data);
     }
 
-    public byte[] getChunk(String fileId, Integer chunkNo) {
+    public byte[] getChunk(String fileId, Integer chunkNo)
+    {
+        byte[] chunk = null;
+        byte[] buffer = new byte[Constants.chunkSize];
 
-        byte[] chunk = new byte[Constants.chunkSize];
         if(hasChunk(fileId,chunkNo))
         {
             FileInputStream out = null;
@@ -123,7 +127,9 @@ public class ChunkManager
 
             if (out != null) {
                 try {
-                    out.read(chunk);
+                    Integer length = out.read(buffer);
+                    chunk = new byte[length];
+                    System.arraycopy(buffer, 0, chunk, 0, length);
                     out.close();
                 } catch (IOException e) {
                     e.printStackTrace();

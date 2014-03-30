@@ -58,7 +58,7 @@ public class GetChunk extends Injectable
     }
 
     protected byte[] receive() throws IOException {
-        byte[] message = new byte[Constants.chunkSize + 2084];
+        byte[] buffer = new byte[Constants.chunkSize + 2084];
 
         Channels channels = di.getChannels();
         String address = channels.getMDR().getAddress();
@@ -68,17 +68,18 @@ public class GetChunk extends Injectable
         MulticastSocket socket = new MulticastSocket(port);
         socket.joinGroup(group);
 
-        DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
+        DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, port);
         socket.setSoTimeout(1000);
         socket.receive(packet);
 
+        byte[] message = new byte[packet.getLength()];
+        System.arraycopy(packet.getData(), 0, message, 0, packet.getLength());
+
         System.out.println("Received one packet");
+        System.out.println(packet.getLength());
         if(Constants.getNElementFromMessage(message,2).equals(fileId) && Constants.getNElementFromMessage(message,3).equals(chunkNo.toString())) {
             System.out.println("GetChunk: Correct packet");
-
-            byte[] data = new byte[packet.getLength()];
-            System.arraycopy(packet.getData(), 0, data, 0, packet.getLength());
-            return Constants.getBodyFromMessage(data);
+            return Constants.getBodyFromMessage(message);
         } else {
             System.out.println("GetChunk: Wrong packet");
             return receive();

@@ -73,7 +73,7 @@ public class Menu extends Injectable
         if(op==1) {
             Backup backup = new Backup(di);
 
-            File file = new File("S:\\serverfolder\\1.txt");
+            File file = new File("D:\\teste\\1.txt");
             try {
                 backup.sendFile(file, 1);
             } catch (IOException e) {
@@ -83,7 +83,7 @@ public class Menu extends Injectable
         else if(op==2)
         {
             Restore restore = new Restore(di);
-            String s = "S:\\serverfolder\\1.txt";
+            String s = "D:\\teste\\1.txt";
             //String path = new String("S:\\backups");
             try {
                 restore.receiveFile(s);

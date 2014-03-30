@@ -19,32 +19,29 @@ public class Restore extends Injectable
         super(di);
     }
 
-    public void receiveFile(String s) throws IOException {
+    public void receiveFile(String s) throws IOException
+    {
         BackupFileInfo bck = di.getBackupInfo().getFilebyName(s);
-
         String fileid = bck.getHash();
-
         long numChunks = bck.getChunkNo();
+
         FileOutputStream out = null;
         try {
             out = new FileOutputStream(s);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            return;
         }
-        System.out.println("ChunkNo: "+numChunks);
-        for(int i=0;i<numChunks;i++)
-        {
 
+        System.out.println("ChunkNo: "+numChunks);
+        for (int i = 0; i < numChunks; i++) {
             GetChunk getchunk = new GetChunk(di, fileid, i+1);
             byte [] body = getchunk.run();
             out.write(body);
-
         }
+
         try {
             out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
         }
-
     }
 }
