@@ -5,6 +5,8 @@ import Reactions.*;
 import Reactions.Normal.Delete;
 import Utils.Channels;
 
+import java.net.DatagramPacket;
+
 /**
  * Created by atduarte on 15-03-2014.
  */
@@ -18,17 +20,15 @@ public class MCReactor extends ChannelReactor
         this.port = channels.getMC().getPort();
 	}
 
-	protected void processMessage(byte[] data, String message)
+	protected void processMessage(DatagramPacket packet, byte[] data)
     {
+        String message = new String(data);
+
         // Enhancements
         if (Reactions.Enhanced.GetChunk.pattern.matcher(message).find()) {
+            Reactions.Enhanced.GetChunk thread = new Reactions.Enhanced.GetChunk(di, packet, data);
+            thread.start();
             System.out.println("MCReceived: Enhanced GetChunk");
-
-        } else if(Reactions.Enhanced.Stored.pattern.matcher(message).find()) {
-            System.out.println("MCReceived: Enhanced Stored");
-
-        } else if(Reactions.Enhanced.Removed.pattern.matcher(message).find()) {
-            System.out.println("MCReceived: Enhanced Removed");
 
         // Normal
         } else if(Reactions.Normal.Delete.pattern.matcher(message).find()) {

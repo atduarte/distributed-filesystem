@@ -59,6 +59,6 @@ public abstract class ChannelReactor extends InjectableThread
         }
     }
 
-	protected abstract void processMessage(byte[] data, String message);
+	protected abstract void processMessage(DatagramPacket packet, byte[] data);
 
 }

@@ -3,6 +3,8 @@ package Reactors;
 import Peer.DependencyInjection;
 import Utils.Channels;
 
+import java.net.DatagramPacket;
+
 public class MDBReactor extends ChannelReactor
 {
     public MDBReactor(DependencyInjection di) {
@@ -13,16 +15,12 @@ public class MDBReactor extends ChannelReactor
         this.port = channels.getMDB().getPort();
     }
 
-	protected void processMessage(byte[] data, String message)
+	protected void processMessage(DatagramPacket packet, byte[] data)
     {
-        // Enhancements
-		if(Reactions.Enhanced.PutChunk.pattern.matcher(message).find()) {
-        	System.out.println("MDBReceived: PutChunk");
-            Reactions.Enhanced.PutChunk thread = new Reactions.Enhanced.PutChunk(di, data);
-            thread.start();
+        String message = new String(data);
 
         // Normal
-        } else if(Reactions.Normal.PutChunk.pattern.matcher(message).find()) {
+        if(Reactions.Normal.PutChunk.pattern.matcher(message).find()) {
             System.out.println("MDBReceived: PutChunk");
             Reactions.Normal.PutChunk thread = new Reactions.Normal.PutChunk(di, data);
             thread.start();

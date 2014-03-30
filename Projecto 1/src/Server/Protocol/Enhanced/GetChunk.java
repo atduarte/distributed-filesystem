@@ -1,15 +1,12 @@
-package Server.Protocol.Normal;
+package Server.Protocol.Enhanced;
 
 import Peer.DependencyInjection;
 import Peer.Injectable;
 import Utils.Channels;
 import Utils.Constants;
 
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.util.Random;
+import java.io.*;
+import java.net.*;
 
 public class GetChunk extends Injectable
 {
@@ -64,23 +61,35 @@ public class GetChunk extends Injectable
         MulticastSocket socket = new MulticastSocket(port);
         socket.joinGroup(group);
 
-        DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, port);
-        socket.setSoTimeout(1000);
-        socket.receive(packet);
+        // Verify Packet
 
-        byte[] message = new byte[packet.getLength()];
-        System.arraycopy(packet.getData(), 0, message, 0, packet.getLength());
+        while(true) {
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, port);
+            socket.setSoTimeout(500);
+            socket.receive(packet);
 
-        System.out.println("Received one packet");
-        System.out.println(packet.getLength());
-        if(Constants.getNElementFromMessage(message,2).equals(fileId) && Constants.getNElementFromMessage(message,3).equals(chunkNo.toString())) {
-            System.out.println("GetChunk: Correct packet");
-            return Constants.getBodyFromMessage(message);
-        } else {
-            System.out.println("GetChunk: Wrong packet");
-            throw new IOException();
+            if (packet.getData() == "HAVECHUNK".getBytes()) {
+                break;
+            }
         }
 
+        socket.close();
+
+        // Open Socket
+        ServerSocket srvSocket = new ServerSocket(port);
+
+        // Accept Socket
+        Socket connectionSocket = srvSocket.accept();
+
+        InputStream in = connectionSocket.getInputStream();
+        DataInputStream dis = new DataInputStream(in);
+
+        int len = dis.readInt();
+        byte[] data = new byte[len];
+        if (len > 0) {
+            dis.readFully(data);
+        }
+        return data;
     }
 
 }
