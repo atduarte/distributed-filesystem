@@ -6,7 +6,6 @@ package Utils;
 public class Constants {
     public final static String version = "1.0";
     public final static String enhancedVersion = "1.1";
-    public final static boolean enableEnhancements = false;
     public final static Integer chunkSize = 64*1000;
     public final static String patternVersion = "(\\d\\.\\d)";
     public final static String patternFileId = "(\\w+)";

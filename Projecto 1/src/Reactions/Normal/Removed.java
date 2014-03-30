@@ -44,20 +44,16 @@ public class Removed extends Reaction
 
             System.out.println("PROCESSED Removed");
 
-            // Verificar replication degree
+            // Verificar replication degrees
             BackupFileInfo file = di.getBackupInfo().getFile(fileId);
             if(file.getRealReplicationDegree(chunkNo)< file.getReplicationDegree())
             {
                 // TODO: Random Delay 0 - 400ms
 
                 // Get Body
+                // TODO: E se nao houver na rede?
                 Server.Protocol.Normal.GetChunk getChunk = new GetChunk(di, fileId, chunkNo);
-                byte[] data = null;
-                try {
-                    data = getChunk.run();
-                } catch (IOException e) {
-                    return;
-                }
+                byte[] data = getChunk.run();
 
                 PutChunk putChunk = new PutChunk(di, fileId, chunkNo, file.getReplicationDegree(), data);
                 try {

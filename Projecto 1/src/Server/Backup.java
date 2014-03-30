@@ -5,7 +5,6 @@ import Peer.BackupInfo;
 import Peer.DependencyInjection;
 import Peer.Injectable;
 import Server.Protocol.Normal.PutChunk;
-import Utils.Constants;
 import Utils.FilesManager;
 
 import java.io.File;
@@ -73,13 +72,8 @@ public class Backup extends Injectable
 
                 // Send Chunk
                 Integer chunkNo = Integer.parseInt(chunk.getName());
-
-                if (Constants.enableEnhancements) {
-                    // TODO
-                } else {
-                    Server.Protocol.Normal.PutChunk putChunk = new Server.Protocol.Normal.PutChunk(di, hash, chunkNo, replicationDegree, data);
-                    putChunk.run();
-                }
+                PutChunk putChunk = new PutChunk(di, hash, chunkNo, replicationDegree, data);
+                putChunk.run();
             }
         }
 

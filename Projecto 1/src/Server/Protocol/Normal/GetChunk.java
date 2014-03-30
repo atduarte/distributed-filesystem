@@ -32,10 +32,13 @@ public class GetChunk extends Injectable
         return message.getBytes();
     }
 
-    public byte[] run() throws IOException
-    {
-        send();
-        return receive();
+    public byte[] run() {
+        try {
+            send();
+            return receive();
+        } catch (IOException e) {
+            return this.run();
+        }
     }
 
     protected boolean send() throws IOException {
@@ -79,7 +82,7 @@ public class GetChunk extends Injectable
             return Constants.getBodyFromMessage(message);
         } else {
             System.out.println("GetChunk: Wrong packet");
-            throw new IOException();
+            return receive();
         }
 
     }
