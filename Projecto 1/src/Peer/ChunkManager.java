@@ -41,29 +41,26 @@ public class ChunkManager
         return saveChunk.exists();
     }
 
-    public File deleteRandomChunk()
+    public String getRandomFolder()
     {
-        return deleteRandomChunkAux(new File(chunksPath));
+        File folder = new File(chunksPath);
+        int i = folder.listFiles().length;
+        Random rn = new Random();
+
+        int fileorder = rn.nextInt(i) + 1;
+
+
+        return folder.listFiles()[fileorder-1].getAbsolutePath();
     }
 
-    public File deleteRandomChunkAux(File folder)
+    public int getRandomChunkNo(String path)
     {
+        File folder = new File(path);
         int i = folder.listFiles().length;
-
         Random rn = new Random();
-        int n = i;
-        int fileorder = rn.nextInt() % n;
 
-        for(int j=0;j<i;j++) {
-            if(j==fileorder) {
-                int auxi = folder.listFiles()[i].listFiles().length;
-                int chunkorder = rn.nextInt() % auxi;
-                return folder.listFiles()[i].listFiles()[chunkorder];
-
-            }
-        }
-
-        return null;
+        int chunkorder = rn.nextInt(i) + 1;
+        return chunkorder;
     }
 
     public void deleteChunk(String fileId, Integer chunkNo) {

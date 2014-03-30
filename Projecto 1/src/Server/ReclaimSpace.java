@@ -4,8 +4,10 @@ import Peer.BackupInfo;
 import Peer.ChunkManager;
 import Peer.DependencyInjection;
 import Peer.Injectable;
+import Server.Protocol.Normal.Removed;
 
 import java.io.File;
+import java.io.IOException;
 
 public class ReclaimSpace extends Injectable
 {
@@ -21,7 +23,17 @@ public class ReclaimSpace extends Injectable
         File chunksFolder = new File(chunkManager.getChunksPath());
 
         while(this.getFolderSize(chunksFolder) > backupInfo.getUsedDiskSpace() || this.getFolderSize(chunksFolder) == 0) {
-            chunkManager.deleteRandomChunk();
+            String fileid = chunkManager.getRandomFolder();
+            int chunkNo = chunkManager.getRandomChunkNo(fileid);
+            System.out.println(fileid + " " + chunkNo);
+            Removed rm = new Removed(di,new File(fileid).getName(),chunkNo);
+            try {
+                File f1 = new File(chunkManager.getChunksPath()+"\\"+new File(fileid).getName()+"\\"+chunkNo);
+                System.out.println("Removed: " + f1.delete());
+                rm.run();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

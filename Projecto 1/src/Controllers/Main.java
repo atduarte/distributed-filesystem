@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.Scanner;
 
 /**
  * Created by atduarte on 13-03-2014.
@@ -20,6 +21,8 @@ import java.io.ObjectInputStream;
 public class Main
 {
     public static void main(String [] args) throws IOException {
+
+        boolean isServer = false;
 
         System.out.println("André Duarte, Sérgio Esteves Version:"+ Constants.version);
 
@@ -45,8 +48,6 @@ public class Main
 
         // Menu
         Menu menu = new Menu(di);
-        menu.ask();
-        menu.readanswer();
 
         // Channels
         Channels channels = new Channels();
@@ -57,7 +58,7 @@ public class Main
 
         // Chunk Manager
         String chunksPath = null;
-        if (menu.isServer()) {
+        if (isServer) {
             chunksPath = chunksPathServer;
         } else {
             chunksPath = chunksPathPeer;
@@ -70,7 +71,7 @@ public class Main
         BackupInfo backupInfo = null;
         String backupInfoPath = null;
 
-        if (menu.isServer()) {
+        if (isServer) {
             backupInfoPath = backupInfoPathServer;
         } else {
             backupInfoPath = backupInfoPathPeer;
@@ -98,6 +99,12 @@ public class Main
        /* ReclaimSpace n1 = new ReclaimSpace(di);
         System.out.println(n1.getFolderSize(new File("S:\\serverfolder")));
         n1.run();*/
+
+        // Disk Space
+        System.out.print("Disk Space (kb) : ");
+        Scanner in = new Scanner(System.in);
+        int diskspace = in.nextInt();
+        di.getBackupInfo().setUsedDiskSpace(diskspace);
 
         // Menu Options
         while (true) {
