@@ -141,5 +141,19 @@ public class FilesManager
         out.close();
         return true;
     }
+
+
+    public static long getFolderSize(File folder) {
+
+        long size = 0;
+        for (File file : folder.listFiles()) {
+            if (file.isFile()) {
+
+                size += file.length();
+            } else
+                size += getFolderSize(file);
+        }
+        return size;
+    }
 }
 

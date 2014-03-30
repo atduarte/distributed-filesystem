@@ -54,11 +54,15 @@ public class PutChunk extends Reaction
     		return;
     	}
 
-
         // Reset Real Replication Degree
         // && Stop Possible Removed-Reactions Waiting
         ChunkManager chunkManager = di.getChunkManager();
         chunkManager.resetChunkInfo(fileId, chunkNo, replicationDegree);
+
+        // Check Available Space
+        if (chunkManager.getFolderSize() + Constants.chunkSize < di.getBackupInfo().getUsedDiskSpace()) {
+            return;
+        }
 
         // Wait Random Delay
         int randWait = (new Random()).nextInt(400);

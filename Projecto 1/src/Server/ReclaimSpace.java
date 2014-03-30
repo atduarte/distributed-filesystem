@@ -22,7 +22,7 @@ public class ReclaimSpace extends Injectable
         ChunkManager chunkManager = di.getChunkManager();
         File chunksFolder = new File(chunkManager.getChunksPath());
 
-        while(this.getFolderSize(chunksFolder) > backupInfo.getUsedDiskSpace() || this.getFolderSize(chunksFolder) == 0) {
+        while(chunkManager.getFolderSize() > backupInfo.getUsedDiskSpace() || chunkManager.getFolderSize() == 0) {
             String fileid = chunkManager.getRandomFolder();
             int chunkNo = chunkManager.getRandomChunkNo(fileid);
             System.out.println(fileid + " " + chunkNo);
@@ -36,23 +36,4 @@ public class ReclaimSpace extends Injectable
             }
         }
     }
-
-    public long getFolderSize(File folder)
-    {
-
-        long size = 0;
-        for (File file : folder.listFiles()) {
-            if (file.isFile()) {
-
-                size += file.length();
-            } else
-                size += getFolderSize(file);
-        }
-        return size;
-    }
-
-
-
-
-
 }

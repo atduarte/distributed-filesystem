@@ -178,4 +178,8 @@ public class ChunkManager
             }
         }
     }
+
+    public long getFolderSize() {
+        return FilesManager.getFolderSize(new File(chunksPath));
+    }
 }
