@@ -61,8 +61,10 @@ public class PutChunk extends Injectable
 
         InetAddress group = InetAddress.getByName(address);
 
-        // TODO: Just 5 times. Different waiting times
-        while (true) {
+        // Just 5 times. Different waiting times
+        Integer timeoutTime = 500;
+        Integer n = 1;
+        while (n < 6) {
             // Reset Replication Degree
             BackupInfo backupInfo = di.getBackupInfo();
             backupInfo.getFile(fileId).setRealReplicationDegree(chunkNo, 0);
@@ -79,19 +81,20 @@ public class PutChunk extends Injectable
 
             // Wait for replies
             try {
-                Thread.sleep(500);
+                Thread.sleep(timeoutTime);
             } catch (InterruptedException e) {
                 break;
             }
 
             // Verify Real Replication Degrees
             if (backupInfo.getFile(fileId).getRealReplicationDegree(chunkNo) >= replicationDegree) {
-                break;
+                return true;
+            } else {
+                timeoutTime *= 2;
+                n++;
             }
         }
 
-
-
-        return true;
+        return false;
     }
 }

@@ -11,6 +11,7 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.UnknownHostException;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -90,9 +91,14 @@ public class PutChunk extends Reaction
             return;
         }
 
-        // TODO: Wait Random Delay
-        // If receives somethings, returns
+        // Wait Random Delay
+        int randWait = (new Random()).nextInt(400);
+        try {
+            Thread.sleep(randWait);
+        } catch (InterruptedException ignored) {
+        }
 
+        // Send
         DatagramPacket packet = new DatagramPacket(message, message.length, group, port);
         try {
             socket.send(packet);
