@@ -7,8 +7,15 @@ import java.util.ArrayList;
 public class BackupInfo implements Serializable
 {
     public String path;
+
+    public ArrayList<BackupFileInfo> getFiles() {
+        return files;
+    }
+
     public ArrayList<BackupFileInfo> files;
     public Integer usedDiskSpace;
+
+
 
     public BackupInfo(String path) {
         this.path = path;

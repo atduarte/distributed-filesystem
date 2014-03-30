@@ -1,5 +1,6 @@
 package Controllers;
 
+import Peer.BackupFileInfo;
 import Peer.DependencyInjection;
 import Peer.Injectable;
 import Server.Backup;
@@ -8,6 +9,7 @@ import Server.Restore;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -49,8 +51,12 @@ public class Menu extends Injectable
         op = in.nextInt();
         if(op==1) {
             Backup backup = new Backup(di);
+            System.out.println("Backup File Path: ");
 
-            File file = new File("D:\\Teste\\1.txt");
+            String path = new String();
+            path = in.nextLine();
+            path = in.nextLine();
+            File file = new File(path);
             try {
                 backup.sendFile(file, 1);
             } catch (IOException e) {
@@ -60,16 +66,24 @@ public class Menu extends Injectable
         else if(op==2)
         {
             Restore restore = new Restore(di);
-            String s = "D:\\Teste\\1.txt";
+            ArrayList<BackupFileInfo> totalfiles = di.getBackupInfo().getFiles();
+
+            for(int i=0;i<totalfiles.size();i++)
+            {
+                System.out.println(i+"-"+" "+totalfiles.get(i).getName());
+            }
+
+            int order = in.nextInt();
             //String path = new String("S:\\backups");
             try {
-                restore.receiveFile(s);
+                restore.receiveFile(totalfiles.get(order).getName());
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         else if(op==3)
         {
+            this.askUsedSpace();
             ReclaimSpace r1 = new ReclaimSpace(di);
             r1.run();
 
@@ -81,6 +95,10 @@ public class Menu extends Injectable
     }
 
 
-
-
+    public void askUsedSpace() {
+        System.out.print("Disk Space (kb) : ");
+        Scanner in = new Scanner(System.in);
+        int diskspace = in.nextInt();
+        di.getBackupInfo().setUsedDiskSpace(diskspace);
+    }
 }
