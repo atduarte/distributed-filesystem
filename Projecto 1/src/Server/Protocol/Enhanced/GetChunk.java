@@ -21,7 +21,7 @@ public class GetChunk extends Injectable
 
     private byte[] createMessage() {
         String message = "GETCHUNK ";
-        message += Constants.version + " ";
+        message += Constants.enhancedVersion + " ";
         message += fileId + " ";
         message += chunkNo;
         message += Constants.separator;
@@ -51,11 +51,11 @@ public class GetChunk extends Injectable
     }
 
     protected byte[] receive() throws IOException {
-        byte[] buffer = new byte[Constants.chunkSize + 2084];
+        Integer port = di.getChannels().getMDR().getPort();
+        /*byte[] buffer = new byte[Constants.chunkSize + 2084];
 
         Channels channels = di.getChannels();
         String address = channels.getMDR().getAddress();
-        Integer port = channels.getMDR().getPort();
 
         InetAddress group = InetAddress.getByName(address);
         MulticastSocket socket = new MulticastSocket(port);
@@ -65,7 +65,7 @@ public class GetChunk extends Injectable
 
         while(true) {
             DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, port);
-            socket.setSoTimeout(500);
+            socket.setSoTimeout(1000);
             socket.receive(packet);
 
             if (packet.getData() == "HAVECHUNK".getBytes()) {
@@ -73,7 +73,7 @@ public class GetChunk extends Injectable
             }
         }
 
-        socket.close();
+        socket.close();*/
 
         // Open Socket
         ServerSocket srvSocket = new ServerSocket(port);
@@ -81,15 +81,27 @@ public class GetChunk extends Injectable
         // Accept Socket
         Socket connectionSocket = srvSocket.accept();
 
+
         InputStream in = connectionSocket.getInputStream();
         DataInputStream dis = new DataInputStream(in);
+
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         int len = dis.readInt();
         byte[] data = new byte[len];
         if (len > 0) {
             dis.readFully(data);
         }
+
+        connectionSocket.close();
+        srvSocket.close();
+
         return data;
+
     }
 
 }

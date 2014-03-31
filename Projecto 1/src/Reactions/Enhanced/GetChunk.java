@@ -37,9 +37,8 @@ public class GetChunk extends Reaction
         Matcher matches = pattern.matcher(new String(this.data));
 
         if (matches.find()) {
-            this.version = matches.group(1);
-            this.fileId = matches.group(2);
-            this.chunkNo = Integer.parseInt(matches.group(3));
+            this.fileId = matches.group(1);
+            this.chunkNo = Integer.parseInt(matches.group(2));
         }
     }
 
@@ -82,13 +81,16 @@ public class GetChunk extends Reaction
             System.arraycopy(packet.getData(), 0, data, 0, packet.getLength());
 
             // Check if it's the same packet
-            if(data == "HAVECHUNK".getBytes()) {
+            if(data == ("HAVECHUNK " + chunkNo).getBytes()) {
                 System.out.println("Dont send Chunk. Someone already sent.");
                 return;
             }
+       /* } catch (IOException ignored) {
+        }
 
+        try {*/
             // Send MultiCast
-            byte[] message = "HAVECHUNK".getBytes();
+            byte[] message = ("HAVECHUNK " + chunkNo).getBytes();
             packet = new DatagramPacket(message, message.length, group, port);
             socket.send(packet);
         } catch (IOException ignored) {
@@ -96,14 +98,16 @@ public class GetChunk extends Reaction
 
         // Send TCP
         DataOutputStream dos = null;
+        Socket connectionSocket = null;
         try {
-            Socket connectionSocket = new Socket(packet.getAddress(), port);
+            connectionSocket = new Socket(packet.getAddress(), port);
             OutputStream out = connectionSocket.getOutputStream();
             dos = new DataOutputStream(out);
             dos.writeInt(chunkData.length);
             dos.write(chunkData, 0, chunkData.length);
-        } catch (IOException e) {
-            return;
+            connectionSocket.close();
+        } catch (IOException ignored) {
+
         }
 
 

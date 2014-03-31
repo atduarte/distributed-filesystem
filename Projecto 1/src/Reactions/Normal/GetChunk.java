@@ -76,8 +76,15 @@ public class GetChunk extends Reaction
             byte[] data = new byte[packet.getLength()];
             System.arraycopy(packet.getData(), 0, data, 0, packet.getLength());
 
+            // System.out.println("Some Chunk");
+            // System.out.println(Constants.getNElementFromMessage(data,0));
+            // System.out.println(Constants.getNElementFromMessage(data,1));
+            // System.out.println(fileId);
+            // System.out.println(Constants.getNElementFromMessage(data,2));
+            // System.out.println(chunkNo.toString());
+
             // Check if it's the same packet
-            if(Constants.getNElementFromMessage(data,1).equals("CHUNK") &&
+            if(Constants.getNElementFromMessage(data,0).equals("CHUNK") &&
                Constants.getNElementFromMessage(data,2).equals(fileId) &&
                Constants.getNElementFromMessage(data,3).equals(chunkNo.toString()))
             {

@@ -4,6 +4,7 @@ import Peer.BackupFileInfo;
 import Peer.DependencyInjection;
 import Peer.Injectable;
 import Server.Protocol.Normal.GetChunk;
+import Utils.Constants;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -32,10 +33,29 @@ public class Restore extends Injectable
             return;
         }
 
-        System.out.println("ChunkNo: "+numChunks);
+        System.out.println("ChunkNo: " + numChunks);
         for (int i = 0; i < numChunks; i++) {
-            GetChunk getchunk = new GetChunk(di, fileid, i+1);
-            byte [] body = getchunk.run();
+            byte [] body = null;
+
+
+            if (Constants.enableEnhancements) {
+                Server.Protocol.Enhanced.GetChunk getchunk = new Server.Protocol.Enhanced.GetChunk(di, fileid, i+1);
+                body = getchunk.run();
+            } else {
+                for (int j = 0; j < 5; j++) {
+                    Server.Protocol.Normal.GetChunk getchunk = new Server.Protocol.Normal.GetChunk(di, fileid, i+1);
+                    try {
+                    body = getchunk.run();
+                    } catch (IOException e) {
+                        body = null;
+                    }
+
+                    if(body != null) {
+                        break;
+                    }
+                }
+            }
+
             out.write(body);
         }
 

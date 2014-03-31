@@ -73,6 +73,7 @@ public class GetChunk extends Injectable
 
         System.out.println("Received one packet");
         System.out.println(packet.getLength());
+
         if(Constants.getNElementFromMessage(message,2).equals(fileId) && Constants.getNElementFromMessage(message,3).equals(chunkNo.toString())) {
             System.out.println("GetChunk: Correct packet");
             return Constants.getBodyFromMessage(message);
