@@ -82,8 +82,11 @@ public class PutChunk extends Reaction
             chunkManager.deleteChunk(fileId, chunkNo);
             chunkManager.addChunk(fileId, chunkNo, body);
         } catch (IOException e) {
+            System.out.println("Error Adding Chunk");
             return;
         }
+
+        System.out.println("Initiate STORED");
 
         //
         // Send STORED Message

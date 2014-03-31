@@ -42,7 +42,7 @@ public class MCReactor extends ChannelReactor
             thread.start();
 
         } else if(Reactions.Normal.Stored.pattern.matcher(message).find()) {
-            System.out.println("MCReceived: Stored");
+            System.out.println("MCReceived:: Stored");
             Reactions.Normal.Stored thread = new Reactions.Normal.Stored(di, data);
             thread.start();
 

@@ -36,7 +36,5 @@ public class Stored extends Reaction
     {
         ChunkManager chunkManager = di.getChunkManager();
         chunkManager.incrementRealRepDegree(fileId, chunkNo);
-
-        System.out.println("Someone Stored our Chunk");
     }
 }

@@ -4,6 +4,7 @@ import Peer.BackupFileInfo;
 import Peer.DependencyInjection;
 import Peer.Injectable;
 import Server.Backup;
+import Server.Protocol.Normal.Delete;
 import Server.ReclaimSpace;
 import Server.Restore;
 
@@ -42,7 +43,8 @@ public class Menu extends Injectable
         System.out.println("1-Backup File");
         System.out.println("2-Restore File");
         System.out.println("3-Reclaim Space");
-        System.out.println("4-Exit");
+        System.out.println("4-Delete File");
+        System.out.println("5-Exit");
     }
 
     public void readOption()
@@ -95,6 +97,29 @@ public class Menu extends Injectable
 
         }
         else if(op==4)
+        {
+
+            ArrayList<BackupFileInfo> totalfiles = di.getBackupInfo().getFiles();
+
+            String toDelete = null;
+            for(int i=0;i<totalfiles.size();i++)
+            {
+                System.out.println(i+"-"+" "+totalfiles.get(i).getName());
+            }
+
+            int order = in.nextInt();
+            toDelete = totalfiles.get(order).getHash();
+
+            Server.Protocol.Normal.Delete delete = new Delete(di,toDelete);
+            //String path = new String("S:\\backups");
+            try {
+                delete.run();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        else if(op==5)
         {
             exit=true;
         }
