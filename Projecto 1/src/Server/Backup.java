@@ -72,7 +72,9 @@ public class Backup extends Injectable
                 // Send Chunk
                 Integer chunkNo = Integer.parseInt(chunk.getName());
                 PutChunk putChunk = new PutChunk(di, hash, chunkNo, replicationDegree, data);
-                putChunk.run();
+                if (!putChunk.run()) {
+                    throw new IOException();
+                }
             }
         }
 

@@ -53,9 +53,8 @@ public abstract class ChannelReactor extends InjectableThread
 
             byte[] data = new byte[packet.getLength()];
             System.arraycopy(packet.getData(), 0, data, 0, packet.getLength());
-            String message = new String(data); // Received
 
-            processMessage(data, message);
+            processMessage(packet, data);
         }
     }
 

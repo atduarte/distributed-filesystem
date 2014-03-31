@@ -20,6 +20,7 @@ public class BackupInfo implements Serializable
     public BackupInfo(String path) {
         this.path = path;
         files = new ArrayList<BackupFileInfo>();
+        usedDiskSpace = 1024*1024;
     }
 
     public void addFile(BackupFileInfo newFile)

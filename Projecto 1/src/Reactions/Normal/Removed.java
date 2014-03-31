@@ -40,6 +40,11 @@ public class Removed extends Reaction
 
         // Decrement Local Count
         ChunkInfo chunkInfo = chunkManager.getChunkInfo(fileId, chunkNo);
+
+        if (chunkInfo == null) {
+            return;
+        }
+
         chunkInfo.realRepDegree--;
 
         if (chunkManager.hasChunk(fileId, chunkNo) && chunkInfo.realRepDegree < chunkInfo.repDegree) {

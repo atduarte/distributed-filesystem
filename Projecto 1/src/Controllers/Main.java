@@ -37,13 +37,6 @@ public class Main
         // Dependency Injection
         DependencyInjection di = new DependencyInjection();
 
-        // Menu
-        Menu menu = new Menu(di);
-
-        // Disk Space
-
-
-
 
         // Channels
         Channels channels = new Channels();
@@ -83,7 +76,8 @@ public class Main
         System.out.println(n1.getFolderSize(new File("S:\\serverfolder")));
         n1.run();*/
 
-
+        // Menu
+        Menu menu = new Menu(di);
 
         // Menu Options
         while (true) {

@@ -60,7 +60,7 @@ public class PutChunk extends Reaction
         chunkManager.resetChunkInfo(fileId, chunkNo, replicationDegree);
 
         // Check Available Space
-        if (chunkManager.getFolderSize() + Constants.chunkSize < di.getBackupInfo().getUsedDiskSpace()) {
+        if (chunkManager.getFolderSize() + Constants.chunkSize > di.getBackupInfo().getUsedDiskSpace()) {
             return;
         }
 

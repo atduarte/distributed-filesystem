@@ -1,13 +1,12 @@
 package Server;
 
-import Peer.BackupInfo;
-import Peer.ChunkManager;
-import Peer.DependencyInjection;
-import Peer.Injectable;
+import Peer.*;
 import Server.Protocol.Normal.Removed;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class ReclaimSpace extends Injectable
 {
@@ -20,24 +19,33 @@ public class ReclaimSpace extends Injectable
     {
         BackupInfo backupInfo = di.getBackupInfo();
         ChunkManager chunkManager = di.getChunkManager();
-        File chunksFolder = new File(chunkManager.getChunksPath());
 
-        while(chunkManager.getFolderSize() > backupInfo.getUsedDiskSpace() || chunkManager.getFolderSize() == 0) {
-            String fileid = new String();
-            int chunkNo = 0;
-            while(true) {
-                 fileid = chunkManager.getRandomFolder();
-                 chunkNo = chunkManager.getRandomChunkNo(fileid);
-                System.out.println(fileid + " " + chunkNo);
-                if(chunkManager.getChunkInfo(new File(fileid).getName(),chunkNo).repDegree>1)
-                {
-                    break;
-                }
+        ArrayList<File> chunkFiles = chunkManager.getChunksList();
+
+        long a = chunkManager.getFolderSize();
+        long b = backupInfo.getUsedDiskSpace();
+
+        while(chunkManager.getFolderSize() > backupInfo.getUsedDiskSpace()) {
+            if (chunkFiles == null || chunkFiles.size() == 0) {
+                break;
             }
-            Removed rm = new Removed(di,new File(fileid).getName(),chunkNo);
+
+            int i = (new Random()).nextInt(chunkFiles.size());
+            File chunk = chunkFiles.get(i);
+
+            ChunkInfo chunkInfo = chunkManager.getChunkInfo(chunk.getParentFile().getName(), Integer.parseInt(chunk.getName()));
+
+            if (chunkInfo != null &&
+                chunkInfo.repDegree <= 1)
+            {
+                chunkFiles.remove(i);
+                continue;
+            }
+
+            Removed rm = new Removed(di, chunk.getParentFile().getName(), Integer.parseInt(chunk.getName()));
             try {
-                File f1 = new File(chunkManager.getChunksPath()+"\\"+new File(fileid).getName()+"\\"+chunkNo);
-                System.out.println("Removed: " + f1.delete());
+                chunkFiles.remove(i);
+                chunk.delete();
                 rm.run();
             } catch (IOException e) {
                 e.printStackTrace();

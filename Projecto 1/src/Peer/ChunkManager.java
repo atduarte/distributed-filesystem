@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class ChunkManager
@@ -44,26 +45,45 @@ public class ChunkManager
         return saveChunk.exists();
     }
 
-    public String getRandomFolder()
+    public ArrayList<File> getChunksList()
     {
         File folder = new File(chunksPath);
-        int i = folder.listFiles().length;
-        Random rn = new Random();
+        ArrayList<File> files = listFiles(folder);
 
-        int fileorder = rn.nextInt(i) + 1;
+        if (files == null || files.size() == 0) {
+            return null;
+        }
 
-
-        return folder.listFiles()[fileorder-1].getAbsolutePath();
+        return files;
     }
 
-    public int getRandomChunkNo(String path)
-    {
-        File folder = new File(path);
-        int i = folder.listFiles().length;
-        Random rn = new Random();
+    private ArrayList<File> listFiles(File file) {
+        File[] files = file.listFiles();
 
-        int chunkorder = rn.nextInt(i) + 1;
-        return chunkorder;
+        if (files == null) {
+            return null;
+        }
+
+        ArrayList<File> children = new ArrayList<File>(Arrays.asList(files));
+        int n = children.size();
+        for (int i = 0; i < n; i++) {
+            File child = children.get(i);
+            ArrayList<File> tmpChildren = listFiles(child);
+            if (tmpChildren != null) {
+                for (File cenas : tmpChildren) {
+                    children.add(cenas);
+                }
+            }
+        }
+
+        for (int i = 0; i < children.size(); i++) {
+            if (children.get(i).isDirectory()) {
+                children.remove(i);
+                i--;
+            }
+        }
+
+        return children;
     }
 
     public void deleteChunk(String fileId, Integer chunkNo) {
@@ -180,6 +200,6 @@ public class ChunkManager
     }
 
     public long getFolderSize() {
-        return FilesManager.getFolderSize(new File(chunksPath));
+        return FilesManager.getFolderSize(new File(chunksPath)) / 1024;
     }
 }
