@@ -57,8 +57,14 @@ public class Menu extends Injectable
             path = in.nextLine();
             path = in.nextLine();
             File file = new File(path);
+
+            int repdegree;
+
+            System.out.print("Replication Degree: ");
+            repdegree =  in.nextInt();
+
             try {
-                backup.sendFile(file, 1);
+                backup.sendFile(file, repdegree);
             } catch (IOException e) {
                 e.printStackTrace();
             }
