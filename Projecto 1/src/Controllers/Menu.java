@@ -75,6 +75,10 @@ public class Menu extends Injectable
         {
             Restore restore = new Restore(di);
             ArrayList<BackupFileInfo> totalfiles = di.getBackupInfo().getFiles();
+            
+            if (totalfiles.size() == 0) {
+            	return;
+            }
 
             for(int i=0;i<totalfiles.size();i++)
             {
@@ -100,6 +104,10 @@ public class Menu extends Injectable
         {
 
             ArrayList<BackupFileInfo> totalfiles = di.getBackupInfo().getFiles();
+            
+            if (totalfiles.size() == 0) {
+            	return;
+            }
 
             String toDelete = null;
             for(int i=0;i<totalfiles.size();i++)
@@ -111,6 +119,13 @@ public class Menu extends Injectable
             toDelete = totalfiles.get(order).getHash();
 
             Server.Protocol.Normal.Delete delete = new Delete(di,toDelete);
+            ArrayList<BackupFileInfo> files = di.getBackupInfo().files;
+            for(int i = 0; i < files.size(); i++) {
+            	if (files.get(i).getHash().equals(toDelete)) {
+            		files.remove(i);
+            		i--;
+            	}
+            }
             //String path = new String("S:\\backups");
             try {
                 delete.run();
